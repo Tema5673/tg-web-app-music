@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 
 const tg = window.Telegram.WebApp;
@@ -8,18 +8,39 @@ function App() {
         tg.ready();
     }, []);
 
+    const [selectedGenre, setSelectedGenre] = useState(null);
+
     const onClose = () => {
-        // Add your code to handle the close event here
+        // Добавьте ваш код для обработки события закрытия здесь
     }
 
     const handleGenreClick = (genre) => {
-        // Add your code to handle the genre click event here
-        if (genre === "Топ 100") {
-            window.open("https://example.com/top100"); // Replace with the actual URL
-        } else if (genre === "Поп") {
-            window.open("https://example.com/pop"); // Replace with the actual URL
-        } else if (genre === "Рок") {
-            window.open("https://example.com/rock"); // Replace with the actual URL
+        // Добавьте ваш код для обработки события клика по жанру здесь
+        setSelectedGenre(genre);
+    }
+
+    const renderMenu = () => {
+        // Добавьте ваш код для отображения соответствующего меню здесь
+        if (selectedGenre === "Топ 100") {
+            return (
+                <div>
+                    {/* Ваше меню для жанра "Топ 100" */}
+                </div>
+            );
+        } else if (selectedGenre === "Поп") {
+            return (
+                <div>
+                    {/* Ваше меню для жанра "Поп" */}
+                </div>
+            );
+        } else if (selectedGenre === "Рок") {
+            return (
+                <div>
+                    {/* Ваше меню для жанра "Рок" */}
+                </div>
+            );
+        } else {
+            return null;
         }
     }
 
@@ -42,7 +63,7 @@ function App() {
                     <h2>Рок</h2>
                 </div>
             </div>
-            {/* Add other genres here */}
+            {renderMenu()}
         </div>
     );
 }
