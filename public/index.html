@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="ru">
+<head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <title>React App</title>
-    <style>
-      body {
-        background-color: gray;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+    <title>Музыка</title>
+</head>
+<body>
+    <h1>Выберите жанр</h1>
+    <div>
+        <h2>Топ 100</h2>
+        <audio controls autoplay>
+            <source src="your_top100_music.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает элемент аудио.
+        </audio>
+    </div>
+    <div>
+        <h2>Поп</h2>
+        <audio controls autoplay>
+            <source src="your_pop_music.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает элемент аудио.
+        </audio>
+    </div>
+    <div>
+        <h2>Рок</h2>
+        <audio controls autoplay>
+            <source src="your_rock_music.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает элемент аудио.
+        </audio>
+    </div>
+</body>
 </html>
