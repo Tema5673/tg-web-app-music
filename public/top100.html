@@ -36,14 +36,20 @@
       color: white; /* Белый цвет текста */
       font-size: 12px; /* Меньший размер шрифта */
       margin-top: 1px; /* Отступ сверху */
-      margin-left: 48px; /* Отступ слева */
+      margin-left: 46px; /* Отступ слева */
     }
   </style>
+  <script>
+    function playMusic() {
+      var audio = new Audio('C:/Users/Klimc/PycharmProjects/untitled2/public/ANNA ASTI - Дурак.mp3'); // Замените 'C:/Users/Klimc/PycharmProjects/untitled2/public/ANNA ASTI - Дурак.mp3' на путь к вашему аудиофайлу
+      audio.play();
+    }
+  </script>
 </head>
 <body>
   <h1>Топ 100</h1>
   <div class="left-content">
-    <button>
+    <button onclick="playMusic()">
       <img src="play-button.png" alt="Кнопка">
       <span>Дурак</span>
     </button>
