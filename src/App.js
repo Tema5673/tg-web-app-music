@@ -11,6 +11,11 @@ function App() {
     // Add your code here
   }
 
+  const handleButtonClick = (genre) => {
+    // Add your code here to handle button click for each genre
+    console.log(`Button clicked for ${genre}`);
+  }
+
   return (
     <div className="App">
       <header className="center-header">
@@ -18,16 +23,22 @@ function App() {
       </header>
       <div className="genres">
         <div className="genre">
-          <img className="genre-image" src="top100.jpg"/>
-          <h2></h2>
+          <button className="invisible-button" onClick={() => handleButtonClick("Топ 100")}>
+            <img className="genre-image" src="top100.jpg" alt="Топ 100"/>
+            <h2>Топ 100</h2>
+          </button>
         </div>
         <div className="genre">
-          <img className="genre-image" src="pop.jpg"/>
-          <h2></h2>
+          <button className="invisible-button" onClick={() => handleButtonClick("Поп")}>
+            <img className="genre-image" src="pop.jpg" alt="Поп"/>
+            <h2>Поп</h2>
+          </button>
         </div>
         <div className="genre">
-          <img className="genre-image" src="rock.jpg"/>
-          <h2></h2>
+          <button className="invisible-button" onClick={() => handleButtonClick("Рок")}>
+            <img className="genre-image" src="rock.jpg" alt="Рок"/>
+            <h2>Рок</h2>
+          </button>
         </div>
       </div>
       {/* Добавьте другие жанры здесь */}
