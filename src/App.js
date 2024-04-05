@@ -13,7 +13,9 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="center-text">Выберите жанр</h1>
+            <header className="center-header">
+                <h1 className="header-text">Выберите жанр</h1>
+            </header>
             <div className="genres">
                 <div className="genre">
                     <h2>Топ 100</h2>

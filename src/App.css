@@ -19,5 +19,15 @@ body {
 .genre {
     margin-right: 10px;
 }
+ .center-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.header-text {
+    font-size: 24px;
+}
 
 }
