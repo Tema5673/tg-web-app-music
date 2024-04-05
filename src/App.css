@@ -37,3 +37,14 @@ body {
 .header-text {
     font-size: 24px;
 }
+
+/* Стили для блоков с жанрами ниже */
+.bottom-genres {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.bottom-genre {
+    margin-right: 10px;
+}
