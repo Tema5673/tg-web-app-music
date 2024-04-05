@@ -7,5 +7,17 @@ body {
     background-color: gray !important;
     color: var(--tg-theme-text-color);
 }
+   .center-text {
+    text-align: center;
+}
+
+.genres {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.genre {
+    margin-right: 10px;
+}
 
 }
