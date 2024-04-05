@@ -21,26 +21,27 @@
     }
 
     .additional-text {
-      margin-top: 55px; /* Отступ сверху для дополнительного текста */
-      font-size: 13px; /* Размер шрифта дополнительного текста */
+      margin-top: 8px; /* Отступ сверху для дополнительного текста */
+      font-size: 14px; /* Размер шрифта дополнительного текста */
       color: black; /* Черный цвет текста "Anna Asti" */
-      margin-left: -49px; /* Отступ слева для дополнительного текста */
+      margin-left: 8px; /* Отступ слева для дополнительного текста */
     }
 
-    .right-text {
-      margin-left: 320px; /* Расположение текста справа */
-      font-size: 13px; /* Размер шрифта текста справа */
+    .left-content {
+      display: flex; /* Расположение элементов внутри контейнера */
+      align-items: center; /* Выравнивание элементов по вертикали */
     }
   </style>
 </head>
 <body>
   <h1>Топ 100</h1>
-  <button>
-    <img src="play.jpg" alt="Кнопка">
-    <span class="blue-text">Дурак</span>
+  <div class="left-content">
+    <button>
+      <img src="custom-image.jpg" alt="Кнопка">
+      <span class="blue-text">Дурак</span>
+    </button>
     <p class="additional-text">Anna Asti</p>
-    <p class="right-text">Текст справа</p>
-  </button>
+  </div>
   <!-- Добавьте другое содержимое здесь -->
 </body>
 </html>
