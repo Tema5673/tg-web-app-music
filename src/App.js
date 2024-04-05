@@ -8,22 +8,20 @@ function App() {
   }, []);
 
   const onClose = () => {
-    // Add your code here
+    // Добавьте свой код здесь
   }
 
   const handleButtonClick = (genre) => {
-    // Add your code here to handle button click for each genre
-    console.log(`Button clicked for ${genre}`);
-    // Откройте отдельную страницу для каждого жанра
+    console.log(`Кнопка нажата для жанра: ${genre}`);
     switch (genre) {
       case "Топ 100":
-        window.open("top100.html", "_blank");
+        window.location.href = "top100.html";
         break;
       case "Поп":
-        window.open("pop.html", "_blank");
+        window.location.href = "pop.html";
         break;
       case "Рок":
-        window.open("rock.html", "_blank");
+        window.location.href = "rock.html";
         break;
       default:
         break;
@@ -55,7 +53,6 @@ function App() {
           </button>
         </div>
       </div>
-      {/* Добавьте другие жанры здесь */}
     </div>
   );
 }
