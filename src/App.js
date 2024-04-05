@@ -18,15 +18,15 @@ function App() {
       </header>
       <div className="genres">
         <div className="genre">
-          <img className="genre-image" src="top100.jpg" alt="Топ 100"/>
+          <img className="genre-image" src="top100.jpg"/>
           <h2>Топ 100</h2>
         </div>
         <div className="genre">
-          <img className="genre-image" src="pop.jpg" alt="Поп"/>
+          <img className="genre-image" src="pop.jpg"/>
           <h2>Поп</h2>
         </div>
         <div className="genre">
-          <img className="genre-image" src="rock.jpg" alt="Рок"/>
+          <img className="genre-image" src="rock.jpg"/>
           <h2>Рок</h2>
         </div>
       </div>
