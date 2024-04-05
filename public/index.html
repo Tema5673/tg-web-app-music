@@ -1,110 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-/* Стили для сброса значений по умолчанию и корректного отображения */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Стили для body */
-body {
-    background-color: gray !important;
-    color: var(--tg-theme-text-color);
-}
-
-/* Стили для центрирования текста */
-.center-text {
-    text-align: center;
-}
-
-/* Стили для блоков с жанрами музыки */
-.genres {
-    display: flex;
-    justify-content: space-between;
-}
-
-.genre {
-    margin-right: 5px;
-}
-
-.genre:last-child {
-    margin-right: 0;
-}
-
-/* Стили для заголовка */
-.center-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-}
-
-.header-text {
-    font-size: 24px;
-}
-
-/* Стили для блоков с жанрами ниже */
-.bottom-genres {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.bottom-genre {
-    margin-right: 5px;
-}
-
-.bottom-genre:last-child {
-    margin-right: 0;
-}
-
-/* Стили для блоков с жанрами музыки */
-.genres {
-    display: flex;
-    justify-content: space-between;
-}
-
-.genre {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.genre-image {
-    width: 100px; /* Установите нужную ширину */
-    height: auto; /* Автоматический расчет высоты для сохранения пропорций */
-    margin-bottom: 10px; /* Установите нужный отступ снизу */
-}
-
-/* Стили для невидимых кнопок */
-.invisible-button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-}
-</style>
-</head>
-<body>
-<div class="genres">
-    <div class="genre">
-        <button class="invisible-button" onclick="window.open('https://example.com')"> <!-- Замените ссылку на нужную -->
-            <img class="genre-image" src="image1.jpg" alt="Genre 1">
-        </button>
-        <span>Жанр 1</span>
-    </div>
-    <div class="genre">
-        <button class="invisible-button" onclick="window.open('https://example.com')"> <!-- Замените ссылку на нужную -->
-            <img class="genre-image" src="image2.jpg" alt="Genre 2">
-        </button>
-        <span>Жанр 2</span>
-    </div>
-    <!-- Добавьте остальные кнопки и изображения -->
-</div>
-</body>
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>React App</title>
+    <style>
+      body {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>
