@@ -15,11 +15,11 @@ function App() {
     const handleGenreClick = (genre) => {
         // Добавьте ваш код для обработки события клика по жанру здесь
         if (genre === "Топ 100") {
-            window.location.href = "/top100"; // Замените "/top100" на URL-адрес страницы "Топ 100" на вашем сайте
+            window.open("/top100", "_blank");
         } else if (genre === "Поп") {
-            window.location.href = "/pop"; // Замените "/pop" на URL-адрес страницы "Поп" на вашем сайте
+            window.open("/pop", "_blank");
         } else if (genre === "Рок") {
-            window.location.href = "/rock"; // Замените "/rock" на URL-адрес страницы "Рок" на вашем сайте
+            window.open("/rock", "_blank");
         }
     }
 
