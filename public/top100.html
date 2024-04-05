@@ -42,19 +42,13 @@
   <script>
     function toggleButton() {
       var button = document.getElementById("playButton");
-      var buttonText = button.innerText;
-      var newButton = document.createElement("button");
-      newButton.id = "stopButton";
-      newButton.onclick = toggleButton;
-      newButton.style.backgroundColor = "gray";
-      newButton.innerHTML = '<img src="stop-button.jpg" alt="Кнопка">';
-      button.parentNode.replaceChild(newButton, button);
-      if (buttonText === "Play Button") {
-        newButton.innerText = "Stop Button";
-        newButton.style.backgroundColor = "red";
+      var buttonImage = button.querySelector("img");
+      if (buttonImage.src.includes("play-button.png")) {
+        buttonImage.src = "stop-button.jpg";
+        buttonImage.alt = "Stop Button";
       } else {
-        newButton.innerText = "Play Button";
-        newButton.style.backgroundColor = "gray";
+        buttonImage.src = "play-button.png";
+        buttonImage.alt = "Play Button";
       }
     }
   </script>
@@ -63,8 +57,7 @@
   <h1>Топ 100</h1>
   <div class="left-content">
     <button id="playButton" onclick="toggleButton()">
-      <img src="play-button.png" alt="Кнопка">
-      <span>Play Button</span>
+      <img src="play-button.png" alt="Play Button">
     </button>
   </div>
   <div class="additional-text">
