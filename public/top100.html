@@ -41,15 +41,16 @@
   </style>
   <script>
     function playMusic() {
-      var audio = new Audio('C:/Users/Klimc/PycharmProjects/untitled2/public/Anna Asti - Дурак.mp3'); // Замените 'C:/Users/Klimc/PycharmProjects/untitled2/public/ANNA ASTI - Дурак.mp3' на путь к вашему аудиофайлу
-      audio.play();
+      var button = document.getElementById("playButton");
+      button.innerHTML = '<img src="C:/Users/Klimc/PycharmProjects/untitled2/public/kisspng-computer-icons-download-clip-art-5b3b96c67ddaa4.5155844815306318785155.jpg" alt="Кнопка">';
+      button.style.backgroundColor = "gray";
     }
   </script>
 </head>
 <body>
   <h1>Топ 100</h1>
   <div class="left-content">
-    <button onclick="playMusic()">
+    <button id="playButton" onclick="playMusic()">
       <img src="play-button.png" alt="Кнопка">
       <span>Дурак</span>
     </button>
