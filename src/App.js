@@ -9,17 +9,17 @@ function App() {
     }, []);
 
     const onClose = () => {
-        // Add your code to handle the close event here
+        // Добавьте ваш код для обработки события закрытия здесь
     }
 
     const handleGenreClick = (genre) => {
-        // Add your code to handle the genre click event here
+        // Добавьте ваш код для обработки события клика по жанру здесь
         if (genre === "Топ 100") {
-            window.open("https://example.com/top100"); // Replace with the actual URL
+            window.location.href = "/top100"; // Замените "/top100" на нужный URL на текущем сайте
         } else if (genre === "Поп") {
-            window.open("https://example.com/pop"); // Replace with the actual URL
+            window.location.href = "/pop"; // Замените "/pop" на нужный URL на текущем сайте
         } else if (genre === "Рок") {
-            window.open("https://example.com/rock"); // Replace with the actual URL
+            window.location.href = "/rock"; // Замените "/rock" на нужный URL на текущем сайте
         }
     }
 
@@ -42,7 +42,7 @@ function App() {
                     <h2>Рок</h2>
                 </div>
             </div>
-            {/* Add other genres here */}
+            {/* Добавьте другие жанры здесь */}
         </div>
     );
 }
