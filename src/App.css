@@ -19,7 +19,7 @@ body {
 /* Стили для блоков с жанрами музыки */
 .genres {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .genre {
