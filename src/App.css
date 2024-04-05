@@ -56,3 +56,22 @@ body {
 .bottom-genre:last-child {
     margin-right: 0;
 }
+
+/* Стили для блоков с жанрами музыки */
+.genres {
+    display: flex;
+    justify-content: space-between;
+}
+
+.genre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.genre-image {
+    width: 100px; /* Установите нужную ширину */
+    height: auto; /* Автоматический расчет высоты для сохранения пропорций */
+    margin-bottom: 10px; /* Установите нужный отступ снизу */
+}
