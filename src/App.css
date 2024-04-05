@@ -56,3 +56,7 @@ body {
 .bottom-genre:last-child {
     margin-right: 0;
 }
+.genre-image {
+  width: 100px; /* Установите нужную ширину */
+  height: auto; /* Автоматический расчет высоты для сохранения пропорций */
+}
