@@ -23,7 +23,11 @@ body {
 }
 
 .genre {
-    margin-right: 10px;
+    margin-right: 5px;
+}
+
+.genre:last-child {
+    margin-right: 0;
 }
 
 /* Стили для заголовка */
@@ -46,5 +50,9 @@ body {
 }
 
 .bottom-genre {
-    margin-right: 10px;
+    margin-right: 5px;
+}
+
+.bottom-genre:last-child {
+    margin-right: 0;
 }
