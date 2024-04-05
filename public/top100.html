@@ -12,6 +12,11 @@
       font-size: 24px; /* Размер шрифта текста "Топ 100" */
     }
 
+    .left-content {
+      display: flex; /* Расположение элементов внутри контейнера */
+      align-items: center; /* Выравнивание элементов по вертикали */
+    }
+
     button {
       display: flex;
       align-items: center;
@@ -30,9 +35,12 @@
 </head>
 <body>
   <h1>Топ 100</h1>
-  <button>
-    <img src="play-button.png" alt="Кнопка">
-  </button>
+  <div class="left-content">
+    <button>
+      <img src="play-button.png" alt="Кнопка">
+      <span>Дурак</span>
+    </button>
+  </div>
   <!-- Добавьте другое содержимое здесь -->
 </body>
 </html>
