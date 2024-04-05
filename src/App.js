@@ -16,7 +16,7 @@ function App() {
             <h1>Выберите жанр</h1>
             <div className="genres">
                 <div className="genre">
-                    <img src="E:\Изображения\Топ-100.jpg" alt="Топ 100" />
+                    <img src="file:///E:/Изображения/Топ-100.jpg" alt="Топ 100" />
                     <h2>Топ 100</h2>
                 </div>
                 <div className="genre">
