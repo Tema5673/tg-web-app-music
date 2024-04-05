@@ -14,7 +14,20 @@ function App() {
   const handleButtonClick = (genre) => {
     // Add your code here to handle button click for each genre
     console.log(`Button clicked for ${genre}`);
-    // Откройте меню или выполните другие действия здесь
+    // Откройте отдельную страницу для каждого жанра
+    switch (genre) {
+      case "Топ 100":
+        window.open("top100.html", "_blank");
+        break;
+      case "Поп":
+        window.open("pop.html", "_blank");
+        break;
+      case "Рок":
+        window.open("rock.html", "_blank");
+        break;
+      default:
+        break;
+    }
   }
 
   return (
