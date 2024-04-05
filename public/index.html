@@ -1,31 +1,110 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title>Музыка</title>
+<style>
+/* Стили для сброса значений по умолчанию и корректного отображения */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для body */
+body {
+    background-color: gray !important;
+    color: var(--tg-theme-text-color);
+}
+
+/* Стили для центрирования текста */
+.center-text {
+    text-align: center;
+}
+
+/* Стили для блоков с жанрами музыки */
+.genres {
+    display: flex;
+    justify-content: space-between;
+}
+
+.genre {
+    margin-right: 5px;
+}
+
+.genre:last-child {
+    margin-right: 0;
+}
+
+/* Стили для заголовка */
+.center-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.header-text {
+    font-size: 24px;
+}
+
+/* Стили для блоков с жанрами ниже */
+.bottom-genres {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.bottom-genre {
+    margin-right: 5px;
+}
+
+.bottom-genre:last-child {
+    margin-right: 0;
+}
+
+/* Стили для блоков с жанрами музыки */
+.genres {
+    display: flex;
+    justify-content: space-between;
+}
+
+.genre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.genre-image {
+    width: 100px; /* Установите нужную ширину */
+    height: auto; /* Автоматический расчет высоты для сохранения пропорций */
+    margin-bottom: 10px; /* Установите нужный отступ снизу */
+}
+
+/* Стили для невидимых кнопок */
+.invisible-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
-    <h1>Выберите жанр</h1>
-    <div>
-        <h2>Топ 100</h2>
-        <audio controls autoplay>
-            <source src="your_top100_music.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает элемент аудио.
-        </audio>
+<div class="genres">
+    <div class="genre">
+        <button class="invisible-button" onclick="window.open('https://example.com')"> <!-- Замените ссылку на нужную -->
+            <img class="genre-image" src="image1.jpg" alt="Genre 1">
+        </button>
+        <span>Жанр 1</span>
     </div>
-    <div>
-        <h2>Поп</h2>
-        <audio controls autoplay>
-            <source src="your_pop_music.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает элемент аудио.
-        </audio>
+    <div class="genre">
+        <button class="invisible-button" onclick="window.open('https://example.com')"> <!-- Замените ссылку на нужную -->
+            <img class="genre-image" src="image2.jpg" alt="Genre 2">
+        </button>
+        <span>Жанр 2</span>
     </div>
-    <div>
-        <h2>Рок</h2>
-        <audio controls autoplay>
-            <source src="your_rock_music.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает элемент аудио.
-        </audio>
-    </div>
+    <!-- Добавьте остальные кнопки и изображения -->
+</div>
 </body>
 </html>
