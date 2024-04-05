@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import './App.css';
+import top100Image from './top100.jpg';
+import popImage from './pop.jpg';
+import rockImage from './rock.jpg';
 
 const tg = window.Telegram.WebApp;
 
@@ -37,15 +40,15 @@ function App() {
             </header>
             <div className="genres">
                 <div className="genre" onClick={() => handleMenuClick("menu1")}>
-                    <img src={require("./top100.jpg")} alt="Топ 100" />
+                    <img src={top100Image} alt="Топ 100" />
                     <button className="invisible-button" onClick={(e) => e.stopPropagation()}>Перейти</button>
                 </div>
                 <div className="genre" onClick={() => handleMenuClick("menu2")}>
-                    <img src={require("./pop.jpg")} alt="Поп" />
+                    <img src={popImage} alt="Поп" />
                     <button className="invisible-button" onClick={(e) => e.stopPropagation()}>Перейти</button>
                 </div>
                 <div className="genre" onClick={() => handleMenuClick("menu3")}>
-                    <img src={require("./rock.jpg")} alt="Рок" />
+                    <img src={rockImage} alt="Рок" />
                     <button className="invisible-button" onClick={(e) => e.stopPropagation()}>Перейти</button>
                 </div>
             </div>
