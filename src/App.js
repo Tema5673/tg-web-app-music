@@ -26,17 +26,8 @@ function App() {
                 <div className="genre">
                     <h2>Рок</h2>
                 </div>
-                <div className="bottom-genres">
-                    <div className="bottom-genre">
-                        <h2>Инди</h2>
-                    </div>
-                    <div className="bottom-genre">
-                        <h2>Джаз</h2>
-                    </div>
-                    <div className="bottom-genre">
-                        <h2>Кантри</h2>
-                    </div>
-                </div>
+
+
 
             </div>
         </div>
