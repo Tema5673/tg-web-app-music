@@ -1,16 +1,22 @@
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+/* Стили для сброса значений по умолчанию и корректного отображения */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Стили для body */
 body {
     background-color: gray !important;
     color: var(--tg-theme-text-color);
 }
-   .center-text {
+
+/* Стили для центрирования текста */
+.center-text {
     text-align: center;
 }
 
+/* Стили для блоков с жанрами музыки */
 .genres {
     display: flex;
     justify-content: flex-end;
@@ -19,7 +25,9 @@ body {
 .genre {
     margin-right: 10px;
 }
- .center-header {
+
+/* Стили для заголовка */
+.center-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +36,4 @@ body {
 
 .header-text {
     font-size: 24px;
-}
-
 }
