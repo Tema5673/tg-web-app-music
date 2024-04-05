@@ -39,7 +39,7 @@ function App() {
                 <div className="genre" onClick={() => handleMenuClick("menu1")}>
                     <img className="genre-image" src="/top100.jpg" alt="Топ 100"/>
                     <h2>Топ 100</h2>
-                    <button className="invisible-button" onClick={(e) => e.stopPropagation()}></button>
+                    <button className="invisible-button" onClick={(e) => e.stopPropagation()}>Перейти</button>
                 </div>
                 <div className="genre" onClick={() => handleMenuClick("menu2")}>
                     <img className="genre-image" src="/pop.jpg" alt="Поп"/>
