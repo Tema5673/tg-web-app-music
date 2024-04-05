@@ -40,19 +40,31 @@
     }
   </style>
   <script>
-    function playMusic() {
+    function toggleButton() {
       var button = document.getElementById("playButton");
-      button.innerHTML = '<img src="kisspng-computer-icons-download-clip-art-5b3b96c67ddaa4.5155844815306318785155.jpg" alt="Кнопка">';
-      button.style.backgroundColor = "gray";
+      var buttonText = button.innerText;
+      var newButton = document.createElement("button");
+      newButton.id = "stopButton";
+      newButton.onclick = toggleButton;
+      newButton.style.backgroundColor = "gray";
+      newButton.innerHTML = '<img src="stop-button.jpg" alt="Кнопка">';
+      button.parentNode.replaceChild(newButton, button);
+      if (buttonText === "Play Button") {
+        newButton.innerText = "Stop Button";
+        newButton.style.backgroundColor = "red";
+      } else {
+        newButton.innerText = "Play Button";
+        newButton.style.backgroundColor = "gray";
+      }
     }
   </script>
 </head>
 <body>
   <h1>Топ 100</h1>
   <div class="left-content">
-    <button id="playButton" onclick="playMusic()">
+    <button id="playButton" onclick="toggleButton()">
       <img src="play-button.png" alt="Кнопка">
-      <span>Дурак</span>
+      <span>Play Button</span>
     </button>
   </div>
   <div class="additional-text">
