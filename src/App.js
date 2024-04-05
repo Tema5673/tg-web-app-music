@@ -14,6 +14,7 @@ function App() {
   const handleButtonClick = (genre) => {
     // Add your code here to handle button click for each genre
     console.log(`Button clicked for ${genre}`);
+    // Откройте меню или выполните другие действия здесь
   }
 
   return (
