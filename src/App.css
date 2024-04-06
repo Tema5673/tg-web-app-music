@@ -65,17 +65,3 @@ body {
   height: 30px; /* Установите нужную высоту */
   margin-right: 5px; /* Установите нужный отступ справа */
 }
-.center-button {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.particles-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
