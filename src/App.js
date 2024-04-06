@@ -29,7 +29,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="genres" style={{ marginTop: "200px" }}>
+      <button className="invisible-button center-button">Поиск</button>
+      <header className="center-header" style={{ marginTop: "50px" }}>
+        <h1 className="header-text">Выберите жанр</h1>
+      </header>
+      <div className="genres" style={{ marginTop: "50px" }}>
         <div className="genre">
           <button className="invisible-button" onClick={() => handleButtonClick("Топ 100")}>
             <img className="genre-image" src="top100.jpg" alt="Топ 100"/>
@@ -49,9 +53,6 @@ function App() {
           </button>
         </div>
       </div>
-      <header className="center-header" style={{ marginTop: "-200px" }}>
-        <h1 className="header-text">Выберите жанр</h1>
-      </header>
     </div>
   );
 }
