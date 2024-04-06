@@ -1,65 +1,126 @@
 import React, { useEffect, useRef } from "react";
-import './App.css';
+import Particles from "particlesjs";
 
-function App() {
-  const inputRef = useRef(null);
+function ParticlesBackground() {
+  const particlesRef = useRef(null);
 
   useEffect(() => {
-    inputRef.current.focus();
+    Particles.init(particlesRef.current, {
+      // Настройки анимации частиц
+      // Можете настроить эти параметры в соответствии с вашими предпочтениями
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800,
+          },
+        },
+        color: {
+          value: "#ffffff",
+        },
+        shape: {
+          type: "circle",
+          stroke: {
+            width: 0,
+            color: "#000000",
+          },
+          polygon: {
+            nb_sides: 5,
+          },
+          image: {
+            src: "img/github.svg",
+            width: 100,
+            height: 100,
+          },
+        },
+        opacity: {
+          value: 0.5,
+          random: false,
+          anim: {
+            enable: false,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false,
+          },
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 40,
+            size_min: 0.1,
+            sync: false,
+          },
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ffffff",
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200,
+          },
+        },
+      },
+      // Настройки интерактивности
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "repulse",
+          },
+          onclick: {
+            enable: true,
+            mode: "push",
+          },
+          resize: true,
+        },
+        modes: {
+          grab: {
+            distance: 400,
+            line_linked: {
+              opacity: 1,
+            },
+          },
+          bubble: {
+            distance: 400,
+            size: 40,
+            duration: 2,
+            opacity: 8,
+            speed: 3,
+          },
+          repulse: {
+            distance: 200,
+            duration: 0.4,
+          },
+          push: {
+            particles_nb: 4,
+          },
+          remove: {
+            particles_nb: 2,
+          },
+        },
+      },
+      retina_detect: true,
+    });
   }, []);
 
-  const onClose = () => {
-    // Добавьте свой код здесь
-  }
-
-  const handleButtonClick = (genre) => {
-    console.log(`Кнопка нажата для жанра: ${genre}`);
-    switch (genre) {
-      case "Топ 100":
-        window.location.href = "top100.html";
-        break;
-      case "Поп":
-        window.location.href = "pop.html";
-        break;
-      case "Рок":
-        window.location.href = "rock.html";
-        break;
-      default:
-        break;
-    }
-  }
-
-  return (
-    <div className="App">
-      <div className="center-button">
-        <button className="invisible-button" onClick={onClose} style={{ width: "300px", height: "80px" }}>Поиск</button>
-      </div>
-      <header className="center-header" style={{ marginTop: "20px" }}>
-        <h1 className="header-text">Выберите жанр</h1>
-      </header>
-      <div className="genres" style={{ marginTop: "50px" }}>
-        <div className="genre">
-          <button className="invisible-button" onClick={() => handleButtonClick("Топ 100")}>
-            <img className="genre-image" src="топ100.jpg" alt="Топ 100"/>
-            <h2>Топ 100</h2>
-          </button>
-        </div>
-        <div className="genre">
-          <button className="invisible-button" onClick={() => handleButtonClick("Поп")}>
-            <img className="genre-image" src="pop.jpg" alt="Поп"/>
-            <h2>Поп</h2>
-          </button>
-        </div>
-        <div className="genre">
-          <button className="invisible-button" onClick={() => handleButtonClick("Рок")}>
-            <img className="genre-image" src="rock.jpg" alt="Рок"/>
-            <h2>Рок</h2>
-          </button>
-        </div>
-      </div>
-      <input ref={inputRef} type="text" style={{ opacity: 0, position: "absolute", top: 0, left: 0 }} />
-    </div>
-  );
+  return <div ref={particlesRef} className="particles-background" />;
 }
 
-export default App;
+export default ParticlesBackground;
