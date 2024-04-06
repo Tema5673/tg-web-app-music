@@ -124,3 +124,16 @@ function ParticlesBackground() {
 }
 
 export default ParticlesBackground;
+
+function App() {
+  // ...
+
+  return (
+    <div className="App">
+      <ParticlesBackground />
+      {/* Остальной код вашего приложения */}
+    </div>
+  );
+}
+
+export default App;
