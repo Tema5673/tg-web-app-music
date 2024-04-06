@@ -7,10 +7,11 @@
 
 /* Стили для body */
 body {
-  background-color: gray;
+  background-image: url('animation.gif.mp4'); /* Замените 'path/to/your/image.jpg' на фактический путь к вашему изображению */
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 
 
 
