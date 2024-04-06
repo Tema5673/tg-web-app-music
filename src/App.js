@@ -53,6 +53,12 @@ function App() {
           </button>
         </div>
       </div>
+      <div>
+        <h2>Ниже находятся три картинки:</h2>
+        <img src="image1.jpg" alt="Image 1" />
+        <img src="image2.jpg" alt="Image 2" />
+        <img src="image3.jpg" alt="Image 3" />
+      </div>
     </div>
   );
 }
