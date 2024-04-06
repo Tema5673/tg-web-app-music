@@ -7,11 +7,12 @@
 
 /* Стили для body */
 body {
-  background-image: url("animation.gif");
+  background-color: gray;
   background-repeat: no-repeat;
   background-size: cover;
-  color: var(--tg-theme-text-color);
 }
+
+
 
 /* Стили для центрирования текста */
 .center-text {
@@ -68,15 +69,4 @@ body {
   width: 100px; /* Установите нужную ширину */
   height: 30px; /* Установите нужную высоту */
   margin-right: 5px; /* Установите нужный отступ справа */
-}
-
-/* Анимация перехода */
-@keyframes gradientAnimation {
-  0% { background-color: black; }
-  50% { background-color: green; }
-  100% { background-color: black; }
-}
-
-body {
-  animation: gradientAnimation 5s infinite;
 }
