@@ -3,11 +3,11 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    // Add your code here
+    // Добавьте свой код здесь
   }, []);
 
   const onClose = () => {
-    // Add your code here
+    // Добавьте свой код здесь
   }
 
   const handleButtonClick = (genre) => {
@@ -29,13 +29,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="center-header">
-        <h1 className="header-text">Выберите жанр</h1>
-      </header>
-      <div className="genres" style={{ marginTop: "90px" }}>
+      <div className="genres" style={{ marginTop: "50px" }}>
         <div className="genre">
           <button className="invisible-button" onClick={() => handleButtonClick("Топ 100")}>
-            <img className="genre-image" src="top100.jpg" alt="Топ 100"/>
+            <img className="genre-image" src="топ100.jpg" alt="Топ 100"/>
             <h2>Топ 100</h2>
           </button>
         </div>
@@ -52,6 +49,9 @@ function App() {
           </button>
         </div>
       </div>
+      <header className="center-header" style={{ marginTop: "20px" }}>
+        <h1 className="header-text">Выберите жанр</h1>
+      </header>
     </div>
   );
 }
