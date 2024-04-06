@@ -32,7 +32,7 @@ function App() {
       <header className="center-header">
         <h1 className="header-text">Выберите жанр</h1>
       </header>
-      <div className="genres">
+      <div className="genres" style={{ marginTop: "90px" }}>
         <div className="genre">
           <button className="invisible-button" onClick={() => handleButtonClick("Топ 100")}>
             <img className="genre-image" src="top100.jpg" alt="Топ 100"/>
