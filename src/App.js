@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <div className="center-button">
-        <button className="invisible-button" style={{ width: "400px", height: "30px" }}>Поиск</button>
+        <button className="invisible-button" style={{ width: "350px", height: "30px" }}>Поиск</button>
       </div>
       <header className="center-header" style={{ marginTop: "100px" }}>
         <h1 className="header-text">Выберите жанр</h1>
