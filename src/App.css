@@ -1,67 +1,82 @@
 /* Стили для сброса значений по умолчанию и корректного отображения */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Стили для body */
 body {
-    background-color: gray !important;
-    color: var(--tg-theme-text-color);
+  background-image: url("animation.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--tg-theme-text-color);
 }
 
 /* Стили для центрирования текста */
 .center-text {
-    text-align: center;
+  text-align: center;
 }
 
 /* Стили для блоков с жанрами музыки */
 .genres {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .genre {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .genre:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 /* Стили для заголовка */
 .center-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
 }
 
 .header-text {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 /* Стили для блоков с жанрами ниже */
 .bottom-genres {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .bottom-genre {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .bottom-genre:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
+
 .genre-image {
   width: 100px; /* Установите нужную ширину */
   height: auto; /* Автоматический расчет высоты для сохранения пропорций */
 }
+
 .genre-button {
   width: 100px; /* Установите нужную ширину */
   height: 30px; /* Установите нужную высоту */
   margin-right: 5px; /* Установите нужный отступ справа */
+}
+
+/* Анимация перехода */
+@keyframes gradientAnimation {
+  0% { background-color: black; }
+  50% { background-color: green; }
+  100% { background-color: black; }
+}
+
+body {
+  animation: gradientAnimation 5s infinite;
 }
