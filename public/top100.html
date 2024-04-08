@@ -13,27 +13,27 @@
       margin-bottom: 10px; /* Отступ между слотами */
       border: 1px solid white; /* Белые края */
       display: flex; /* Расположение элементов внутри слота */
-      justify-content: center; /* Выравнивание элементов по горизонтали */
+      justify-content: flex-start; /* Выравнивание элементов по горизонтали */
       align-items: flex-start; /* Выравнивание элементов по вертикали */
-      flex-direction: column; /* Расположение элементов в столбец */
+      flex-direction: row; /* Расположение элементов в строку */
     }
 
     .music-slot img {
       width: 50px; /* Ширина картинки */
       height: 30px; /* Высота картинки */
-      margin-right: 15px; /* Отступ справа от картинки */
+      margin-right: 10px; /* Отступ справа от картинки */
     }
 
     .music-slot .track {
       font-weight: bold; /* Жирный шрифт */
       margin-bottom: 5px; /* Отступ снизу для названия трека */
-      text-align: center; /* Выравнивание текста по центру */
+      text-align: left; /* Выравнивание текста по левому краю */
       font-size: 16px; /* Размер шрифта */
       width: 100%; /* Ширина текста */
     }
 
     .music-slot .artist {
-      margin-top: 10px; /* Отступ сверху для имени автора */
+      margin-top: 5px; /* Отступ сверху для имени автора */
       text-align: left; /* Выравнивание текста по левому краю */
       font-size: 12px; /* Размер шрифта */
       width: 100%; /* Ширина текста */
@@ -48,9 +48,12 @@
   <!-- Слоты для музыки -->
   <div class="music-slot">
     <img src="./maxresdefault.jpg" alt="Картинка">
-    <div class="track">Последняя любовь</div>
-    <div class="artist">MORGENSHTERN</div>
+    <div>
+      <div class="track">Последняя любовь</div>
+      <div class="artist">MORGENSHTERN</div>
+    </div>
   </div>
+  <div class="music-slot"></div>
   <div class="music-slot"></div>
   <div class="music-slot"></div>
   <div class="music-slot"></div>
