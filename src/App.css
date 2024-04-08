@@ -65,9 +65,10 @@ body {
 
 .genre-button {
   width: 100px; /* Установите нужную ширину */
-  height: 30px; /* Установите нужную высоту */
+  height: 100px; /* Установите нужную высоту */
   margin-right: 5px; /* Установите нужный отступ справа */
 }
+
 .burger-menu {
   background-color: gray !important;
   width: 30px !important;
@@ -80,16 +81,19 @@ body {
   width: 100% !important;
   height: 100% !important;
 }
+
 #btn {
   width: 30px; /* Измените значение, чтобы изменить ширину */
   height: 30px; /* Измените значение, чтобы изменить высоту */
 }
+
 .custom-button {
   position: absolute;
   top: 10px; /* Измените значение, чтобы задать желаемую высоту */
   left: 10%; /* Измените значение, чтобы задать желаемую горизонтальную позицию */
   transform: translateX(-30%);
 }
+
 .menu {
   background-color: white;
   z-index: 9999;
@@ -98,11 +102,20 @@ body {
   right: -35px;
 }
 
+.Search {
+  background-color: gray !important;
+  width: 30px !important;
+  height: 30px !important;
+  border: none !important;
+  padding: 0 !important;
+}
 
-
-
-
-
-
-
-
+.Search img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.Search {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
