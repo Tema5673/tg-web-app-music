@@ -62,7 +62,7 @@
     <div>
       <div class="track">Poslednyaya Lyubov</div>
       <div class="artist">MORGENSHTERN</div>
-      <img class="button" src="./Play-Button.png" alt="Картинка">
+      <img id class="button" src="./Play-Button.png" alt="Картинка">
     </div>
   </div>
   <div class="music-slot"></div>
@@ -79,6 +79,11 @@
   <audio id="audio" src=""></audio>
 
   <script>
+    var playButton = document.querySelector('#playButton');
+playButton.addEventListener('click', function() {
+  playButton.src = './Stop Button.png';
+});
+
     // Получаем ссылку на аудио-элемент
     var audio = document.getElementById('audio');
     audio.src = './morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3';
