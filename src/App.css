@@ -70,8 +70,8 @@ body {
 }
 .burger-menu {
   background-color: gray !important;
-  width: 20px !important;
-  height: 20px !important;
+  width: 30px !important;
+  height: 30px !important;
   border: none !important;
   padding: 0 !important;
 }
@@ -82,13 +82,13 @@ body {
 }
 #btn {
   width: 30px; /* Измените значение, чтобы изменить ширину */
-  height: 20px; /* Измените значение, чтобы изменить высоту */
+  height: 30px; /* Измените значение, чтобы изменить высоту */
 }
 .custom-button {
   position: absolute;
   top: 10px; /* Измените значение, чтобы задать желаемую высоту */
   left: 10%; /* Измените значение, чтобы задать желаемую горизонтальную позицию */
-  transform: translateX(-50%);
+  transform: translateX(-30%);
 }
 
 
