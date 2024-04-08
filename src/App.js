@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [buttonPosition, setButtonPosition] = useState({ top: 50, left: 50 });
+  const [buttonPosition, setButtonPosition] = useState({ top: 5, left: 10 });
   const [buttonSize, setButtonSize] = useState(100); // Начальный размер кнопки
 
   const handleButtonClick = (genre) => {
