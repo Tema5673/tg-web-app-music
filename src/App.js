@@ -22,11 +22,6 @@ function App() {
     }
   };
 
-  const handleButtonPositionChange = (e) => {
-    const { top, left } = e.target.getBoundingClientRect();
-    setButtonPosition({ top, left });
-  };
-
   const increaseButtonSize = () => {
     setButtonSize((prevSize) => prevSize + 10); // Увеличение размера кнопки на 10 пикселей
   };
@@ -41,7 +36,6 @@ function App() {
           <button
             className="genre-button"
             onClick={() => handleButtonClick("Топ 100")}
-            onMouseEnter={handleButtonPositionChange}
           >
             <img className="genre-image" src="top100.jpg" alt="Топ 100" />
           </button>
@@ -51,7 +45,6 @@ function App() {
           <button
             className="genre-button"
             onClick={() => handleButtonClick("Поп")}
-            onMouseEnter={handleButtonPositionChange}
           >
             <img className="genre-image" src="pop.jpg" alt="Поп" />
           </button>
@@ -61,7 +54,6 @@ function App() {
           <button
             className="genre-button"
             onClick={() => handleButtonClick("Рок")}
-            onMouseEnter={handleButtonPositionChange}
           >
             <img className="genre-image" src="rock.jpg" alt="Рок" />
           </button>
