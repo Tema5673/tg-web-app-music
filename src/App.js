@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
+  const [buttonPosition, setButtonPosition] = useState({ top: 50, left: 50 });
   const [buttonSize, setButtonSize] = useState(100); // Начальный размер кнопки
 
   const handleButtonClick = (genre) => {
@@ -43,7 +43,7 @@ function App() {
             onClick={() => handleButtonClick("Топ 100")}
             onMouseEnter={handleButtonPositionChange}
           >
-            <img className="genre-image" src="топ100.jpg" alt="Топ 100" />
+            <img className="genre-image" src="top100.jpg" alt="Топ 100" />
           </button>
           <h2 className="center-text">Топ 100</h2>
         </div>
@@ -73,15 +73,10 @@ function App() {
         style={{ top: buttonPosition.top, left: buttonPosition.left }}
       >
         <button
+          className="burger-menu"
           style={{ width: buttonSize, height: buttonSize }}
-          onClick={increaseButtonSize}
         >
-          <img
-            className="burger-menu grayed-out"
-            src="911498.png"
-            alt="Меню"
-            style={{ width: buttonSize, height: buttonSize }}
-          />
+          <img src="911498.png" alt="burger-menu" />
         </button>
       </div>
     </div>

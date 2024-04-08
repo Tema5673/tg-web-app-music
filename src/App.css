@@ -68,6 +68,29 @@ body {
   height: 30px; /* Установите нужную высоту */
   margin-right: 5px; /* Установите нужный отступ справа */
 }
+.burger-menu {
+  background-color: gray !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.burger-menu img {
+  width: 100% !important;
+  height: 100% !important;
+}
+#btn {
+  width: 30px; /* Измените значение, чтобы изменить ширину */
+  height: 20px; /* Измените значение, чтобы изменить высоту */
+}
+.custom-button {
+  position: absolute;
+  top: 10px; /* Измените значение, чтобы задать желаемую высоту */
+  left: 10%; /* Измените значение, чтобы задать желаемую горизонтальную позицию */
+  transform: translateX(-50%);
+}
+
 
 
 
