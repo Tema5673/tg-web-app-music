@@ -4,66 +4,32 @@
   <meta charset="UTF-8">
   <title>Top 100</title>
   <style>
+    /* Остальные стили */
+
+    .music-slot {
+      width: 250px;
+      height: 40px;
+      background-color: white;
+      margin-bottom: 10px; /* Отступ между слотами */
+      border: 1px solid white; /* Белые края */
+    }
+
     body {
-      background-color: gray; /* Серый цвет фона */
-    }
-
-    h1 {
-      font-size: 24px; /* Размер шрифта текста "Топ 100" */
-    }
-
-    .left-content {
-      display: flex; /* Расположение элементов внутри контейнера */
-      align-items: center; /* Выравнивание элементов по вертикали */
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      font-size: 16px; /* Размер шрифта текста кнопки */
-      background-color: gray; /* Серый цвет кнопки */
-      border: none; /* Удаление границы кнопки */
-      padding: 0; /* Удаление отступов внутри кнопки */
-    }
-
-    button img {
-      width: 40px; /* Ширина изображения кнопки */
-      height: 40px; /* Высота изображения кнопки */
-      margin-right: 8px; /* Отступ справа от изображения */
-    }
-
-    .additional-text {
-      color: white; /* Белый цвет текста */
-      font-size: 12px; /* Меньший размер шрифта */
-      margin-top: 1px; /* Отступ сверху */
-      margin-left: 46px; /* Отступ слева */
+      background-color: gray; /* Серый цвет фона страницы */
     }
   </style>
-  <script>
-    function toggleButton() {
-      var button = document.getElementById("playButton");
-      var buttonImage = button.querySelector("img");
-      if (buttonImage.src.includes("play-button.png")) {
-        buttonImage.src = "Stop Button.png";
-        buttonImage.alt = "Stop Button";
-      } else {
-        buttonImage.src = "play-button.png";
-        buttonImage.alt = "Play Button";
-      }
-    }
-  </script>
 </head>
-<body>
-  <h1>Топ 100</h1>
-  <div class="left-content">
-    <button id="playButton" onclick="toggleButton()">
-  <img src="Stop Button.png" alt="Stop Button" width="65" height="65">
-</button>
 
-  </div>
-  <div class="additional-text">
-    Anna Asti
-  </div>
-  <!-- Добавьте другое содержимое здесь -->
+  <!-- Слоты для музыки -->
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
+  <div class="music-slot"></div>
 </body>
 </html>
