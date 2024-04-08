@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [buttonPosition, setButtonPosition] = useState({ top: 5, left: 10 });
   const [buttonSize, setButtonSize] = useState(100); // Начальный размер кнопки
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние открытия меню
 
   const handleButtonClick = (genre) => {
     console.log(`Кнопка нажата для жанра: ${genre}`);
@@ -24,6 +25,10 @@ function App() {
 
   const increaseButtonSize = () => {
     setButtonSize((prevSize) => prevSize + 10); // Увеличение размера кнопки на 10 пикселей
+  };
+
+  const handleMenuOpen = () => {
+    setIsMenuOpen(!isMenuOpen); // Изменение состояния открытия меню при каждом нажатии
   };
 
   return (
@@ -64,12 +69,22 @@ function App() {
         className="custom-button"
         style={{ top: buttonPosition.top, left: buttonPosition.left }}
       >
-        <button
-          className="burger-menu"
-          style={{ width: buttonSize, height: buttonSize }}
-        >
-          <img src="911498.png" alt="burger-menu" />
-        </button>
+        {isMenuOpen && (
+          <iframe
+            className="menu"
+            src="menu.html"
+            style={{ width: "50%", height: "100vh" }}
+          ></iframe>
+        )}
+        {!isMenuOpen && (
+          <button
+            className="burger-menu"
+            style={{ width: buttonSize, height: buttonSize }}
+            onClick={handleMenuOpen}
+          >
+            <img src="911498.png" alt="burger-menu" />
+          </button>
+        )}
       </div>
     </div>
   );
