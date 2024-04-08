@@ -11,6 +11,7 @@
       background-color: #fff;
       border: 1px solid #ccc;
       padding: 10px;
+      display: none; /* Изначально скрываем меню */
     }
 
     .search-results ul {
@@ -34,11 +35,9 @@
     <img src="noun_41373.png" alt="Search" />
   </button>
 
-  <div class="search-results" style="display: none;">
+  <div class="search-results">
     <ul>
-      <li>Результат 1</li>
-      <li>Результат 2</li>
-      <li>Результат 3</li>
+
     </ul>
   </div>
 
@@ -56,13 +55,15 @@
       // ...
 
       // Временный код для отображения результатов поиска
-      searchResults.innerHTML = `
-        <ul>
-          <li>Результат 1</li>
-          <li>Результат 2</li>
-          <li>Результат 3</li>
-        </ul>
-      `;
+      const results = ['Результат 1', 'Результат 2', 'Результат 3'];
+      if (results.length > 0) {
+        // Если есть результаты, отобразите их в меню
+        const resultsList = results.map(result => `<li>${result}</li>`).join('');
+        searchResults.innerHTML = `<ul>${resultsList}</ul>`;
+      } else {
+        // Если результатов нет, покажите сообщение
+        searchResults.innerHTML = 'Такого трека или артиста нету';
+      }
 
       // Покажите меню с результатами поиска
       searchResults.style.display = 'block';
