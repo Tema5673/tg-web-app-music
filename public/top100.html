@@ -25,6 +25,10 @@
       right: 0; /* Располагаем кнопку в самом правом углу */
     }
 
+    .music-slot:hover .button {
+      visibility: visible; /* Показываем кнопку при наведении на слот */
+    }
+
     .music-slot img {
       width: 45px; /* Ширина картинки */
       height: 40px; /* Высота картинки */
@@ -56,9 +60,9 @@
   <div class="music-slot">
     <img src="./maxresdefault.jpg" alt="Картинка">
     <div>
-      <div class="track">Последняя любовь</div>
+      <div class="track">Poslednyaya Lyubov</div>
       <div class="artist">MORGENSHTERN</div>
-      <img src="./Play-Button.png" alt="Картинка" class="button">
+      <img class="button" src="./Play-Button.png" alt="Картинка">
     </div>
   </div>
   <div class="music-slot"></div>
@@ -71,5 +75,27 @@
   <div class="music-slot"></div>
   <div class="music-slot"></div>
   <div class="music-slot"></div>
+
+  <audio id="audio" src=""></audio>
+
+  <script>
+    // Получаем ссылку на аудио-элемент
+    var audio = document.getElementById('audio');
+
+    // Получаем ссылку на кнопку Play-Button
+    var playButton = document.querySelector('.music-slot .button');
+
+    // Добавляем обработчик события на клик по кнопке
+    playButton.addEventListener('click', function() {
+      // Проверяем, играет ли трек
+      if (audio.paused) {
+        // Если трек не играет, включаем его
+        audio.play();
+      } else {
+        // Если трек играет, останавливаем его
+        audio.pause();
+      }
+    });
+  </script>
 </body>
 </html>
