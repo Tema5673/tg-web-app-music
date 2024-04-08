@@ -7,11 +7,19 @@
     /* Остальные стили */
 
     .music-slot {
-      width: 350px;
+      width: 360px;
       height: 45px;
       background-color: white;
       margin-bottom: 10px; /* Отступ между слотами */
       border: 1px solid white; /* Белые края */
+      display: flex; /* Расположение элементов внутри слота */
+      align-items: center; /* Выравнивание элементов по вертикали */
+    }
+
+    .music-slot img {
+      width: 50px; /* Ширина картинки */
+      height: 30px; /* Высота картинки */
+      margin-right: 10px; /* Отступ справа от картинки */
     }
 
     body {
@@ -19,9 +27,12 @@
     }
   </style>
 </head>
-
+<body>
   <!-- Слоты для музыки -->
-  <div class="music-slot"></div>
+  <div class="music-slot">
+    <img src="images/maxresdefault.jpg" alt="Картинка">
+
+  </div>
   <div class="music-slot"></div>
   <div class="music-slot"></div>
   <div class="music-slot"></div>
