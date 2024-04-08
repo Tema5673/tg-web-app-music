@@ -93,8 +93,12 @@ body {
 .menu {
   background-color: white;
   z-index: 9999;
-  /* Дополнительные стили для меню */
+  position: relative;
+  top: -7px;
+  right: -30px;
 }
+
+
 
 
 
