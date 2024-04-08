@@ -8,7 +8,7 @@
 
     .music-slot {
       position: relative; /* Добавляем позиционирование для слота */
-      width: 360px;
+      width: 370px;
       height: 40px;
       background-color: white;
       margin-bottom: 10px; /* Отступ между слотами */
@@ -86,17 +86,17 @@
     // Получаем ссылку на кнопку Play-Button
     var playButton = document.querySelector('.music-slot .button');
 
-
-
     // Добавляем обработчик события на клик по кнопке
     playButton.addEventListener('click', function() {
       // Проверяем, играет ли трек
       if (audio.paused) {
         // Если трек не играет, включаем его
         audio.play();
+        playButton.src = "./Stop-Button.webp"; // Заменяем картинку на другую
       } else {
         // Если трек играет, останавливаем его
         audio.pause();
+        playButton.src = "./Play-Button.png"; // Заменяем картинку на исходную
       }
     });
   </script>

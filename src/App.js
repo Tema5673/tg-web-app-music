@@ -42,7 +42,7 @@ function App() {
     <div className="App">
       {isSearchActive && (
         <div className="search-bar">
-          <input type="text" placeholder="Введите запрос" />
+          <input type="text" placeholder="Название трека, артиста" />
           <button className="search-button">Поиск</button>
         </div>
       )}
