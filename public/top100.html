@@ -7,6 +7,7 @@
     /* Остальные стили */
 
     .music-slot {
+      position: relative; /* Добавляем позиционирование для слота */
       width: 360px;
       height: 40px;
       background-color: white;
@@ -16,6 +17,12 @@
       justify-content: flex-start; /* Выравнивание элементов по горизонтали */
       align-items: flex-start; /* Выравнивание элементов по вертикали */
       flex-direction: row; /* Расположение элементов в строку */
+    }
+
+    .music-slot .button {
+      position: absolute; /* Позиционируем кнопку абсолютно */
+      top: 0; /* Располагаем кнопку в самом верхнем углу */
+      right: 0; /* Располагаем кнопку в самом правом углу */
     }
 
     .music-slot img {
@@ -51,6 +58,7 @@
     <div>
       <div class="track">Последняя любовь</div>
       <div class="artist">MORGENSHTERN</div>
+      <img src="./Play-Button.png" alt="Картинка" class="button">
     </div>
   </div>
   <div class="music-slot"></div>
