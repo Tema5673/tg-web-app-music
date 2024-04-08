@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [buttonPosition, setButtonPosition] = useState({ top: 5, left: 10 });
-  const [buttonSize, setButtonSize] = useState(100); // Начальный размер кнопки
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние открытия меню
 
   const handleButtonClick = (genre) => {
@@ -21,10 +19,6 @@ function App() {
       default:
         break;
     }
-  };
-
-  const increaseButtonSize = () => {
-    setButtonSize((prevSize) => prevSize + 10); // Увеличение размера кнопки на 10 пикселей
   };
 
   const handleMenuOpen = () => {
@@ -65,23 +59,17 @@ function App() {
           <h2 className="center-text">Рок</h2>
         </div>
       </div>
-      <div
-        className="custom-button"
-        style={{ top: buttonPosition.top, left: buttonPosition.left }}
-      >
+      <div className="search-container">
         {isMenuOpen && (
-          <iframe
-            className="menu"
-            src="menu.html"
-            style={{ width: "50%", height: "100vh" }}
-          ></iframe>
+          <div className="menu">
+            <input type="text" placeholder="Введите запрос" />
+            <button>Поиск</button>
+          </div>
         )}
+      </div>
+      <div className="custom-button" style={{ top: "50px", left: "50%" }}>
         {!isMenuOpen && (
-          <button
-            className="burger-menu"
-            style={{ width: buttonSize, height: buttonSize }}
-            onClick={handleMenuOpen}
-          >
+          <button className="burger-menu" onClick={handleMenuOpen}>
             <img src="911498.png" alt="burger-menu" />
           </button>
         )}
