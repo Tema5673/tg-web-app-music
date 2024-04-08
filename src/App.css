@@ -121,7 +121,7 @@ body {
 }
 .search-bar {
   position: fixed;
-  top: 2%;
+  top: 4%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -134,5 +134,12 @@ body {
 .search-bar button {
   width: 40px; /* измените значение, чтобы сделать кнопку шире */
   height: 20px; /* измените значение, чтобы сделать кнопку выше */
+}
+.center-header {
+  margin-top: 50px; /* измените значение, чтобы сделать заголовок ниже */
+}
+
+.genres {
+  margin-top: 20px; /* измените значение, чтобы сделать блок жанров ниже */
 }
 
