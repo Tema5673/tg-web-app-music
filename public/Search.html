@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Результаты поиска</title>
+  <style>
+    /* Стили для меню с результатами поиска */
+    .search-results {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .search-results ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .search-results li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-bar">
+    <input type="text" placeholder="Название трека, артиста" />
+    <button class="search-button">Поиск</button>
+  </div>
+
+  <button class="Search" style="width: 100px; height: 100px;">
+    <img src="noun_41373.png" alt="Search" />
+  </button>
+
+  <div class="search-results" style="display: none;">
+    <ul>
+      <li>Результат 1</li>
+      <li>Результат 2</li>
+      <li>Результат 3</li>
+    </ul>
+  </div>
+
+  <script>
+    // Добавьте необходимую логику для обработки поиска и отображения результатов
+    const searchButton = document.querySelector('.search-button');
+    const searchResults = document.querySelector('.search-results');
+
+    searchButton.addEventListener('click', () => {
+      // Получите значение из поля ввода
+      const searchQuery = document.querySelector('input').value;
+
+      // Выполните проверку наличия трека или артиста в коде top100.html
+      // и отобразите результаты в меню с результатами поиска
+      // ...
+
+      // Временный код для отображения результатов поиска
+      searchResults.innerHTML = `
+        <ul>
+          <li>Результат 1</li>
+          <li>Результат 2</li>
+          <li>Результат 3</li>
+        </ul>
+      `;
+
+      // Покажите меню с результатами поиска
+      searchResults.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

@@ -8,20 +8,18 @@ function App() {
   const [newButtonPosition, setNewButtonPosition] = useState({ top: 0, right: 0 });
 
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResult, setSearchResult] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearchClick = () => {
     setIsSearchActive(!isSearchActive);
   };
 
-  const handleSearch = () => {
-    // Проверка наличия трека или артиста в коде top100.html
-    // Здесь должна быть логика для поиска в файле top100.html
-    // Если трек или артист найден, установить результат поиска в setSearchResult
-    // Если трек или артист не найден, установить сообщение об ошибке в setSearchResult
-
-    setSearchResult("Результат поиска"); // Заглушка для демонстрации результата поиска
+  const handleSearch = (query) => {
+    // Здесь должна быть логика поиска трека или артиста
+    // Например, можно использовать AJAX-запрос к серверу или обработать данные локально
+    // После получения результатов поиска, сохраните их в состояние setSearchResults
+    // setSearchResults(results);
+    setSearchResults(["Результат 1", "Результат 2", "Результат 3"]);
   };
 
   const handleButtonClick = (genre) => {
@@ -53,21 +51,20 @@ function App() {
     <div className="App">
       {isSearchActive && (
         <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Название трека, артиста"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="search-button" onClick={handleSearch}>
+          <input type="text" placeholder="Название трека, артиста" />
+          <button className="search-button" onClick={() => handleSearch("запрос")}>
             Поиск
           </button>
-        </div>
-      )}
-
-      {searchResult && (
-        <div className="search-result">
-          <h3>{searchResult}</h3>
+          {searchResults.length > 0 && (
+            <div className="search-results">
+              <h3>Результаты поиска:</h3>
+              <ul>
+                {searchResults.map((result, index) => (
+                  <li key={index}>{result}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 
@@ -104,7 +101,7 @@ function App() {
       </div>
       <div className="custom-button" style={{ top: buttonPosition.top, left: buttonPosition.left }}>
         {isMenuOpen && (
-          <iframe className="menu" src="menu.html" style={{ width: "50%", height: "100vh" }}></iframe>
+          <iframe className="menu" src="Search.html" style={{ width: "50%", height: "100vh" }}></iframe>
         )}
         {!isMenuOpen && (
           <button className="burger-menu" style={{ width: buttonSize, height: buttonSize }} onClick={handleMenuOpen}>
