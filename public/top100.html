@@ -79,17 +79,14 @@
   <audio id="audio" src=""></audio>
 
   <script>
-    var playButton = document.querySelector('#playButton');
-playButton.addEventListener('click', function() {
-  playButton.src = './Stop Button.png';
-});
-
     // Получаем ссылку на аудио-элемент
     var audio = document.getElementById('audio');
     audio.src = './morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3';
 
     // Получаем ссылку на кнопку Play-Button
     var playButton = document.querySelector('.music-slot .button');
+
+
 
     // Добавляем обработчик события на клик по кнопке
     playButton.addEventListener('click', function() {
