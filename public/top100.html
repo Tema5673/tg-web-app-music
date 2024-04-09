@@ -35,6 +35,16 @@
       margin-right: 10px; /* Отступ справа от картинки */
     }
 
+    .menu-wrapper {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  /* Дополнительные стили для вашего меню */
+}
+
+
+
     .music-slot .track {
       font-weight: bold; /* Жирный шрифт */
       margin-bottom: 5px; /* Отступ снизу для названия трека */
@@ -52,53 +62,74 @@
 
     body {
       background-color: gray; /* Серый цвет фона страницы */
+      display: flex; /* Расположение элементов внутри body */
+      flex-direction: column; /* Расположение элементов в столбец */
+      align-items: center; /* Выравнивание элементов по центру по горизонтали */
     }
   </style>
 </head>
-<body>
-  <!-- Слоты для музыки -->
-  <div class="music-slot">
-    <img src="./maxresdefault.jpg" alt="Картинка">
-    <div>
-      <div class="track">Последняя любовь</div>
-      <div class="artist">MORGENSHTERN</div>
-      <img id class="button" src="./Play-Button.png" alt="Картинка">
-    </div>
-  </div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-  <div class="music-slot"></div>
-
   <audio id="audio" src=""></audio>
 
-  <script>
-    // Получаем ссылку на аудио-элемент
-    var audio = document.getElementById('audio');
-    audio.src = './morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3';
+  </style>
+</head>
+<body>
+<div class="music-slot">
+  <img src="./maxresdefault.jpg" alt="Картинка">
+  <div>
+    <div class="track">Последняя любовь</div>
+    <div class="artist">MORGENSHTERN</div>
+    <img id="playButton" class="button" src="./Play-Button.png" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
+<div class="music-slot"></div>
 
-    // Получаем ссылку на кнопку Play-Button
-    var playButton = document.querySelector('.music-slot .button');
+<div class="menu-wrapper">
+  <!-- Ваше меню здесь -->
+</div>
 
-    // Добавляем обработчик события на клик по кнопке
-    playButton.addEventListener('click', function() {
-      // Проверяем, играет ли трек
-      if (audio.paused) {
-        // Если трек не играет, включаем его
-        audio.play();
-        playButton.src = "./Stop-Button.webp"; // Заменяем картинку на другую
-      } else {
-        // Если трек играет, останавливаем его
-        audio.pause();
-        playButton.src = "./Play-Button.png"; // Заменяем картинку на исходную
+<script>
+  var audio = document.getElementById('audio');
+  audio.src = './morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3';
+
+  var playButton = document.getElementById('playButton');
+
+  playButton.addEventListener('click', function() {
+    if (audio.paused) {
+      audio.play();
+      playButton.src = "./Stop-Button.webp";
+      document.title = "Воспроизведение - Top 100";
+
+      var menu = document.createElement('iframe');
+      menu.src = 'vkladka.html';
+      document.body.appendChild(menu);
+    } else {
+      audio.pause();
+      playButton.src = "./Play-Button.png";
+      document.title = "Top 100";
+
+      var menu = document.querySelector('iframe');
+      if (menu) {
+        menu.remove();
       }
-    });
-  </script>
+    }
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible' && !audio.paused) {
+      document.title = "Воспроизведение - Top 100";
+    } else {
+      document.title = "Top 100";
+    }
+  });
+</script>
 </body>
 </html>
