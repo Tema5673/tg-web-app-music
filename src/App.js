@@ -5,8 +5,6 @@ function App() {
   const [buttonPosition, setButtonPosition] = useState({ top: 5, left: 10 });
   const [buttonSize, setButtonSize] = useState(100); // Начальный размер кнопки
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние открытия меню
-  const [newButtonPosition, setNewButtonPosition] = useState({ top: 0, right: 0 });
-
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
@@ -42,7 +40,6 @@ function App() {
   const handleMenuOpen = () => {
     setIsMenuOpen(!isMenuOpen); // Изменение состояния открытия меню при каждом нажатии
   };
-
 
   return (
     <div className="App">
@@ -97,9 +94,6 @@ function App() {
         </div>
       </div>
       <div className="custom-button" style={{ top: buttonPosition.top, left: buttonPosition.left }}>
-        {isMenuOpen && (
-          <iframe className="menu" src="vkladka.html" style={{ width: "50%", height: "100vh", backgroundColor: "white", opacity: 1 }}></iframe>
-        )}
         {!isMenuOpen && (
           <button className="burger-menu" style={{ width: buttonSize, height: buttonSize }} onClick={handleMenuOpen}>
             <img src="911498.png" alt="burger-menu" />
