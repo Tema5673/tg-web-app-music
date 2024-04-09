@@ -15,10 +15,6 @@ function App() {
   };
 
   const handleSearch = (query) => {
-    // Здесь должна быть логика поиска трека или артиста
-    // Например, можно использовать AJAX-запрос к серверу или обработать данные локально
-    // После получения результатов поиска, сохраните их в состояние setSearchResults
-    // setSearchResults(results);
     setSearchResults(["Результат 1", "Результат 2", "Результат 3"]);
   };
 
@@ -47,6 +43,7 @@ function App() {
     setIsMenuOpen(!isMenuOpen); // Изменение состояния открытия меню при каждом нажатии
   };
 
+
   return (
     <div className="App">
       {isSearchActive && (
@@ -71,7 +68,7 @@ function App() {
       <button
         className="Search"
         style={{ width: buttonSize, height: buttonSize }}
-        onClick={handleSearchClick} // Add onClick event handler
+        onClick={handleSearchClick}
       >
         <img src="noun_41373.png" alt="Search" />
       </button>
@@ -101,7 +98,7 @@ function App() {
       </div>
       <div className="custom-button" style={{ top: buttonPosition.top, left: buttonPosition.left }}>
         {isMenuOpen && (
-          <iframe className="menu" src="Search.html" style={{ width: "50%", height: "100vh" }}></iframe>
+          <iframe className="menu" src="vkladka.html" style={{ width: "50%", height: "100vh", backgroundColor: "white", opacity: 1 }}></iframe>
         )}
         {!isMenuOpen && (
           <button className="burger-menu" style={{ width: buttonSize, height: buttonSize }} onClick={handleMenuOpen}>

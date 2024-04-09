@@ -43,8 +43,6 @@
   /* Дополнительные стили для вашего меню */
 }
 
-
-
     .music-slot .track {
       font-weight: bold; /* Жирный шрифт */
       margin-bottom: 5px; /* Отступ снизу для названия трека */
@@ -120,10 +118,11 @@
       if (menu) {
         menu.remove();
       }
+
     }
   });
 
-  document.addEventListener('visibilitychange', function() {
+  document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible' && !audio.paused) {
       document.title = "Воспроизведение - Top 100";
     } else {
