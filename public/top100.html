@@ -10,7 +10,8 @@
       position: relative;
       width: 600px; /* изменено на 600px */
       height: 40px; /* изменено на 40px */
-      background-color: white;
+      background-image: url("path_to_background_image.jpg"); /* Добавлено свойство background-image */
+      background-size: cover; /* Добавлено свойство background-size */
       margin-bottom: 10px;
       border: 1px solid white;
       display: flex;
@@ -40,6 +41,14 @@
       width: 100%; /* Ширина текста */
     }
 
+    .music-slot button {
+      background-color: transparent; /* Сделать кнопку прозрачной */
+      border: none; /* Убрать границу у кнопки */
+      padding: 0; /* Убрать внутренние отступы у кнопки */
+      width: 100%; /* Растянуть кнопку на всю ширину слота */
+      height: 100%; /* Растянуть кнопку на всю высоту слота */
+    }
+
     body {
       background-color: gray; /* Серый цвет фона страницы */
       display: flex; /* Расположение элементов внутри body */
@@ -49,19 +58,21 @@
   </style>
 </head>
 <body>
-  <div class="music-slot" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">
+  <div class="music-slot">
     <img src="maxresdefault.jpg" alt="Картинка">
     <div>
       <div class="track">Последняя любовь</div>
       <div class="artist">MORGENSHTERN</div>
     </div>
+    <button onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">Включить/выключить</button>
   </div>
-  <div class="music-slot" onclick="toggleMusic('путь_к_аудио2.mp3')">
-    <img src="путь_к_изображению2" alt="Картинка">
+  <div class="music-slot">
+    <img src="pic.jpeg" alt="Картинка">
     <div>
-      <div class="track">Название трека2</div>
-      <div class="artist">Исполнитель2</div>
+      <div class="track">Прощание</div>
+      <div class="artist">Три дня дождя</div>
     </div>
+    <button onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">Включить/выключить</button>
   </div>
   <!-- Добавьте остальные слоты музыки по аналогии -->
 
@@ -69,16 +80,15 @@
 
   <script>
     var audio = document.getElementById('audio');
-    var isPlaying = false;
 
     function toggleMusic(song) {
-      if (isPlaying) {
+      if (audio.src.includes(song)) {
         audio.pause();
-        isPlaying = false;
+        audio.currentTime = 0;
       } else {
         audio.src = song;
+        audio.load();
         audio.play();
-        isPlaying = true;
       }
     }
   </script>
