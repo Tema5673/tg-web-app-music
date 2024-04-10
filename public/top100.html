@@ -1,125 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Top 100</title>
-  <style>
-    /* Остальные стили */
-
-    .music-slot {
-      position: relative;
-      width: 370px; /* изменено на 600px */
-      height: 40px; /* изменено на 40px */
-      background-size: cover; /* Добавлено свойство background-size */
-      margin-bottom: 10px;
-      border: 1px solid white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-direction: row;
-      cursor: pointer; /* Добавлено свойство cursor */
-    }
-
-    .music-slot img {
-      width: 45px; /* Ширина картинки */
-      height: 40px; /* Высота картинки */
-      margin-right: 10px; /* Отступ справа от картинки */
-    }
-
-    .music-slot .track {
-      font-weight: bold; /* Жирный шрифт */
-      margin-bottom: 5px; /* Отступ снизу для названия трека */
-      text-align: left; /* Выравнивание текста по левому краю */
-      font-size: 16px; /* Размер шрифта */
-      width: 100%; /* Ширина текста */
-    }
-
-    .music-slot .artist {
-      margin-top: 5px; /* Отступ сверху для имени автора */
-      text-align: left; /* Выравнивание текста по левому краю */
-      font-size: 12px; /* Размер шрифта */
-      width: 100%; /* Ширина текста */
-    }
-
-    #menu {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: slategray; /* Изменено на серый цвет */
-      color: #fff;
-      padding: 10px;
-      display: none; /* Изначально скрываем меню */
-      justify-content: center; /* Расположение кнопок в центре */
-      align-items: center; /* Выравнивание элементов по центру по вертикали */
-    }
-
-    #menu button {
-      margin: 0 5px; /* Отступ между кнопками */
-      display: flex;
-      align-items: center; /* Выравнивание элементов по центру по вертикали */
-      background-color: slategray; /* Изменено на серый цвет */
-      color: #fff;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-
-    body {
-      background-color: gray; /* Серый цвет фона страницы */
-      display: flex; /* Расположение элементов внутри body */
-      flex-direction: column; /* Расположение элементов в столбец */
-      align-items: center; /* Выравнивание элементов по центру по горизонтали */
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Top 100</title>
+<style>
+.music-slot {
+  position: relative;
+  width: 600px;
+  height: 40px;
+  background-size: cover;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  cursor: pointer;
+}
+.music-slot img {
+  width: 45px;
+  height: 40px;
+  margin-right: 10px;
+}
+.music-slot .track {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 16px;
+  width: 100%;
+}
+.music-slot .artist {
+  margin-top: 5px;
+  text-align: left;
+  font-size: 12px;
+  width: 100%;
+}
+#menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: slategray;
+  color: #fff;
+  padding: 10px;
+  display: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#menu button {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  background-color: slategray;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#menu button:first-child {
+  margin: 0 auto;
+}
+#menu img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+body {
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
 </head>
 <body>
-  <div class="music-slot" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">
-    <img src="maxresdefault.jpg" alt="Картинка">
-    <div>
-      <div class="track">Последняя любовь</div>
-      <div class="artist">MORGENSHTERN</div>
-    </div>
+<div class="music-slot" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">
+  <img src="maxresdefault.jpg" alt="Картинка">
+  <div>
+    <div class="track">Последняя любовь</div>
+    <div class="artist">MORGENSHTERN</div>
   </div>
-  <div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">
-    <img src="pic.jpeg" alt="Картинка">
-    <div>
-      <div class="track">Прощание</div>
-      <div class="artist">Три дня дождя</div>
-    </div>
+</div>
+<div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">
+  <img src="pic.jpeg" alt="Картинка">
+  <div>
+    <div class="track">Прощание</div>
+    <div class="artist">Три дня дождя</div>
   </div>
-  <!-- Добавьте остальные слоты музыки по аналогии -->
-
-  <audio id="audio"></audio>
-
-  <div id="menu">
-    <button><img src="Play-Button.png" alt="Кнопка 1"></button>
-    <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
-  </div>
-
-  <script>
-    let isPlaying = false;
-
-    function toggleMusic(song) {
-      var audio = document.getElementById('audio');
-
-      if (audio.src.includes(song)) {
-        audio.pause();
-        audio.currentTime = 0;
-      } else {
-        audio.src = song;
-        audio.load();
-        audio.play();
-      }
-
-      isPlaying = !isPlaying;
-
-      if (isPlaying) {
-        document.getElementById('menu').style.display = 'flex';
-      } else {
-        document.getElementById('menu').style.display = 'none';
-      }
-    }
-  </script>
-
+</div>
+<!-- Добавьте остальные слоты музыки по аналогии -->
+<audio id="audio"></audio>
+<div id="menu">
+  <button><img src="Play-Button.png" alt="Кнопка 1"></button>
+  <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
+</div>
+<script>
+let isPlaying = false;
+function toggleMusic(song) {
+  var audio = document.getElementById('audio');
+  if (audio.src.includes(song)) {
+    audio.pause();
+    audio.currentTime = 0;
+  } else {
+    audio.src = song;
+    audio.load();
+    audio.play();
+  }
+  isPlaying = !isPlaying;
+  if (isPlaying) {
+    document.getElementById('menu').style.display = 'flex';
+  } else {
+    document.getElementById('menu').style.display = 'none';
+  }
+}
+</script>
 </body>
 </html>
