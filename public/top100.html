@@ -10,7 +10,6 @@
       position: relative;
       width: 370px; /* изменено на 600px */
       height: 40px; /* изменено на 40px */
-      background-image: url("path_to_background_image.jpg"); /* Добавлено свойство background-image */
       background-size: cover; /* Добавлено свойство background-size */
       margin-bottom: 10px;
       border: 1px solid white;
@@ -46,17 +45,23 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: #333;
+      background: slategray; /* Изменено на серый цвет */
       color: #fff;
       padding: 10px;
       display: none; /* Изначально скрываем меню */
-      display: flex;
-      justify-content: space-between; /* Расположение кнопок в меню */
+      justify-content: center; /* Расположение кнопок в центре */
       align-items: center; /* Выравнивание элементов по центру по вертикали */
     }
 
     #menu button {
       margin: 0 5px; /* Отступ между кнопками */
+      display: flex;
+      align-items: center; /* Выравнивание элементов по центру по вертикали */
+      background-color: slategray; /* Изменено на серый цвет */
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
     }
 
     body {
@@ -87,8 +92,8 @@
   <audio id="audio"></audio>
 
   <div id="menu">
-    <button>Кнопка 1</button>
-    <button>Кнопка 2</button>
+    <button><img src="Play-Button.png" alt="Кнопка 1"></button>
+    <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
   </div>
 
   <script>
@@ -115,5 +120,6 @@
       }
     }
   </script>
+
 </body>
 </html>
