@@ -66,7 +66,6 @@
       <div class="track">Последняя любовь</div>
       <div class="artist">MORGENSHTERN</div>
     </div>
-    <button class="invisible">Включить/выключить</button>
   </div>
   <div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">
     <img src="pic.jpeg" alt="Картинка">
@@ -74,7 +73,6 @@
       <div class="track">Прощание</div>
       <div class="artist">Три дня дождя</div>
     </div>
-    <button class="invisible">Включить/выключить</button>
   </div>
   <!-- Добавьте остальные слоты музыки по аналогии -->
 
@@ -82,17 +80,18 @@
 
   <script>
     function toggleMusic(song) {
-      var audio = document.getElementById('audio');
+  var audio = document.getElementById('audio');
 
-      if (audio.src.includes(song)) {
-        audio.pause();
-        audio.currentTime = 0;
-      } else {
-        audio.src = song;
-        audio.load();
-        audio.play();
-      }
-    }
+  if (audio.src.includes(song)) {
+    audio.pause();
+    audio.currentTime = 0;
+  } else {
+    audio.src = song;
+    audio.load();
+    audio.play();
+  }
+}
+
   </script>
 </body>
 </html>
