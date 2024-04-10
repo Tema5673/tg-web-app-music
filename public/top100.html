@@ -63,7 +63,7 @@
   </style>
 </head>
 <body>
-<div class="music-slot">
+<div class="music-slot" style="background-image: url('./Fon.jpg');">
   <img src="./maxresdefault.jpg" alt="Картинка">
   <div>
     <div class="track">Последняя любовь</div>
@@ -71,16 +71,78 @@
     <img id="playButton" class="button" src="./Play-Button.png" alt="Картинка">
   </div>
 </div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
-<div class="music-slot"></div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
+<div class="music-slot">
+  <img src="путь_к_изображению" alt="Картинка">
+  <div>
+    <div class="track">Название трека</div>
+    <div class="artist">Исполнитель</div>
+    <img class="button" src="путь_к_изображению" alt="Картинка">
+  </div>
+</div>
 
 
 <script>
@@ -95,9 +157,7 @@
       playButton.src = "./Stop-Button.webp";
       document.title = "Воспроизведение - Top 100";
 
-      var menu = document.createElement('iframe');
-      menu.src = 'vkladka.html';
-      document.body.appendChild(menu);
+
     } else {
       audio.pause();
       playButton.src = "./Play-Button.png";
