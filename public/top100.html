@@ -8,7 +8,7 @@
 
     .music-slot {
       position: relative;
-      width: 370px; /* изменено на 600px */
+      width: 600px; /* изменено на 600px */
       height: 40px; /* изменено на 40px */
       background-image: url("path_to_background_image.jpg"); /* Добавлено свойство background-image */
       background-size: cover; /* Добавлено свойство background-size */
@@ -42,13 +42,14 @@
       width: 100%; /* Ширина текста */
     }
 
-    .music-slot button {
-      background-color: lightblue; /* Цвет кнопки */
-      border: none; /* Убрать границу кнопки */
-      padding: 5px 10px; /* Отступы внутри кнопки */
-      font-size: 14px; /* Размер шрифта кнопки */
-      color: white; /* Цвет текста кнопки */
-      cursor: pointer; /* Изменить курсор при наведении на кнопку */
+    #menu {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      display: none; /* Изначально скрываем меню */
     }
 
     body {
@@ -78,20 +79,34 @@
 
   <audio id="audio"></audio>
 
+  <div id="menu">
+    <button>Плейлист</button>
+    <button>Настройки</button>
+  </div>
+
   <script>
+    let isPlaying = false;
+
     function toggleMusic(song) {
-  var audio = document.getElementById('audio');
+      var audio = document.getElementById('audio');
 
-  if (audio.src.includes(song)) {
-    audio.pause();
-    audio.currentTime = 0;
-  } else {
-    audio.src = song;
-    audio.load();
-    audio.play();
-  }
-}
+      if (audio.src.includes(song)) {
+        audio.pause();
+        audio.currentTime = 0;
+      } else {
+        audio.src = song;
+        audio.load();
+        audio.play();
+      }
 
+      isPlaying = !isPlaying;
+
+      if (isPlaying) {
+        document.getElementById('menu').style.display = 'block';
+      } else {
+        document.getElementById('menu').style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>
