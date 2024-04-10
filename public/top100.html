@@ -7,26 +7,16 @@
     /* Остальные стили */
 
     .music-slot {
-  position: relative;
-  width: 370px; /* измените на 600px */
-  height: 40px; /* измените на 40px */
-  background-color: white;
-  margin-bottom: 10px;
-  border: 1px solid white;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
-}
-
-    .music-slot .button {
-      position: absolute; /* Позиционируем кнопку абсолютно */
-      top: 0; /* Располагаем кнопку в самом верхнем углу */
-      right: 0; /* Располагаем кнопку в самом правом углу */
-    }
-
-    .music-slot:hover .button {
-      visibility: visible; /* Показываем кнопку при наведении на слот */
+      position: relative;
+      width: 600px; /* изменено на 600px */
+      height: 40px; /* изменено на 40px */
+      background-color: white;
+      margin-bottom: 10px;
+      border: 1px solid white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: row;
     }
 
     .music-slot img {
@@ -58,126 +48,39 @@
     }
   </style>
 </head>
-  <audio id="audio" src=""></audio>
-
-  </style>
-</head>
 <body>
-<div class="music-slot">
-  <img src="./maxresdefault.jpg" alt="Картинка">
-  <div>
-    <div class="track">Последняя любовь</div>
-    <div class="artist">MORGENSHTERN</div>
-    <img id="playButton" class="button" src="./Play-Button.png" alt="Картинка">
+  <div class="music-slot" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">
+    <img src="maxresdefault.jpg" alt="Картинка">
+    <div>
+      <div class="track">Последняя любовь</div>
+      <div class="artist">MORGENSHTERN</div>
+    </div>
   </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
+  <div class="music-slot" onclick="toggleMusic('путь_к_аудио2.mp3')">
+    <img src="путь_к_изображению2" alt="Картинка">
+    <div>
+      <div class="track">Название трека2</div>
+      <div class="artist">Исполнитель2</div>
+    </div>
   </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
-<div class="music-slot">
-  <img src="путь_к_изображению" alt="Картинка">
-  <div>
-    <div class="track">Название трека</div>
-    <div class="artist">Исполнитель</div>
-    <img class="button" src="путь_к_изображению" alt="Картинка">
-  </div>
-</div>
+  <!-- Добавьте остальные слоты музыки по аналогии -->
 
+  <audio id="audio"></audio>
 
-<script>
-  var audio = document.getElementById('audio');
-  audio.src = './morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3';
+  <script>
+    var audio = document.getElementById('audio');
+    var isPlaying = false;
 
-  var playButton = document.getElementById('playButton');
-
-  playButton.addEventListener('click', function() {
-    if (audio.paused) {
-      audio.play();
-      playButton.src = "./Stop-Button.webp";
-      document.title = "Воспроизведение - Top 100";
-
-
-    } else {
-      audio.pause();
-      playButton.src = "./Play-Button.png";
-      document.title = "Top 100";
-
-      var menu = document.querySelector('iframe');
-      if (menu) {
-        menu.remove();
+    function toggleMusic(song) {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.src = song;
+        audio.play();
+        isPlaying = true;
       }
-
     }
-  });
-
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'visible' && !audio.paused) {
-      document.title = "Воспроизведение - Top 100";
-    } else {
-      document.title = "Top 100";
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
