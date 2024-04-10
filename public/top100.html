@@ -8,7 +8,7 @@
 
     .music-slot {
       position: relative;
-      width: 600px; /* изменено на 600px */
+      width: 370px; /* изменено на 600px */
       height: 40px; /* изменено на 40px */
       background-image: url("path_to_background_image.jpg"); /* Добавлено свойство background-image */
       background-size: cover; /* Добавлено свойство background-size */
@@ -50,6 +50,13 @@
       color: #fff;
       padding: 10px;
       display: none; /* Изначально скрываем меню */
+      display: flex;
+      justify-content: space-between; /* Расположение кнопок в меню */
+      align-items: center; /* Выравнивание элементов по центру по вертикали */
+    }
+
+    #menu button {
+      margin: 0 5px; /* Отступ между кнопками */
     }
 
     body {
@@ -80,8 +87,8 @@
   <audio id="audio"></audio>
 
   <div id="menu">
-    <button>Плейлист</button>
-    <button>Настройки</button>
+    <button>Кнопка 1</button>
+    <button>Кнопка 2</button>
   </div>
 
   <script>
@@ -102,7 +109,7 @@
       isPlaying = !isPlaying;
 
       if (isPlaying) {
-        document.getElementById('menu').style.display = 'block';
+        document.getElementById('menu').style.display = 'flex';
       } else {
         document.getElementById('menu').style.display = 'none';
       }
