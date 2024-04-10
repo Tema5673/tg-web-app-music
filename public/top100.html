@@ -18,7 +18,16 @@
       justify-content: flex-start;
       align-items: flex-start;
       flex-direction: row;
-    }
+}
+
+    .invisible {
+  visibility: hidden;
+}
+
+    .music-slot button {
+  flex-grow: 1;
+}
+
 
     .music-slot img {
       width: 45px; /* Ширина картинки */
@@ -42,11 +51,12 @@
     }
 
     .music-slot button {
-      background-color: transparent; /* Сделать кнопку прозрачной */
-      border: none; /* Убрать границу у кнопки */
-      padding: 0; /* Убрать внутренние отступы у кнопки */
-      width: 100%; /* Растянуть кнопку на всю ширину слота */
-      height: 100%; /* Растянуть кнопку на всю высоту слота */
+      background-color: lightblue; /* Цвет кнопки */
+      border: none; /* Убрать границу кнопки */
+      padding: 5px 10px; /* Отступы внутри кнопки */
+      font-size: 14px; /* Размер шрифта кнопки */
+      color: white; /* Цвет текста кнопки */
+      cursor: pointer; /* Изменить курсор при наведении на кнопку */
     }
 
     body {
@@ -64,7 +74,7 @@
       <div class="track">Последняя любовь</div>
       <div class="artist">MORGENSHTERN</div>
     </div>
-    <button onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">Включить/выключить</button>
+    <button class="invisible" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')"></button>
   </div>
   <div class="music-slot">
     <img src="pic.jpeg" alt="Картинка">
@@ -72,7 +82,7 @@
       <div class="track">Прощание</div>
       <div class="artist">Три дня дождя</div>
     </div>
-    <button onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">Включить/выключить</button>
+    <button class="invisible" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')"></button>
   </div>
   <!-- Добавьте остальные слоты музыки по аналогии -->
 
