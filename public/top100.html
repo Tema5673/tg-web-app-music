@@ -10,6 +10,7 @@
       position: relative;
       width: 370px; /* изменено на 600px */
       height: 40px; /* изменено на 40px */
+      background-image: url("path_to_background_image.jpg"); /* Добавлено свойство background-image */
       background-size: cover; /* Добавлено свойство background-size */
       margin-bottom: 10px;
       border: 1px solid white;
@@ -17,16 +18,8 @@
       justify-content: flex-start;
       align-items: flex-start;
       flex-direction: row;
-}
-
-    .invisible {
-  visibility: hidden;
-}
-
-    .music-slot button {
-  flex-grow: 1;
-}
-
+      cursor: pointer; /* Добавлено свойство cursor */
+    }
 
     .music-slot img {
       width: 45px; /* Ширина картинки */
@@ -67,30 +60,30 @@
   </style>
 </head>
 <body>
-  <div class="music-slot">
+  <div class="music-slot" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')">
     <img src="maxresdefault.jpg" alt="Картинка">
     <div>
       <div class="track">Последняя любовь</div>
       <div class="artist">MORGENSHTERN</div>
     </div>
-    <button class="invisible" onclick="toggleMusic('morgenshtern_-_Poslednyaya_Lyubov_77665497.mp3')"></button>
+    <button class="invisible">Включить/выключить</button>
   </div>
-  <div class="music-slot">
+  <div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">
     <img src="pic.jpeg" alt="Картинка">
     <div>
       <div class="track">Прощание</div>
       <div class="artist">Три дня дождя</div>
     </div>
-    <button class="invisible" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')"></button>
+    <button class="invisible">Включить/выключить</button>
   </div>
   <!-- Добавьте остальные слоты музыки по аналогии -->
 
   <audio id="audio"></audio>
 
   <script>
-    var audio = document.getElementById('audio');
-
     function toggleMusic(song) {
+      var audio = document.getElementById('audio');
+
       if (audio.src.includes(song)) {
         audio.pause();
         audio.currentTime = 0;
