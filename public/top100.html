@@ -118,27 +118,32 @@ body {
 </div>
 
 <audio id="audio"></audio>
-<div id="menu">
+<div id="menu" style="display: none;">
   <button id="toggleButton"><img src="Play-Button.png" alt="Кнопка 1"></button>
   <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
 </div>
 <script>
 let isPlaying = false;
+
 function toggleMusic(song) {
   var audio = document.getElementById('audio');
   var toggleButton = document.getElementById('toggleButton');
+  var menu = document.getElementById('menu');
 
   if (audio.src.includes(song)) {
     audio.pause();
     audio.currentTime = 0;
     toggleButton.innerHTML = '<img src="Play-Button.png" alt="Кнопка 1">';
+    menu.style.display = 'none';
   } else {
     audio.src = song;
     audio.load();
     audio.play();
-    toggleButton.innerHTML = '<img src="Pause-Button.png" alt="Кнопка 1">';
+    toggleButton.innerHTML = '<img src="Stop-Button.webp" alt="Кнопка 1">';
+    menu.style.display = 'flex';
   }
   isPlaying = !isPlaying;
+
   if (isPlaying) {
     document.getElementById('menu').style.display = 'flex';
   } else {
