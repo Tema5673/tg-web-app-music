@@ -48,7 +48,8 @@
     padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Обновленное значение */
+    justify-content: center; /* Updated value */
+    flex-direction: column; /* Updated value */
 }
 
 #menu button {
@@ -61,32 +62,35 @@
     cursor: pointer;
 }
 
-
 #menu img {
     width: 30px;
     height: 30px;
     padding-right: 5px;
 }
-.slider-container {
-    width: 40%;
-    height: 10px;
-    background-color: #fff;
-    margin-top: -65px; /* Updated value */
-}
 
-.slider-handle {
-    width: 20px;
-    height: 20px;
-    background-color: #8e44ad;
-    border-radius: 50%;
-    cursor: pointer;
-}
 body {
     background-color: gray;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.slider-container {
+    width: 200px;
+    height: 10px;
+    background-color: #333;
+    margin-bottom: 10px;
+}
+
+.slider-handle {
+    width: 20px;
+    height: 20px;
+    background-color: #8E44AD;
+    border-radius: 50%;
+    margin-top: -5px;
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
+}
+
 </style>
 </head>
 <body>
@@ -135,10 +139,10 @@ body {
 <!-- Другие элементы music-slot здесь -->
 <!-- Добавлен слайдер в меню -->
 <div id="menu">
-  <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
   <div class="slider-container">
     <div class="slider-handle"></div>
   </div>
+  <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
   <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
