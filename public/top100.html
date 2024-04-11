@@ -181,6 +181,8 @@ function toggleMusic(song) {
         playButton.style.display = 'block';
         pauseButton.style.display = 'none';
         document.getElementById('menu').style.display = 'none';
+        clearInterval(animationInterval); // Очистить интервал анимации
+        sliderHandle.style.left = '0'; // Сбросить положение ползунка
     } else {
         audio.src = song;
         audio.load();
@@ -198,11 +200,12 @@ function toggleMusic(song) {
         let distancePerSecond = totalDistance / duration;
         let currentPosition = 0;
 
-        let animationInterval = setInterval(() => {
-            currentPosition += distancePerSecond;
+        clearInterval(animationInterval); // Очистить предыдущий интервал анимации
+        animationInterval = setInterval(() => {
+            currentPosition = (audio.currentTime / duration) * totalDistance; // Обновить позицию ползунка на основе времени воспроизведения
             sliderHandle.style.left = currentPosition + 'px';
 
-            if (currentPosition >= totalDistance) {
+            if (audio.ended) {
                 clearInterval(animationInterval);
                 sliderHandle.style.left = '0';
             }
