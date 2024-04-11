@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 #menu button:first-child {
-  margin: 0 auto;
+  margin: 0;
 }
 #menu img {
   width: 30px;
@@ -120,8 +120,8 @@ body {
 <audio id="audio"></audio>
 
 <div id="menu" style="display: none;">
-  <button id="playButton" onclick="togglePlayPause('play')">Play</button>
-  <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')">Pause</button>
+  <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
+  <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
 
 <script>
