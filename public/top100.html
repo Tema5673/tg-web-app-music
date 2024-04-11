@@ -41,12 +41,12 @@
 
 #menu {
     position: fixed;
-    bottom: 0;
+    bottom: 50px; /* Подняли меню выше */
     width: 100%;
     background: slategray;
     color: #fff;
     padding: 10px;
-    display: none; /* Скрыть меню изначально */
+    display: flex;
     align-items: center;
     justify-content: center; /* Updated value */
     flex-direction: column; /* Updated value */
@@ -60,6 +60,7 @@
     color: #fff;
     border: none;
     cursor: pointer;
+    margin-top: 5px; /* Added margin */
 }
 
 #menu img {
@@ -80,6 +81,8 @@ body {
     height: 10px;
     background-color: #333;
     margin-bottom: 10px;
+    position: relative; /* Добавили позиционирование */
+    margin-top: 10px; /* Added margin */
 }
 
 .slider-handle {
@@ -89,7 +92,11 @@ body {
     border-radius: 50%;
     margin-top: -5px;
     box-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
+    position: absolute; /* Добавили позиционирование */
+    top: 50%; /* Положение ползунка по вертикали */
+    transform: translateY(-50%); /* Центрирование вертикально */
 }
+
 </style>
 </head>
 <body>
@@ -128,64 +135,75 @@ body {
 <div class="artist">Люся Чеботина</div>
 </div>
 </div>
-<div id="menu">
-  <button id="playButton" onclick="togglePlayPause('play')"><img src="play-button.png" alt="Play"></button>
-  <button id="pauseButton" onclick="togglePlayPause('pause')"><img src="pause-button.png" alt="Pause"></button>
-  <div class="slider-container"></div>
+<div class="music-slot" onclick="toggleMusic('Filatov_Karas_-_Mimo_menya_75455572.формат MP3')">
+<img src="2cc4c14a3b42c27143292247e0a5f96412_resize_2000x2000_same_34ac1a.jpeg" alt="Картинка">
+<div>
+<div class="track">Мимо меня</div>
+<div class="artist">Филатов, Карась</div>
 </div>
-
-<audio id="audio" src=""></audio>
-
+</div>
+<!-- Другие элементы music-slot здесь -->
+<!-- Добавлен слайдер в меню -->
+<div id="menu">
+  <div class="slider-container">
+    <div class="slider-handle"></div>
+  </div>
+  <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
+  <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
+</div>
+<!-- Конец добавления слайдера и кнопок Play и Pause -->
+<audio id="audio"></audio>
 <script>
 $(function() {
-  let isPlaying = false;
-  let audio = document.getElementById('audio');
-  let playButton = document.getElementById('playButton');
-  let pauseButton = document.getElementById('pauseButton');
-  let slider = $(".slider-container");
-
-  function toggleMusic(song) {
-      if (audio.src.includes(song)) {
-          audio.pause();
-          audio.currentTime = 0;
-          playButton.style.display = 'block';
-          pauseButton.style.display = 'none';
-          document.getElementById('menu').style.display = 'none';
-          isPlaying = false;
-      } else {
-          audio.src = song;
-          audio.load();
-          audio.play();
-          playButton.style.display = 'none';
-          pauseButton.style.display = 'block';
-          document.getElementById('menu').style.display = 'flex';
-          isPlaying = true;
-
-          // Получите длительность трека и установите соответствующее значение для ползунка
-          audio.onloadedmetadata = function() {
-            let duration = audio.duration; // Получите длительность трека в секундах
-            slider.slider("option", "max", duration); // Установите максимальное значение ползунка равным длительности трека
-          };
-
-          // Обновите положение ползунка в соответствии с проигрываемым временем трека
-          audio.ontimeupdate = function() {
-            slider.slider("value", audio.currentTime); // Обновите значение ползунка в соответствии с текущим временем проигрывания трека
-          };
-      }
-  }
-
-  function togglePlayPause(action) {
-      if (action === 'play') {
-          audio.play();
-          playButton.style.display = 'none';
-          pauseButton.style.display = 'block';
-      } else if (action === 'pause') {
-          audio.pause();
-          playButton.style.display = 'block';
-          pauseButton.style.display = 'none';
-      }
-  }
+  // Создайте слайдер и примените стили
+  $(".slider-container").slider({
+    range: "min",
+    min: 0,
+    max: 100,
+    value: 50,
+    slide: function(event, ui) {
+      // Измените цвет фона и ползунка при перемещении слайдера
+      $(".slider-container").css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
+      $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
+    }
+  });
 });
+
+let isPlaying = false;
+let audio = document.getElementById('audio');
+let playButton = document.getElementById('playButton');
+let pauseButton = document.getElementById('pauseButton');
+
+function toggleMusic(song) {
+    if (audio.src.includes(song)) {
+        audio.pause();
+        audio.currentTime = 0;
+        playButton.style.display = 'block';
+        pauseButton.style.display = 'none';
+        document.getElementById('menu').style.display = 'none';
+    } else {
+        audio.src = song;
+        audio.load();
+        audio.play();
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'block';
+        document.getElementById('menu').style.display = 'flex';
+    }
+    isPlaying = !isPlaying;
+}
+
+
+function togglePlayPause(action) {
+    if (action === 'play') {
+        audio.play();
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'block';
+    } else if (action === 'pause') {
+        audio.pause();
+        playButton.style.display = 'block';
+        pauseButton.style.display = 'none';
+    }
+}
 </script>
 </body>
 </html>
