@@ -118,26 +118,30 @@ body {
 </div>
 
 <audio id="audio"></audio>
+
 <div id="menu" style="display: none;">
-  <button id="playButton"><img src="Play-Button.png" alt="Кнопка 1"></button>
-  <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
+  <button id="playButton" onclick="togglePlayPause('play')">Play</button>
+  <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')">Pause</button>
 </div>
+
 <script>
 let isPlaying = false;
+let audio = document.getElementById('audio');
+let playButton = document.getElementById('playButton');
+let pauseButton = document.getElementById('pauseButton');
 
 function toggleMusic(song) {
-  var audio = document.getElementById('audio');
-  var playButton = document.getElementById('playButton');
-
   if (audio.src.includes(song)) {
     audio.pause();
     audio.currentTime = 0;
-    playButton.setAttribute('src', 'Play-Button.png');
+    playButton.style.display = 'block';
+    pauseButton.style.display = 'none';
   } else {
     audio.src = song;
     audio.load();
     audio.play();
-    playButton.setAttribute('src', 'Pause-Button.png');
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'block';
   }
   isPlaying = !isPlaying;
   if (isPlaying) {
@@ -147,6 +151,17 @@ function toggleMusic(song) {
   }
 }
 
+function togglePlayPause(action) {
+  if (action === 'play') {
+    audio.play();
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'block';
+  } else if (action === 'pause') {
+    audio.pause();
+    playButton.style.display = 'block';
+    pauseButton.style.display = 'none';
+  }
+}
 </script>
 </body>
 </html>
