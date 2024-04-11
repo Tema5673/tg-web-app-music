@@ -102,38 +102,41 @@ body {
     <div class="artist">Anna Asti</div>
   </div>
 </div>
-  <div class="music-slot" onclick="toggleMusic('Lyusya_CHebotina_-_Plakal_Gollivud_75553933.mp3')">
+<div class="music-slot" onclick="toggleMusic('Lyusya_CHebotina_-_Plakal_Gollivud_75553933.mp3')">
   <img src="422434e1ae0e894378b3c83a9b4221cb12_resize_2000x2000_same_e6bc0c.jpeg" alt="Картинка">
   <div>
     <div class="track">Плакал Голливуд</div>
     <div class="artist">Люся Чеботина</div>
   </div>
-  </div>
+</div>
 <div class="music-slot" onclick="toggleMusic('Filatov_Karas_-_Mimo_menya_75455572.mp3')">
   <img src="2cc4c14a3b42c27143292247e0a5f96412_resize_2000x2000_same_34ac1a.jpeg" alt="Картинка">
   <div>
     <div class="track">Мимо меня</div>
     <div class="artist">Filatov, Karas</div>
   </div>
-  </div>
-
+</div>
 
 <audio id="audio"></audio>
 <div id="menu">
-  <button><img src="Play-Button.png" alt="Кнопка 1"></button>
+  <button id="toggleButton"><img src="Play-Button.png" alt="Кнопка 1"></button>
   <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
 </div>
 <script>
 let isPlaying = false;
 function toggleMusic(song) {
   var audio = document.getElementById('audio');
+  var toggleButton = document.getElementById('toggleButton');
+
   if (audio.src.includes(song)) {
     audio.pause();
     audio.currentTime = 0;
+    toggleButton.innerHTML = '<img src="Play-Button.png" alt="Кнопка 1">';
   } else {
     audio.src = song;
     audio.load();
     audio.play();
+    toggleButton.innerHTML = '<img src="Pause-Button.png" alt="Кнопка 1">';
   }
   isPlaying = !isPlaying;
   if (isPlaying) {
