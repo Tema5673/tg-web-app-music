@@ -116,7 +116,7 @@ body {
 </div>
 </div>
 <!-- Добавлены кнопки Play и Pause в меню -->
-<div id="menu">
+<div id="menu" style="display: none;">
 <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
 <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
@@ -134,19 +134,16 @@ function toggleMusic(song) {
         audio.currentTime = 0;
         playButton.style.display = 'block';
         pauseButton.style.display = 'none';
+        document.getElementById('menu').style.display = 'none'; // Скрыть меню при остановке музыки
     } else {
         audio.src = song;
         audio.load();
         audio.play();
         playButton.style.display = 'none';
         pauseButton.style.display = 'block';
+        document.getElementById('menu').style.display = 'flex'; // Показать меню при воспроизведении музыки
     }
     isPlaying = !isPlaying;
-    if (isPlaying) {
-        document.getElementById('menu').style.display = 'flex';
-    } else {
-        document.getElementById('menu').style.display = 'none';
-    }
 }
 
 function togglePlayPause(action) {
@@ -161,5 +158,3 @@ function togglePlayPause(action) {
     }
 }
 </script>
-</body>
-</html>
