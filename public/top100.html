@@ -44,7 +44,7 @@
   padding: 10px;
   display: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Центрирование кнопок */
   align-items: center;
 }
 #menu button {
@@ -56,9 +56,6 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-}
-#menu button:first-child {
-  margin: 0;
 }
 #menu img {
   width: 30px;
@@ -81,48 +78,14 @@ body {
     <div class="artist">MORGENSHTERN</div>
   </div>
 </div>
-<div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')">
-  <img src="pic.jpeg" alt="Картинка">
-  <div>
-    <div class="track">Прощание</div>
-    <div class="artist">Три дня дождя</div>
-  </div>
-</div>
-<div class="music-slot" onclick="toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3')">
-  <img src="pic (1).jpeg" alt="Картинка">
-  <div>
-    <div class="track">Дурак</div>
-    <div class="artist">Anna Asti</div>
-  </div>
-</div>
-<div class="music-slot" onclick="toggleMusic('Anna_Asti_-_CARICA_76792329.mp3')">
-  <img src="scale_1200.jpeg" alt="Картинка">
-  <div>
-    <div class="track">Царица</div>
-    <div class="artist">Anna Asti</div>
-  </div>
-</div>
-<div class="music-slot" onclick="toggleMusic('Lyusya_CHebotina_-_Plakal_Gollivud_75553933.mp3')">
-  <img src="422434e1ae0e894378b3c83a9b4221cb12_resize_2000x2000_same_e6bc0c.jpeg" alt="Картинка">
-  <div>
-    <div class="track">Плакал Голливуд</div>
-    <div class="artist">Люся Чеботина</div>
-  </div>
-</div>
-<div class="music-slot" onclick="toggleMusic('Filatov_Karas_-_Mimo_menya_75455572.mp3')">
-  <img src="2cc4c14a3b42c27143292247e0a5f96412_resize_2000x2000_same_34ac1a.jpeg" alt="Картинка">
-  <div>
-    <div class="track">Мимо меня</div>
-    <div class="artist">Filatov, Karas</div>
-  </div>
-</div>
-
-<audio id="audio"></audio>
-
+<!-- Добавлены кнопки Play и Pause в меню -->
 <div id="menu" style="display: none;">
   <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
   <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
+<!-- Конец добавления кнопок Play и Pause -->
+
+<audio id="audio"></audio>
 
 <script>
 let isPlaying = false;
