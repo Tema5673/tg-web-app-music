@@ -119,7 +119,7 @@ body {
 
 <audio id="audio"></audio>
 <div id="menu" style="display: none;">
-  <button id="toggleButton"><img src="Play-Button.png" alt="Кнопка 1"></button>
+  <button id="playButton"><img src="Play-Button.png" alt="Кнопка 1"></button>
   <button><img src="Fast-Forward-Background-PNG-Image.png" alt="Кнопка 2"></button>
 </div>
 <script>
@@ -127,29 +127,26 @@ let isPlaying = false;
 
 function toggleMusic(song) {
   var audio = document.getElementById('audio');
-  var toggleButton = document.getElementById('toggleButton');
-  var menu = document.getElementById('menu');
+  var playButton = document.getElementById('playButton');
 
   if (audio.src.includes(song)) {
     audio.pause();
     audio.currentTime = 0;
-    toggleButton.innerHTML = '<img src="Play-Button.png" alt="Кнопка 1">';
-    menu.style.display = 'none';
+    playButton.setAttribute('src', 'Play-Button.png');
   } else {
     audio.src = song;
     audio.load();
     audio.play();
-    toggleButton.innerHTML = '<img src="Stop-Button.webp" alt="Кнопка 1">';
-    menu.style.display = 'flex';
+    playButton.setAttribute('src', 'Pause-Button.png');
   }
   isPlaying = !isPlaying;
-
   if (isPlaying) {
     document.getElementById('menu').style.display = 'flex';
   } else {
     document.getElementById('menu').style.display = 'none';
   }
 }
+
 </script>
 </body>
 </html>
