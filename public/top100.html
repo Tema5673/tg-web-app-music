@@ -154,7 +154,7 @@ $(function() {
     range: "min",
     min: 0,
     max: 100,
-    value: 50,
+    value: 0, // Установите начальное значение ползунка
     slide: function(event, ui) {
       // Измените цвет фона и ползунка при перемещении слайдера
       $(".slider-container").css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
@@ -167,6 +167,7 @@ let isPlaying = false;
 let audio = document.getElementById('audio');
 let playButton = document.getElementById('playButton');
 let pauseButton = document.getElementById('pauseButton');
+let slider = $(".slider-container");
 
 function toggleMusic(song) {
     if (audio.src.includes(song)) {
@@ -182,8 +183,19 @@ function toggleMusic(song) {
         playButton.style.display = 'none';
         pauseButton.style.display = 'block';
         document.getElementById('menu').style.display = 'flex';
+        isPlaying = true;
+
+        // Получите длительность трека и установите соответствующее значение для ползунка
+        audio.onloadedmetadata = function() {
+          let duration = audio.duration; // Получите длительность трека в секундах
+          slider.slider("option", "max", duration); // Установите максимальное значение ползунка равным длительности трека
+        };
+
+        // Обновите положение ползунка в соответствии с проигрываемым временем трека
+        audio.ontimeupdate = function() {
+          slider.slider("value", audio.currentTime); // Обновите значение ползунка в соответствии с текущим временем проигрывания трека
+        };
     }
-    isPlaying = !isPlaying;
 }
 
 function togglePlayPause(action) {
