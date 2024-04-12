@@ -107,8 +107,8 @@ body {
 <div class="artist">Три дня дождя</div>
 </div>
 </div>
-<!-- Другие элементы music-slot здесь -->
-<!-- Добавлен слайдер в меню -->
+<!-- Other music-slot elements here -->
+<!-- Added slider to the menu -->
 <div id="menu">
   <div class="slider-container">
     <div class="slider-handle"></div>
@@ -116,18 +116,18 @@ body {
   <button id="playButton" onclick="togglePlayPause('play')"><img src="Play-Button.png" alt="Play"></button>
   <button id="pauseButton" style="display: none;" onclick="togglePlayPause('pause')"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
-<!-- Конец добавления слайдера и кнопок Play и Pause -->
+<!-- End of slider and Play/Pause buttons -->
 <audio id="audio"></audio>
 <script>
 $(function() {
-  // Создайте слайдер и примените стили
+  // Create the slider and apply styles
   $(".slider-container").slider({
     range: "min",
     min: 0,
     max: 100,
     value: 50,
     slide: function(event, ui) {
-      // Измените цвет фона и ползунка при перемещении слайдера
+      // Change the background color and handle color when the slider is moved
       $(".slider-container").css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
       $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
     }
@@ -137,6 +137,7 @@ let isPlaying = false;
 let audio = document.getElementById('audio');
 let playButton = document.getElementById('playButton');
 let pauseButton = document.getElementById('pauseButton');
+let animationInterval; // Declare the animation interval variable
 function toggleMusic(song) {
     if (audio.src.includes(song)) {
         audio.pause();
@@ -144,8 +145,8 @@ function toggleMusic(song) {
         playButton.style.display = 'block';
         pauseButton.style.display = 'none';
         document.getElementById('menu').style.display = 'none';
-        clearInterval(animationInterval); // Очистить интервал анимации
-        sliderHandle.style.left = '0'; // Сбросить положение ползунка
+        clearInterval(animationInterval); // Clear the animation interval
+        document.querySelector('.slider-handle').style.left = '0'; // Reset the slider handle position
     } else {
         audio.src = song;
         audio.load();
@@ -154,18 +155,16 @@ function toggleMusic(song) {
         pauseButton.style.display = 'block';
         document.getElementById('menu').style.display = 'flex';
 
-       let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
+        let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
         let sliderContainer = document.querySelector('.slider-container');
         let sliderHandle = document.querySelector('.slider-handle');
         let sliderWidth = sliderContainer.offsetWidth;
         let handleWidth = sliderHandle.offsetWidth;
         let totalDistance = sliderWidth - handleWidth;
-        let distancePerSecond = totalDistance / duration;
-        let currentPosition = 0;
 
-        clearInterval(animationInterval); // Очистить предыдущий интервал анимации
+        clearInterval(animationInterval); // Clear the previous animation interval
         animationInterval = setInterval(() => {
-            currentPosition = (audio.currentTime / duration) * totalDistance; // Обновить позицию ползунка на основе времени воспроизведения
+            let currentPosition = (audio.currentTime / duration) * totalDistance; // Update the slider handle position based on the playback time
             sliderHandle.style.left = currentPosition + 'px';
 
             if (audio.ended) {
