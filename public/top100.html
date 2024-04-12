@@ -138,49 +138,29 @@ $(function() {
       audio.currentTime = newPosition;
     }
   });
+  // Добавление логики для перемещения ползунка при клике и перетаскивании
+  let isDragging = false;
+  $(".slider-handle").mousedown(function() {
+    isDragging = true;
+  });
+  $(document).mouseup(function() {
+    isDragging = false;
+  });
+  $(".slider-container").mousemove(function(event) {
+    if (isDragging) {
+      let sliderWidth = $(".slider-container").width();
+      let offsetX = event.pageX - $(".slider-container").offset().left;
+      let newPosition = (offsetX / sliderWidth) * duration;
+      audio.currentTime = newPosition;
+      $(".slider-handle").css("left", offsetX + "px");
+    }
+  });
 });
 let isPlaying = false;
 let audio = document.getElementById('audio');
 let playButton = document.getElementById('playButton');
 let pauseButton = document.getElementById('pauseButton');
 let animationInterval; // Объявление переменной для интервала анимации
-function toggleMusic(song) {
-    if (audio.src.includes(song)) {
-        audio.pause();
-        audio.currentTime = 0;
-        playButton.style.display = 'block';
-        pauseButton.style.display = 'none';
-        document.getElementById('menu').style.display = 'none';
-        clearInterval(animationInterval); // Очистка интервала анимации
-        document.querySelector('.slider-handle').style.left = '0'; // Сброс положения ползунка
-    } else {
-        audio.src = song;
-        audio.load();
-        audio.play();
-        playButton.style.display = 'none';
-        pauseButton.style.display = 'block';
-        document.getElementById('menu').style.display = 'flex';
-
-        let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
-        let sliderContainer = document.querySelector('.slider-container');
-        let sliderHandle = document.querySelector('.slider-handle');
-        let sliderWidth = sliderContainer.offsetWidth;
-        let handleWidth = sliderHandle.offsetWidth;
-        let totalDistance = sliderWidth - handleWidth;
-
-        clearInterval(animationInterval); // Очистка предыдущего интервала анимации
-        animationInterval = setInterval(() => {
-            let currentPosition = (audio.currentTime / duration) * totalDistance; // Update the slider handle position based on the playback time
-            sliderHandle.style.left = currentPosition + 'px';
-
-            if (audio.ended) {
-                clearInterval(animationInterval);
-                sliderHandle.style.left = '0';
-            }
-        }, 1000);
-    }
-    isPlaying = !isPlaying;
-}
 function togglePlayPause(action) {
     if (action === 'play') {
         audio.play();
