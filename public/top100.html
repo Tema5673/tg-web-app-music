@@ -119,6 +119,11 @@ body {
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
 <audio id="audio"></audio>
 <script>
+function toggleMusic(filename) {
+  // Логика для воспроизведения или остановки музыки
+  // Вы можете использовать параметр 'filename', чтобы определить, какую музыку воспроизводить
+}
+
 $(function() {
   // Создание слайдера и применение стилей
   $(".slider-container").slider({
@@ -138,6 +143,7 @@ $(function() {
       audio.currentTime = newPosition;
     }
   });
+
   // Добавление логики для перемещения ползунка при клике и перетаскивании
   let isDragging = false;
   $(".slider-handle").mousedown(function() {
@@ -156,11 +162,13 @@ $(function() {
     }
   });
 });
+
 let isPlaying = false;
 let audio = document.getElementById('audio');
 let playButton = document.getElementById('playButton');
 let pauseButton = document.getElementById('pauseButton');
 let animationInterval; // Объявление переменной для интервала анимации
+
 function togglePlayPause(action) {
     if (action === 'play') {
         audio.play();
