@@ -108,6 +108,22 @@ body {
 </div>
 <audio id="audio"></audio>
 </div>
+<div class="music-slot" onclick="toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3')" data-duration="180" id="musicSlot2">
+  <img src="pic (1).jpeg" alt="Another Image">
+  <div>
+    <div class="track">Дурак</div>
+    <div class="artist">Anna Asti</div>
+  </div>
+  <audio id="audio2"></audio>
+</div>
+<div class="music-slot" onclick="toggleMusic('Anna_Asti_-_CARICA_76792329.mp3')" data-duration="180" id="musicSlot3">
+  <img src="scale_1200.jpeg" alt="Another Image">
+  <div>
+    <div class="track">Царица</div>
+    <div class="artist">Anna Asti</div>
+  </div>
+  <audio id="audio3"></audio>
+</div>
 <!-- Другие элементы music-slot здесь -->
 <!-- Добавлен слайдер в меню -->
 <div id="menu">
@@ -123,103 +139,107 @@ body {
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
 <script>
 $(function() {
-    let isPlaying = false;
-    let audio = $("#audio")[0];
-    let PlayButton = $("#PlayButton");
-    let PauseButton = $("#PauseButton");
-    let slider = $(".slider-container");
-    let duration = parseInt($("#musicSlot").attr("duration-data"));
-    let interval;
+  let isPlaying = false;
+  let audio = $("#audio")[0];
+  let playButton = $("#playButton");
+  let pauseButton = $("#pauseButton");
+  let slider = $(".slider-container");
+  let duration = parseInt($("#musicSlot").attr("data-duration"));
+  let interval;
 
-    slider.slider({
-        range: "min",
-        min: 0,
-        max: 100,
-        value: 0,
-        slide: function(event, ui) {
-            slider.css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
-            $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
-            let newPosition = (ui.value / 100) * duration;
-            newPosition = Math.max(0, Math.min(newPosition, duration)); // Changed 250 to duration
-            audio.currentTime = newPosition;
-        },
-        stop: function(event, ui) {
-            let newPosition = (ui.value / 100) * duration;
-            newPosition = Math.max(0, Math.min(newPosition, duration)); // Changed 250 to duration
-            audio.currentTime = newPosition;
-        }
-    });
+  slider.slider({
+    range: "min",
+    min: 0,
+    max: 100,
+    value: 0,
+    slide: function(event, ui) {
+      slider.css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
+      $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
+      let newPosition = (ui.value / 100) * duration;
+      newPosition = Math.max(0, Math.min(newPosition, 250));
+      audio.currentTime = newPosition;
+    },
+    stop: function(event, ui) {
+      let newPosition = (ui.value / 100) * duration;
+      newPosition = Math.max(0, Math.min(newPosition, 250));
+      audio.currentTime = newPosition;
+    }
+  });
 
-    let isDragging = false;
-    $(".slider-handle").on("mousedown touchstart", function() {
-        isDragging = true;
-    });
+  let isDragging = false;
+  $(".slider-handle").on("mousedown touchstart", function() {
+    isDragging = true;
+  });
+  $(document).on("mouseup touchend", function() {
+    isDragging = false;
+  });
+  slider.on("mousemove touchmove", function(event) {
+    if (isDragging) {
+      let sliderWidth = slider.width();
+      let offsetX;
+      if (event.type === "touchmove") {
+        offsetX = event.originalEvent.touches[0].pageX - slider.offset().left;
+      } else {
+        offsetX = event.pageX - slider.offset().left;
+      }
+      offsetX = Math.max(0, Math.min(offsetX, 250));
+      let newPosition = (offsetX / sliderWidth) * duration;
+      audio.currentTime = newPosition;
+      $(".slider-handle").css("left", offsetX + "px");
+    }
+  });
 
-    $(document).on("mouseup touchend", function() {
-        isDragging = false;
-    });
-
-    slider.on("mousemove touchmove", function(event) {
-        if (isDragging) {
-            let sliderWidth = slider.width();
-            let offsetX;
-            if (event.type === "touchmove") {
-                offsetX = event.originalEvent.touches[0].pageX - slider.offset().left;
-            } else {
-                offsetX = event.pageX - slider.offset().left;
-            }
-            offsetX = Math.max(0, Math.min(offsetX, sliderWidth)); // Changed 250 to sliderWidth
-            let newPosition = (offsetX / sliderWidth) * duration;
-            audio.currentTime = newPosition;
-            $(".slider-handle").css("left", offsetX + "px");
-        }
-    });
-
-    function toggleMusic(filename) {
-        if (!isPlaying) {
-            audio.src = filename;
-            audio.play();
-            PlayButton.css("display", "none");
-            PauseButton.css("display", "block");
-            interval = setInterval(function() {
-                if (audio.currentTime >= duration) {
-                    clearInterval(interval);
-                } else {
-                    slider.slider("value", (audio.currentTime / duration) * 100);
-                    $(".slider-handle").css("left", (audio.currentTime / duration) * slider.width() + "px");
-                }
-            }, 100);
+  function toggleMusic(filename) {
+    if (!isPlaying) {
+      audio.src = filename;
+      audio.play();
+      playButton.css("display", "none");
+      pauseButton.css("display", "block");
+      interval = setInterval(function() {
+        if (audio.currentTime >= duration) {
+          clearInterval(interval);
         } else {
-            audio.pause();
-            PlayButton.css("display", "block");
-            PauseButton.css("display", "none");
-            audio.currentTime = 0;
-            slider.slider("value", 0);
-            $(".slider-handle").css("left", "0");
-            clearInterval(interval);
+          slider.slider("value", (audio.currentTime / duration) * 100);
+          $(".slider-handle").css("left", (audio.currentTime / duration) * slider.width() + "px");
         }
-        isPlaying = !isPlaying;
-    }
-
-    $("#MusicSlot").on("click", function() {
-        toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3');
-    });
-
-    if (isPlaying) {
-        PlayButton.css("display", "none");
-        PauseButton.css("display", "block");
+      }, 100);
     } else {
-        PlayButton.css("display", "block");
-        PauseButton.css("display", "none");
+      audio.pause();
+      playButton.css("display", "block");
+      pauseButton.css("display", "none");
+      audio.currentTime = 0;
+      slider.slider("value", 0);
+      $(".slider-handle").css("left", "0");
+      clearInterval(interval);
     }
+    isPlaying = !isPlaying;
+  }
 
-    if (isPlaying) {
-        slider.slider("value", 100);
-        $(".slider-handle").css("left", slider.width() + "px");
-    } else {
-        slider.slider("value", 0);
-        $(".slider-handle").css("left", "0");
-    }
+  $("#musicSlot").on("click", function() {
+    toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3');
+  });
+  $("#musicSlot2").on("click", function() {
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+  });
+  $("#musicSlot3").on("click", function() {
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+  });
+
+  if (isPlaying) {
+    playButton.css("display", "none");
+    pauseButton.css("display", "block");
+  } else {
+    playButton.css("display", "block");
+    pauseButton.css("display", "none");
+  }
+
+  if (isPlaying) {
+    slider.slider("value", 100);
+    $(".slider-handle").css("left", slider.width() + "px");
+  } else {
+    slider.slider("value", 0);
+    $(".slider-handle").css("left", "0");
+  }
 });
 
 </script>
