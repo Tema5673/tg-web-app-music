@@ -106,6 +106,7 @@ body {
 <div class="track">Прощание</div>
 <div class="artist">Три дня дождя</div>
 </div>
+<audio id="audio"></audio>
 </div>
 <!-- Другие элементы music-slot здесь -->
 <!-- Добавлен слайдер в меню -->
@@ -117,24 +118,23 @@ body {
   <button id="pauseButton" style="display: none;"><img src="Stop-Button.webp" alt="Pause"></button>
 </div>
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
-<audio id="audio"></audio>
 <script>
-  $(function() {
+$(function() {
   let isPlaying = false;
-  let audio = document.getElementById('audio');
-  let playButton = document.getElementById('playButton');
-  let pauseButton = document.getElementById('pauseButton');
-  let slider = document.querySelector('.slider-container');
-  let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
+  let audio = $("#audio")[0];
+  let playButton = $("#playButton");
+  let pauseButton = $("#pauseButton");
+  let slider = $(".slider-container");
+  let duration = parseInt($(".music-slot").attr("data-duration"));
   let interval;
 
-  $(slider).slider({
+  slider.slider({
     range: "min",
     min: 0,
     max: 100,
     value: 0,
     slide: function(event, ui) {
-      $(slider).css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
+      slider.css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
       $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
       let newPosition = (ui.value / 100) * duration;
       audio.currentTime = newPosition;
@@ -146,16 +146,16 @@ body {
   });
 
   let isDragging = false;
-  $(".slider-handle").mousedown(function() {
+  $(".slider-handle").on("mousedown touchstart", function() {
     isDragging = true;
   });
-  $(document).mouseup(function() {
+  $(document).on("mouseup touchend", function() {
     isDragging = false;
   });
-  $(slider).mousemove(function(event) {
+  slider.on("mousemove touchmove", function(event) {
     if (isDragging) {
-      let sliderWidth = $(slider).width();
-      let offsetX = event.pageX - $(slider).offset().left;
+      let sliderWidth = slider.width();
+      let offsetX = event.pageX - slider.offset().left;
       let newPosition = (offsetX / sliderWidth) * duration;
       audio.currentTime = newPosition;
       $(".slider-handle").css("left", offsetX + "px");
@@ -163,35 +163,54 @@ body {
   });
 
   function toggleMusic(filename) {
-    if (audio.paused) {
+    if (!isPlaying) {
       audio.src = filename;
       audio.play();
-      playButton.style.display = 'none';
-      pauseButton.style.display = 'block';
+      playButton.css("display", "none");
+      pauseButton.css("display", "block");
       interval = setInterval(function() {
         if (audio.currentTime >= duration) {
           clearInterval(interval);
         } else {
-          slider.value = (audio.currentTime / duration) * 100;
+          slider.slider("value", (audio.currentTime / duration) * 100);
         }
       }, 100);
     } else {
       audio.pause();
-      playButton.style.display = 'block';
-      pauseButton.style.display = 'none';
+      playButton.css("display", "block");
+      pauseButton.css("display", "none");
       audio.currentTime = 0;
-      slider.value = 0;
+      slider.slider("value", 0);
       clearInterval(interval);
     }
+    isPlaying = !isPlaying;
   }
 
-  playButton.addEventListener('click', function() {
+  playButton.on("click", function() {
     toggleMusic('music.mp3');
   });
 
-  pauseButton.addEventListener('click', function() {
+  pauseButton.on("click", function() {
     toggleMusic('');
   });
+
+  // Установка начального состояния кнопок в меню
+  if (isPlaying) {
+    playButton.css("display", "none");
+    pauseButton.css("display", "block");
+  } else {
+    playButton.css("display", "block");
+    pauseButton.css("display", "none");
+  }
+
+  // Установка начальной позиции ползунка в меню
+  if (isPlaying) {
+    slider.slider("value", 100);
+    $(".slider-handle").css("left", slider.width() + "px");
+  } else {
+    slider.slider("value", 0);
+    $(".slider-handle").css("left", "0");
+  }
 });
 </script>
 </body>
