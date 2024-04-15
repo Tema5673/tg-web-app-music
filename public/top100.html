@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center; /* Обновленное значение */
-    flex-direction: row; /* Обновленное значение */
+    flex-direction: column; /* Обновленное значение */
 }
 
 #menu button {
@@ -93,7 +93,7 @@ body {
     margin-top: -5px;
     box-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
     position: absolute; /* Добавленное позиционирование */
-    top: 50%; /* Положение ползунка по вертикали */
+    top: 40%; /* Положение ползунка по вертикали */
     transform: translateY(-50%); /* Центрирование вертикально */
 }
 
@@ -114,9 +114,11 @@ body {
   <div class="slider-container">
     <div class="slider-handle"></div>
   </div>
-  <button id="playButton"><img src="Play-Button.png" alt="Play"></button>
-  <button id="pauseButton" style="display: none;"><img src="Stop-Button.webp" alt="Pause"></button>
-  <button id="newButton"><img src="Fast-Forward-Background-PNG-Image.png" alt="New Button"></button>
+  <div style="display: flex; align-items: center;">
+    <button id="playButton"><img src="Play-Button.png" alt="Play"></button>
+    <button id="pauseButton" style="display: none;"><img src="Stop-Button.webp" alt="Pause"></button>
+    <button id="newButton" style="margin-left: 5px;"><img src="Fast-Forward-Background-PNG-Image.png" alt="New Button"></button>
+  </div>
 </div>
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
 <script>
