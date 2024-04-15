@@ -100,7 +100,7 @@ body {
 </style>
 </head>
 <body>
-<div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')" data-duration="240">
+<div class="music-slot" onclick="toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3')" data-duration="240" id="musicSlot">
 <img src="pic.jpeg" alt="Картинка">
 <div>
 <div class="track">Прощание</div>
@@ -125,7 +125,7 @@ $(function() {
   let playButton = $("#playButton");
   let pauseButton = $("#pauseButton");
   let slider = $(".slider-container");
-  let duration = parseInt($(".music-slot").attr("data-duration"));
+  let duration = parseInt($("#musicSlot").attr("data-duration"));
   let interval;
 
   slider.slider({
@@ -187,7 +187,7 @@ $(function() {
   }
 
   playButton.on("click", function() {
-    toggleMusic('music.mp3');
+    toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3');
   });
 
   pauseButton.on("click", function() {
