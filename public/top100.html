@@ -121,15 +121,19 @@ body {
 <script>
 function toggleMusic(filename) {
   let audio = document.getElementById('audio');
+  let playButton = document.getElementById('playButton');
+  let pauseButton = document.getElementById('pauseButton');
 
-  if (audio.src.includes(filename)) {
-    // Если текущая музыка совпадает с выбранной, остановить воспроизведение
-    audio.pause();
-    audio.currentTime = 0;
-  } else {
-    // Если текущая музыка отличается от выбранной, воспроизвести новую музыку
+  if (audio.paused) {
     audio.src = filename;
     audio.play();
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'block';
+  } else {
+    audio.pause();
+    playButton.style.display = 'block';
+    pauseButton.style.display = 'none';
+    audio.currentTime = 0;
   }
 }
 
