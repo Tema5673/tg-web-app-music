@@ -120,8 +120,17 @@ body {
 <audio id="audio"></audio>
 <script>
 function toggleMusic(filename) {
-  // Логика для воспроизведения или остановки музыки
-  // Вы можете использовать параметр 'filename', чтобы определить, какую музыку воспроизводить
+  let audio = document.getElementById('audio');
+
+  if (audio.src.includes(filename)) {
+    // Если текущая музыка совпадает с выбранной, остановить воспроизведение
+    audio.pause();
+    audio.currentTime = 0;
+  } else {
+    // Если текущая музыка отличается от выбранной, воспроизвести новую музыку
+    audio.src = filename;
+    audio.play();
+  }
 }
 
 $(function() {
