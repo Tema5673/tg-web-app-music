@@ -225,6 +225,50 @@ $(function() {
     toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
   });
 
+  // Обработчик события для кнопки Play
+  playButton.on("click", function() {
+    if (!isPlaying) {
+      audio.play();
+      playButton.css("display", "none");
+      pauseButton.css("display", "block");
+      isPlaying = true;
+    }
+  });
+
+  // Обработчик события для кнопки Pause
+  pauseButton.on("click", function() {
+    if (isPlaying) {
+      audio.pause();
+      playButton.css("display", "block");
+      pauseButton.css("display", "none");
+      isPlaying = false;
+    }
+  });
+
+  // Обработчики событий для второго слота
+  let playButton2 = $("#playButton2");
+  let pauseButton2 = $("#pauseButton2");
+
+  playButton2.on("click", function() {
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+  });
+
+  pauseButton2.on("click", function() {
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+  });
+
+  // Обработчики событий для третьего слота
+  let playButton3 = $("#playButton3");
+  let pauseButton3 = $("#pauseButton3");
+
+  playButton3.on("click", function() {
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+  });
+
+  pauseButton3.on("click", function() {
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+  });
+
   if (isPlaying) {
     playButton.css("display", "none");
     pauseButton.css("display", "block");
