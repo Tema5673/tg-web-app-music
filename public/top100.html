@@ -126,6 +126,7 @@ function toggleMusic(filename) {
 
 $(function() {
   // Создание слайдера и применение стилей
+  let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
   $(".slider-container").slider({
     range: "min",
     min: 0,
@@ -138,7 +139,6 @@ $(function() {
     },
     stop: function(event, ui) {
       // Установка времени воспроизведения трека в соответствии с положением ползунка
-      let duration = parseInt(document.querySelector('.music-slot').getAttribute('data-duration'));
       let newPosition = (ui.value / 100) * duration;
       audio.currentTime = newPosition;
     }
