@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center; /* Обновленное значение */
-    flex-direction: column; /* Обновленное значение */
+    flex-direction: row; /* Обновленное значение */
 }
 
 #menu button {
@@ -116,6 +116,7 @@ body {
   </div>
   <button id="playButton"><img src="Play-Button.png" alt="Play"></button>
   <button id="pauseButton" style="display: none;"><img src="Stop-Button.webp" alt="Pause"></button>
+  <button id="newButton"><img src="Fast-Forward-Background-PNG-Image.png" alt="New Button"></button>
 </div>
 <!-- Конец добавления слайдера и кнопок Play и Pause -->
 <script>
@@ -155,7 +156,12 @@ $(function() {
   slider.on("mousemove touchmove", function(event) {
     if (isDragging) {
       let sliderWidth = slider.width();
-      let offsetX = event.pageX - slider.offset().left;
+      let offsetX;
+      if (event.type === "touchmove") {
+        offsetX = event.originalEvent.touches[0].pageX - slider.offset().left;
+      } else {
+        offsetX = event.pageX - slider.offset().left;
+      }
       let newPosition = (offsetX / sliderWidth) * duration;
       audio.currentTime = newPosition;
       $(".slider-handle").css("left", offsetX + "px");
