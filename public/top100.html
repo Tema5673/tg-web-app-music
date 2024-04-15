@@ -199,15 +199,10 @@ $(function() {
     isPlaying = !isPlaying;
   }
 
-  playButton.on("click", function() {
+  $("#musicSlot").on("click", function() {
     toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3');
   });
 
-  pauseButton.on("click", function() {
-    toggleMusic('');
-  });
-
-  // Установка начального состояния кнопок в меню
   if (isPlaying) {
     playButton.css("display", "none");
     pauseButton.css("display", "block");
@@ -216,7 +211,6 @@ $(function() {
     pauseButton.css("display", "none");
   }
 
-  // Установка начальной позиции ползунка в меню
   if (isPlaying) {
     slider.slider("value", 100);
     $(".slider-handle").css("left", slider.width() + "px");
@@ -225,6 +219,7 @@ $(function() {
     $(".slider-handle").css("left", "0");
   }
 });
+
 </script>
 </body>
 </html>
