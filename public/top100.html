@@ -77,8 +77,8 @@ body {
 }
 
 .slider-container {
-    width: 200px;
-    height: 10px;
+    width: 280px;
+    height: 20px;
     background-color: #333;
     margin-bottom: 10px;
     position: relative; /* Добавленное позиционирование */
@@ -86,14 +86,14 @@ body {
 }
 
 .slider-handle {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background-color: #8E44AD;
     border-radius: 50%;
     margin-top: -5px;
     box-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
     position: absolute; /* Добавленное позиционирование */
-    top: 40%; /* Положение ползунка по вертикали */
+    top: 75%; /* Положение ползунка по вертикали */
     transform: translateY(-50%); /* Центрирование вертикально */
 }
 
@@ -140,10 +140,12 @@ $(function() {
       slider.css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
       $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
       let newPosition = (ui.value / 100) * duration;
+      newPosition = Math.max(0, Math.min(newPosition, 250));
       audio.currentTime = newPosition;
     },
     stop: function(event, ui) {
       let newPosition = (ui.value / 100) * duration;
+      newPosition = Math.max(0, Math.min(newPosition, 250));
       audio.currentTime = newPosition;
     }
   });
@@ -164,6 +166,7 @@ $(function() {
       } else {
         offsetX = event.pageX - slider.offset().left;
       }
+      offsetX = Math.max(0, Math.min(offsetX, 250));
       let newPosition = (offsetX / sliderWidth) * duration;
       audio.currentTime = newPosition;
       $(".slider-handle").css("left", offsetX + "px");
