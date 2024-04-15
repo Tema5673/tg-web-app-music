@@ -173,6 +173,7 @@ $(function() {
           clearInterval(interval);
         } else {
           slider.slider("value", (audio.currentTime / duration) * 100);
+          $(".slider-handle").css("left", (audio.currentTime / duration) * slider.width() + "px");
         }
       }, 100);
     } else {
@@ -181,6 +182,7 @@ $(function() {
       pauseButton.css("display", "none");
       audio.currentTime = 0;
       slider.slider("value", 0);
+      $(".slider-handle").css("left", "0");
       clearInterval(interval);
     }
     isPlaying = !isPlaying;
