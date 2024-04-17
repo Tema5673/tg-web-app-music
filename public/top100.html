@@ -143,9 +143,10 @@ $(function() {
   let audio = $("#audio")[0];
   let playButton = $("#playButton");
   let pauseButton = $("#pauseButton");
-  let slider = $(".slider-container");
-  let duration = parseInt($("#musicSlot").attr("data-duration"));
+  let slider = $("#slider");
   let interval;
+  let currentSlot = null; // переменная для хранения текущего слота
+  let duration = audio.duration;
 
   slider.slider({
     range: "min",
@@ -153,10 +154,7 @@ $(function() {
     max: 100,
     value: 0,
     slide: function(event, ui) {
-      slider.css("background-color", "rgba(255, 255, 255, " + ui.value / 100 + ")");
-      $(".slider-handle").css("background-color", "rgba(142, 68, 173, " + ui.value / 100 + ")");
-      let newPosition = (ui.value / 100) * duration;
-      newPosition = Math.max(0, Math.min(newPosition, 250));
+      let newPosition = (ui.value / 100) * audio.duration;
       audio.currentTime = newPosition;
     },
     stop: function(event, ui) {
@@ -189,41 +187,40 @@ $(function() {
     }
   });
 
-  function toggleMusic(filename) {
-    if (!isPlaying) {
+function toggleMusic(filename, slot) {
+    if (currentSlot === slot) { // если нажали на тот же слот
+      if (isPlaying) {
+        audio.pause();
+        playButton.css("display", "block");
+        pauseButton.css("display", "none");
+        isPlaying = false;
+      } else {
+        audio.play();
+        playButton.css("display", "none");
+        pauseButton.css("display", "block");
+        isPlaying = true;
+      }
+    } else { // если нажали на другой слот
       audio.src = filename;
       audio.play();
       playButton.css("display", "none");
       pauseButton.css("display", "block");
-      interval = setInterval(function() {
-        if (audio.currentTime >= duration) {
-          clearInterval(interval);
-        } else {
-          slider.slider("value", (audio.currentTime / duration) * 100);
-          $(".slider-handle").css("left", (audio.currentTime / duration) * slider.width() + "px");
-        }
-      }, 100);
-    } else {
-      audio.pause();
-      playButton.css("display", "block");
-      pauseButton.css("display", "none");
-      audio.currentTime = 0;
-      slider.slider("value", 0);
-      $(".slider-handle").css("left", "0");
-      clearInterval(interval);
+      isPlaying = true;
+      slider.slider("value", 0); // сбрасываем ползунок
     }
-    isPlaying = !isPlaying;
+    currentSlot = slot; // обновляем текущий слот
   }
 
   $("#musicSlot").on("click", function() {
-    toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3');
+    toggleMusic('Tri_dnya_dozhdya_MONA_-_Proshhanie_76854795.mp3', 1);
   });
   $("#musicSlot2").on("click", function() {
-    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3', 2);
   });
   $("#musicSlot3").on("click", function() {
-    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3', 3);
   });
+
 
   // Обработчик события для кнопки Play
   playButton.on("click", function() {
@@ -250,11 +247,11 @@ $(function() {
   let pauseButton2 = $("#pauseButton2");
 
   playButton2.on("click", function() {
-    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3', 2);
   });
 
   pauseButton2.on("click", function() {
-    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3');
+    toggleMusic('ANNA_ASTI_-_Durak_76772895.mp3', 2);
   });
 
   // Обработчики событий для третьего слота
@@ -262,11 +259,11 @@ $(function() {
   let pauseButton3 = $("#pauseButton3");
 
   playButton3.on("click", function() {
-    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3', 3);
   });
 
   pauseButton3.on("click", function() {
-    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3');
+    toggleMusic('Anna_Asti_-_CARICA_76792329.mp3', 3);
   });
 
   if (isPlaying) {
