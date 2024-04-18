@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin-top: -280px; /* Добавьте это свойство */
+        }
+
+        .text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image {
+            margin-top: 0;
+        }
+
+        .second-image {
+            margin-left: 10px; /* Добавьте это свойство */
+            cursor: pointer; /* Добавьте это свойство */
+        }
+    </style>
+    <script>
+        function handleImageUpload(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('personal-area-image').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="75" height="75" id="personal-area-image" class="image">
+            <label for="file-upload">
+                <img src="308438.png" alt="Second Image" width="25" height="25" class="second-image">
+            </label>
+            <input type="file" id="file-upload" style="display: none" onchange="handleImageUpload(event)">
+        </div>
+        <div class="text">
+            Ваш текст под картинкой
+        </div>
+    </div>
+</body>
+</html>

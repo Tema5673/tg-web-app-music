@@ -142,29 +142,11 @@ body {
 .genres {
   margin-top: 20px; /* измените значение, чтобы сделать блок жанров ниже */
 }
-.menu {
-  width: 300px; /* Измените ширину меню на 250 пикселей */
-  height: 600px; /* Измените высоту меню на 300 пикселей */
-  position: fixed; /* Добавьте позиционирование "fixed" */
-  top: 50%; /* Установите верхнюю позицию в 50% */
-  left: 50%; /* Установите левую позицию в 50% */
-  transform: translate(-50%, -50%); /* Примените сдвиг на 50% от ширины и высоты */
-  display: flex; /* Добавьте flex-контейнер для центрирования содержимого */
-  justify-content: center; /* Выравнивание содержимого по горизонтали */
-  align-items: flex-start; /* Выравнивание содержимого по вертикали вверху */
-}
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.username {
-  margin-right: 10px;
-}
-
-.edit-icon {
-  width: 20px;
-  height: 20px;
+.corner-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }

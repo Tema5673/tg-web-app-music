@@ -37,6 +37,10 @@ function App() {
     setButtonSize((prevSize) => prevSize + 10); // Увеличение размера кнопки на 10 пикселей
   };
 
+  const handleMenuOpen = () => {
+    window.location.href = "Personal area.html";
+  };
+
   return (
     <div className="App">
       {isSearchActive && (
@@ -89,6 +93,8 @@ function App() {
           <h2 className="center-text">Rock</h2>
         </div>
       </div>
+
+      <img src="1675895563_grizly-club-p-lichnii-kabinet-klipart-14.png" alt="Новая картинка" className="corner-image" onClick={handleMenuOpen} />
     </div>
   );
 }
