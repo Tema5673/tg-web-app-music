@@ -45,19 +45,6 @@
             reader.readAsDataURL(file);
         }
 
-        function handleTextChange() {
-            var newText = prompt("Введите новый текст:");
-            if (newText !== null) {
-                document.getElementById('text').textContent = newText;
-            }
-        }
-
-        function handleTextDelete() {
-            var confirmation = confirm("Вы уверены, что хотите удалить весь текст?");
-            if (confirmation) {
-                document.getElementById('text').textContent = "";
-            }
-        }
     </script>
 </head>
 <body>
