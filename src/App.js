@@ -48,14 +48,15 @@ function App() {
   reader.onload = (e) => {
     const img = document.createElement("img");
     img.src = e.target.result;
-    img.style.width = "100%";
-    img.style.height = "auto";
+    img.style.width = "50px";
+    img.style.height = "50px";
     const menu = document.querySelector(".menu");
     menu.innerHTML = ""; // Очистить содержимое меню
     menu.appendChild(img); // Добавить загруженную картинку в меню
   };
   reader.readAsDataURL(file);
 };
+
 
   return (
     <div className="App">
