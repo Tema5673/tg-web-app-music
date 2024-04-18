@@ -153,3 +153,21 @@ body {
   justify-content: center; /* Выравнивание содержимого по горизонтали */
   align-items: flex-start; /* Выравнивание содержимого по вертикали вверху */
 }
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.username {
+  margin-right: 10px;
+}
+
+.edit-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.center-menu-text {
+  text-align: center;
+}

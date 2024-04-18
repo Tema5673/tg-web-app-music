@@ -7,6 +7,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние открытия меню
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [username, setUsername] = useState("Player");
 
   const handleSearchClick = () => {
     setIsSearchActive(!isSearchActive);
@@ -43,20 +44,26 @@ function App() {
   };
 
   const handleImageUpload = (event) => {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const img = document.createElement("img");
-    img.src = e.target.result;
-    img.style.width = "50px";
-    img.style.height = "50px";
-    const menu = document.querySelector(".menu");
-    menu.innerHTML = ""; // Очистить содержимое меню
-    menu.appendChild(img); // Добавить загруженную картинку в меню
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.style.width = "50px";
+      img.style.height = "50px";
+      const menu = document.querySelector(".menu");
+      menu.innerHTML = ""; // Очистить содержимое меню
+      menu.appendChild(img); // Добавить загруженную картинку в меню
+    };
+    reader.readAsDataURL(file);
   };
-  reader.readAsDataURL(file);
-};
 
+  const handleEditUserInfo = () => {
+    const newUsername = prompt("Введите новый ник пользователя:");
+    if (newUsername) {
+      setUsername(newUsername);
+    }
+  };
 
   return (
     <div className="App">
@@ -117,12 +124,16 @@ function App() {
       </div>
       {isMenuOpen && (
         <div className="menu">
-          <h2></h2>
+          <h2 className="center-menu-text">Menu Text</h2>
           <ul>
             <li></li>
             <li></li>
             <li></li>
           </ul>
+          <div className="user-info">
+            <p className="username">{username}</p>
+            <img className="edit-icon" src="edit.png" alt="Изменить" onClick={handleEditUserInfo} />
+          </div>
           <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
       )}
