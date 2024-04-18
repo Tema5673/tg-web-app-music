@@ -18,7 +18,7 @@
             text-align: center;
             margin-top: 10px;
             font-weight: bold;
-            cursor: pointer; /* Добавьте это свойство */
+            cursor: default; /* Измените это свойство */
         }
 
         .image-container {
@@ -32,7 +32,17 @@
 
         .second-image {
             margin-left: 10px; /* Добавьте это свойство */
-            cursor: pointer; /* Добавьте это свойство */
+            cursor: default; /* Измените это свойство */
+        }
+
+        #menu {
+            display: none;
+            width: 200px;
+            height: 35px;
+            background-color: white;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
         }
     </style>
     <script>
@@ -45,21 +55,34 @@
             reader.readAsDataURL(file);
         }
 
+        function openMenu() {
+            document.getElementById('menu').style.display = 'block';
+        }
+
+        function changeImage() {
+            document.getElementById('file-upload').click();
+        }
+
+        function editText() {
+            document.getElementById('text').innerText = '';
+        }
     </script>
 </head>
 <body>
     <div class="container">
         <div class="image-container">
             <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="75" height="75" id="personal-area-image" class="image">
-            <label for="file-upload">
-                <img src="308438.png" alt="Second Image" width="25" height="25" class="second-image">
-            </label>
-            <input type="file" id="file-upload" style="display: none" onchange="handleImageUpload(event)">
+
+            <img src="308438.png" alt="Second Image" width="25" height="25" class="second-image" onclick="openMenu()">
         </div>
-        <div class="text" id="text" onclick="handleTextChange()" onmouseover="showTooltip()" onmouseout="hideTooltip()" contenteditable="true">
+        <div class="text" id="text" contenteditable="true">
             Ваш текст под картинкой
-            <span id="tooltip" style="display: none; background-color: lightblue; padding: 5px; position: absolute; z-index: 1;">Нажмите, чтобы удалить весь текст и написать свое</span>
         </div>
+    </div>
+    <div id="menu" style="display: none; width: 200px; height: 35px; background-color: white; padding: 10px; position: absolute; z-index: 1;">
+        <input type="file" id="file-upload" style="display: none;" onchange="handleImageUpload(event)">
+        <button onclick="changeImage()">Изменить изображение</button>
+        <button onclick="editText()">Изменить текст</button>
     </div>
     <script>
         function showTooltip() {
