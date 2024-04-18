@@ -43,6 +43,13 @@
             };
             reader.readAsDataURL(file);
         }
+
+        function handleTextChange() {
+            var newText = prompt("Введите новый текст:");
+            if (newText !== null) {
+                document.getElementById('text').textContent = newText;
+            }
+        }
     </script>
 </head>
 <body>
@@ -54,7 +61,7 @@
             </label>
             <input type="file" id="file-upload" style="display: none" onchange="handleImageUpload(event)">
         </div>
-        <div class="text">
+        <div class="text" id="text" onclick="handleTextChange()">
             Ваш текст под картинкой
         </div>
     </div>
