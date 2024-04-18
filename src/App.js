@@ -38,8 +38,24 @@ function App() {
   };
 
   const handleMenuOpen = () => {
-    setIsMenuOpen(!isMenuOpen); // Изменение состояния открытия меню при каждом нажатии
+    setIsMenuOpen(true); // Открытие меню
+    setButtonSize(100); // Сбросить размер кнопки до начального значения
   };
+
+  const handleImageUpload = (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = document.createElement("img");
+    img.src = e.target.result;
+    img.style.width = "100%";
+    img.style.height = "auto";
+    const menu = document.querySelector(".menu");
+    menu.innerHTML = ""; // Очистить содержимое меню
+    menu.appendChild(img); // Добавить загруженную картинку в меню
+  };
+  reader.readAsDataURL(file);
+};
 
   return (
     <div className="App">
@@ -94,12 +110,21 @@ function App() {
         </div>
       </div>
       <div className="custom-button" style={{ top: buttonPosition.top, left: buttonPosition.left }}>
-        {!isMenuOpen && (
-          <button className="burger-menu" style={{ width: buttonSize, height: buttonSize }} onClick={handleMenuOpen}>
-            <img src="911498.png" alt="burger-menu" />
-          </button>
-        )}
+        <button className="burger-menu" style={{ width: buttonSize, height: buttonSize }} onClick={handleMenuOpen}>
+          <img src="1675895563_grizly-club-p-lichnii-kabinet-klipart-14.png" alt="burger-menu" />
+        </button>
       </div>
+      {isMenuOpen && (
+        <div className="menu">
+          <h2></h2>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+        </div>
+      )}
     </div>
   );
 }
