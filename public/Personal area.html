@@ -87,6 +87,9 @@
                 secondImage.style.display = 'none';
                 renameImage.style.display = 'none';
             }
+
+            var textMenu = document.getElementById('text-menu');
+            textMenu.style.display = 'none';
         }
 
         function changePersonalAreaImage() {
@@ -99,6 +102,19 @@
             var personalAreaImage = document.getElementById('personal-area-image');
             personalAreaImage.src = URL.createObjectURL(file);
         }
+
+        function openTextMenu() {
+            var textMenu = document.getElementById('text-menu');
+            textMenu.style.display = 'block';
+        }
+
+        function saveText() {
+            var textInput = document.getElementById('text-input');
+            var textElement = document.getElementById('text');
+            textElement.innerText = textInput.value;
+            var textMenu = document.getElementById('text-menu');
+            textMenu.style.display = 'none';
+        }
     </script>
 </head>
 <body>
@@ -110,7 +126,7 @@
         </div>
         <div class="text" id="text">
             Ваш текст под картинкой
-            <img src="png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Переименовать текст" width="30" height="30" class="rename-image">
+            <img src="png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Переименовать текст" width="30" height="30" class="rename-image" onclick="openTextMenu()">
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu()">
