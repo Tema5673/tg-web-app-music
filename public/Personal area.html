@@ -3,7 +3,7 @@
 <head>
     <style>
         body {
-            background-color: #ffffff;
+            background-color: gray;
         }
 
         .container {
@@ -11,7 +11,7 @@
             justify-content: center;
             flex-direction: column;
             height: 100vh;
-            margin-top: -240px; /* Adjusted margin-top value */
+            margin-top: -275px;
         }
 
         .text {
@@ -19,11 +19,13 @@
             margin-top: 10px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 1.5em; /* Измененное значение font-size */
         }
 
         .image-container {
             display: flex;
             justify-content: center;
+            position: relative;
         }
 
         .image {
@@ -32,13 +34,16 @@
         }
 
         .second-image {
-            margin-left: 10px;
+            margin-left: 15px;
             cursor: pointer;
             display: none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
 
         .rename-image {
-            margin-left: 10px;
+            margin-left: 15px;
             display: none;
         }
 
@@ -120,9 +125,10 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-
-            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()">
+            <div style="position: relative;">
+                <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
+                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()" style="position: absolute; bottom: 0; right: 0;">
+            </div>
         </div>
         <div class="text" id="text">
             Ваш текст под картинкой
