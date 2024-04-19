@@ -3,7 +3,7 @@
 <head>
     <style>
         body {
-            background-color: gray;
+            background-color: #ffffff;
         }
 
         .container {
@@ -11,14 +11,14 @@
             justify-content: center;
             flex-direction: column;
             height: 100vh;
-            margin-top: -280px; /* Добавьте это свойство */
+            margin-top: -280px;
         }
 
         .text {
             text-align: center;
             margin-top: 10px;
             font-weight: bold;
-            cursor: pointer; /* Измените это свойство */
+            cursor: pointer;
         }
 
         .image-container {
@@ -28,11 +28,24 @@
 
         .image {
             margin-top: 0;
+            border-radius: 50%;
         }
 
         .second-image {
-            margin-left: 10px; /* Добавьте это свойство */
-            cursor: pointer; /* Измените это свойство */
+            margin-left: 10px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .rename-image {
+            margin-left: 10px;
+            display: none;
+        }
+
+        .settings-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
 
         #menu {
@@ -62,59 +75,45 @@
         }
     </style>
     <script>
+        function openMenu() {
+            var secondImage = document.querySelector('.second-image');
+            var renameImage = document.querySelector('.rename-image');
+            var personalAreaImage = document.getElementById('personal-area-image');
+
+            if (secondImage.style.display === 'none') {
+                secondImage.style.display = 'inline-block';
+                renameImage.style.display = 'inline-block';
+            } else {
+                secondImage.style.display = 'none';
+                renameImage.style.display = 'none';
+            }
+        }
+
+        function changePersonalAreaImage() {
+            var fileUpload = document.getElementById("file-upload");
+            fileUpload.click();
+        }
+
         function handleImageUpload(event) {
             var file = event.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('personal-area-image').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function openMenu() {
-            document.getElementById('menu').style.display = 'block';
-        }
-
-        function openTextMenu() {
-            document.getElementById('text-menu').style.display = 'block';
-        }
-
-        function changeImage() {
-            document.getElementById('file-upload').click();
-        }
-
-        function editText() {
-            document.getElementById('text').innerText = '';
-        }
-
-        function saveImage() {
-            var file = document.getElementById('file-upload').files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('personal-area-image').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-            document.getElementById('menu').style.display = 'none';
-        }
-
-        function saveText() {
-            var text = document.getElementById('text-input').value;
-            document.getElementById('text').innerText = text;
-            document.getElementById('text-menu').style.display = 'none';
+            var personalAreaImage = document.getElementById('personal-area-image');
+            personalAreaImage.src = URL.createObjectURL(file);
         }
     </script>
 </head>
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="75" height="75" id="personal-area-image" class="image">
+            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
 
-            <img src="308438.png" alt="Second Image" width="25" height="25" class="second-image" onclick="openMenu()">
+            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()">
         </div>
         <div class="text" id="text">
             Ваш текст под картинкой
+            <img src="png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Переименовать текст" width="30" height="30" class="rename-image">
         </div>
     </div>
+    <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu()">
     <div id="menu" style="display: none;">
         <button onclick="changeImage()">Изменить картинку</button>
         <button onclick="openTextMenu()">Изменить текст</button>
@@ -123,15 +122,6 @@
         <input type="text" id="text-input" placeholder="Введите текст">
         <button onclick="saveText()">Сохранить</button>
     </div>
-    <input type="file" id="file-upload" style="display: none;" onchange="handleImageUpload(event)">
-    <script>
-        function showTooltip() {
-            document.getElementById('tooltip').style.display = 'block';
-        }
-
-        function hideTooltip() {
-            document.getElementById('tooltip').style.display = 'none';
-        }
-    </script>
+    <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
 </html>
