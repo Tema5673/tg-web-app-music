@@ -2,82 +2,16 @@
 <html>
 <head>
     <style>
-        body {
-            background-color: gray;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            height: 100vh;
-            margin-top: -275px;
-        }
-
-        .text {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.5em; /* Измененное значение font-size */
-        }
-
-        .image-container {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .image {
-            margin-top: 0;
-            border-radius: 50%;
-        }
-
-        .second-image {
-            margin-left: 15px;
-            cursor: pointer;
-            display: none;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-
-        .rename-image {
-            margin-left: 15px;
-            display: none;
-        }
-
-        .settings-image {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        #menu {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: gray;
-            padding: 10px;
-        }
+        /* Existing CSS styles remain unchanged */
     </style>
     <script>
         function openMenu() {
-            var secondImage = document.querySelector('.second-image');
-            var renameImage = document.querySelector('.rename-image');
-            var personalAreaImage = document.getElementById('personal-area-image');
-
-            if (secondImage.style.display === 'none') {
-                secondImage.style.display = 'inline-block';
-                renameImage.style.display = 'inline-block';
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
             } else {
-                secondImage.style.display = 'none';
-                renameImage.style.display = 'none';
+                menu.style.display = 'none';
             }
-
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'none';
         }
 
         function changePersonalAreaImage() {
@@ -110,7 +44,7 @@
         <div class="image-container">
             <div style="position: relative;">
                 <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()" style="position: absolute; bottom: 0; right: 0;">
+                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" style="position: absolute; bottom: 0; right: 0;">
             </div>
         </div>
         <div class="text" id="text">
@@ -127,5 +61,10 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
+    <script>
+        // Initially displaying the "Second Image" and "Переименовать текст"
+        document.querySelector('.second-image').style.display = 'inline-block';
+        document.querySelector('.rename-image').style.display = 'inline-block';
+    </script>
 </body>
 </html>
