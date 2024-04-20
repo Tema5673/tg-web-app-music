@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,7 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 1.5em; /* Измененное значение font-size */
+            display: none; /* Изначально скрыт */
         }
 
         .image-container {
@@ -36,7 +38,7 @@
         .second-image {
             margin-left: 15px;
             cursor: pointer;
-            display: none;
+            display: none; /* Изначально скрыт */
             position: absolute;
             bottom: 0;
             right: 0;
@@ -44,7 +46,7 @@
 
         .rename-image {
             margin-left: 15px;
-            display: none;
+            display: none; /* Изначально скрыт */
         }
 
         .settings-image {
@@ -54,11 +56,11 @@
         }
 
         #menu {
-            display: none;
+            display: none; /* Изначально скрыт */
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: white;
+            background-color: gray;
             padding: 10px;
         }
     </style>
@@ -121,5 +123,7 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
+    <script>
+        // Изначально скрываем "Second Image" и "Переименовать текст"
 </body>
 </html>
