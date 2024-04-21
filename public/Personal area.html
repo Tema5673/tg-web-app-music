@@ -12,7 +12,7 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            margin-top: -230px;
+            margin-top: -275px;
         }
 
         .text {
@@ -53,7 +53,7 @@
 
         .settings-image {
             position: absolute;
-            top: 40px;
+            top: 10px;
             right: 10px;
         }
 
@@ -88,6 +88,13 @@
             padding: 20px;
             border-radius: 10px;
         }
+
+        #phone-warning {
+            display: none;
+            color: red;
+            font-size: 0.8em;
+            margin-top: -5px;
+        }
     </style>
     <script>
         function showRegistrationMenu() {
@@ -96,6 +103,13 @@
         }
 
         function register() {
+            var phoneInput = document.getElementById('phone-input');
+            var phoneNumber = phoneInput.value;
+            if (!phoneNumber.startsWith('+7')) {
+                var phoneWarning = document.getElementById('phone-warning');
+                phoneWarning.style.display = 'block';
+                return;
+            }
             // Здесь может быть ваша логика регистрации пользователя
             console.log('Пользователь зарегистрирован');
             var registrationMenu = document.getElementById('registration-menu');
@@ -178,16 +192,12 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <div id="registration-menu" style="display: none;">
-        <div>
-            <input type="text" placeholder="Номер или почта">
+        <div style="margin-bottom: 10px;">
+            <img src="warning-icon.png" alt="Внимание" width="20" height="20" style="vertical-align: middle;">
+            <input type="text" id="phone-input" placeholder="Номер телефона">
         </div>
-        <div>
-            <input type="password" placeholder="Пароль">
-        </div>
-        <div>
-            <input type="password" placeholder="Повторите пароль">
-        </div>
-        <button onclick="register()">Зарегистрироваться</button>
+        <div id="phone-warning">Номер должен начинаться с +7</div>
+        <button onclick="register()">Продолжить</button>
     </div>
     <div style="position: absolute; top: 10px; right: 10px;">
         <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
