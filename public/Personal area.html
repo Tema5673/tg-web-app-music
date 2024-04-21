@@ -193,6 +193,8 @@
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
     <div id="menu" style="display: none;">
+        <!-- Картинка с флагом находится здесь -->
+        <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/i.jpeg" alt="Флаги" id="flags-image">
         <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
     <div id="text-menu" style="display: none;">
@@ -200,8 +202,6 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <div id="registration-menu" style="display: none;">
-        <!-- Новое изображение флагов -->
-        <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/i.jpeg" alt="Флаги" id="flags-image">
         <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning">Номер должен начинаться с +7</div>
         <button onclick="register()">Продолжить</button>
