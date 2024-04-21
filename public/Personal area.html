@@ -69,7 +69,7 @@
         function openMenu(event) {
             var menu = document.getElementById('menu');
             menu.style.display = 'block';
-            event.stopPropagation(); // Предотвращаем всплытие события, чтобы оно не срабатывало на документе
+            event.stopPropagation();
             document.addEventListener("click", closeMenu);
             menu.addEventListener("click", function(event) {
                 event.stopPropagation();
@@ -121,7 +121,9 @@
     <div class="container">
         <div class="image-container">
             <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()">
+            <div class="second-image" style="position: absolute; bottom: 0; right: 0;">
+                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" onclick="changePersonalAreaImage()">
+            </div>
             <div class="text" id="text">Пользователь</div>
             <img src="png-transparent-pencil-black-and-white-pencil-s-black-angle-pencil-color.png" alt="Изменить никнейм" width="30" height="30" class="edit-nickname-image" onclick="openTextMenu()">
         </div>
