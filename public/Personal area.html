@@ -126,6 +126,13 @@
             var phoneNumber = phoneInput.value;
             if (!phoneNumber.startsWith('+7')) {
                 var phoneWarning = document.getElementById('phone-warning');
+                phoneWarning.innerText = "Номер должен начинаться с +7";
+                phoneWarning.style.display = 'block';
+                return;
+            }
+            if (phoneNumber.length !== 12) {
+                var phoneWarning = document.getElementById('phone-warning');
+                phoneWarning.innerText = "Номер должен содержать 12 символов";
                 phoneWarning.style.display = 'block';
                 return;
             }
@@ -219,7 +226,7 @@
     </div>
     <div id="registration-menu" style="display: none;">
         <input type="text" id="phone-input" placeholder="Номер телефона">
-        <div id="phone-warning">Номер должен начинаться с +7</div>
+        <div id="phone-warning" style="color: red;"></div>
         <button onclick="register()">Продолжить</button>
     </div>
     <!-- Новое меню для подтверждения номера -->
