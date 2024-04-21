@@ -37,8 +37,8 @@
         .second-image {
             display: none;
             position: absolute;
-            bottom: 100px; /* Поднимаем немного выше */
-            right: -10px;
+            bottom: 45px; /* Поднимаем немного выше */
+            right: 15px;
             margin: 5px;
             border-radius: 50%;
             cursor: pointer;
@@ -62,7 +62,7 @@
             position: fixed;
             top: 200px;
             right: 0;
-            width: 100px;
+            width: 120px; /* Расширяем меню */
             height: 100px;
             background-color: white;
         }
@@ -192,10 +192,7 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <div id="registration-menu" style="display: none;">
-        <div style="margin-bottom: 10px;">
-            <img src="raw.githubusercontent.com/Tema5673/tg-web-app-music/blob/master/public%2Fi.jpeg" alt="Внимание" width="20" height="20" style="vertical-align: middle;">
-            <input type="text" id="phone-input" placeholder="Номер телефона">
-        </div>
+        <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning">Номер должен начинаться с +7</div>
         <button onclick="register()">Продолжить</button>
     </div>
