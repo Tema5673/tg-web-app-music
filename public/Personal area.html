@@ -78,6 +78,17 @@
             padding: 10px;
         }
 
+        #registration-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
         #confirmation-menu {
             display: none;
             position: fixed;
@@ -124,6 +135,11 @@
             registrationMenu.style.display = 'none';
             var confirmationMenu = document.getElementById('confirmation-menu');
             confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
+        }
+
+        function confirmCode() {
+            // Ваша логика подтверждения кода
+            console.log('Код подтвержден');
         }
 
         function openMenu(event) {
