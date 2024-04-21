@@ -3,135 +3,135 @@
 <head>
     <style>
         body {
-            background-color: gray; // Задаем серый цвет фона
+            background-color: gray;
         }
 
         .container {
-            display: flex; // Используем flexbox для расположения элементов
-            justify-content: center; // Выравниваем по центру по горизонтали
-            flex-direction: column; // Располагаем элементы в колонку
-            align-items: center; // Выравниваем по центру по вертикали
-            height: 100vh; // Задаем высоту контейнера по высоте окна просмотра
-            margin-top: -275px; // Корректируем положение контейнера
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin-top: -275px;
         }
 
         .text {
-            text-align: center; // Выравниваем текст по центру
-            margin-top: 5px; // Добавляем небольшой отступ сверху
-            font-weight: bold; // Задаем жирный шрифт
-            font-size: 1.2em; // Задаем размер шрифта
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 1.2em;
         }
 
         .image-container {
-            position: relative; // Устанавливаем относительное позиционирование для контейнера изображения
-            text-align: center; // Выравниваем содержимое по центру
-            display: inline-block; // Отображаем блок как строчный элемент
+            position: relative;
+            text-align: center;
+            display: inline-block;
         }
 
         .image {
-            margin-bottom: 5px; // Добавляем отступ снизу
-            border-radius: 50%; // Задаем скругленные углы для круглого изображения
-            position: relative; // Устанавливаем относительное позиционирование
+            margin-bottom: 5px;
+            border-radius: 50%;
+            position: relative;
         }
 
         .second-image {
-            display: none; // Скрываем второе изображение по умолчанию
-            position: absolute; // Позиционируем абсолютно
-            bottom: 100px; // Располагаем снизу с небольшим отступом
-            right: -10px; // Располагаем справа с небольшим отступом
-            margin: 5px; // Добавляем отступы
-            border-radius: 50%; // Задаем скругленные углы
-            cursor: pointer; // Делаем курсор указателем при наведении
+            display: none;
+            position: absolute;
+            bottom: 100px; /* Поднимаем немного выше */
+            right: -10px;
+            margin: 5px;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         .edit-nickname-image {
-            display: none; // Скрываем изображение для изменения никнейма по умолчанию
-            cursor: pointer; // Делаем курсор указателем при наведении
-            margin-top: -55px; // Располагаем немного выше
-            margin-right: -120px; // Располагаем немного правее
+            display: none;
+            cursor: pointer;
+            margin-top: -55px; /* Поднимаем немного выше */
+            margin-right: -120px; /* Сдвигаем немного вправо */
         }
 
         .settings-image {
-            position: absolute; // Позиционируем абсолютно
-            top: 10px; // Располагаем сверху с небольшим отступом
-            right: 10px; // Располагаем справа с небольшим отступом
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
 
         #menu {
-            display: block; // Отображаем меню блоком
-            position: fixed; // Позиционируем фиксированно
-            top: 150px; // Располагаем сверху с определенным отступом
-            right: 0; // Располагаем справа
-            width: 100px; // Задаем ширину
-            height: 100px; // Задаем высоту
-            background-color: white; // Задаем белый цвет фона
+            display: block;
+            position: fixed;
+            top: 200px;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: white;
         }
 
         #text-menu {
-            display: none; // Скрываем текстовое меню по умолчанию
-            position: fixed; // Позиционируем фиксированно
-            top: 50%; // Располагаем сверху по центру экрана
-            left: 50%; // Располагаем слева по центру экрана
-            transform: translate(-50%, -50%); // Центрируем относительно себя
-            background-color: white; // Задаем белый цвет фона
-            text-align: center; // Выравниваем содержимое по центру
-            padding: 10px; // Добавляем внутренние отступы
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            text-align: center;
+            padding: 10px;
         }
     </style>
     <script>
         function openMenu(event) {
             var menu = document.getElementById('menu');
-            menu.style.display = 'block'; // Отображаем меню
-            event.stopPropagation(); // Остановить всплытие события
-            document.addEventListener("click", closeMenu); // Добавляем обработчик для закрытия меню
+            menu.style.display = 'block';
+            event.stopPropagation();
+            document.addEventListener("click", closeMenu);
             menu.addEventListener("click", function(event) {
-                event.stopPropagation(); // Остановить всплытие события внутри меню
+                event.stopPropagation();
             });
         }
 
         function closeMenu() {
             var menu = document.getElementById('menu');
-            menu.style.display = 'none'; // Скрываем меню
-            document.removeEventListener("click", closeMenu); // Удаляем обработчик закрытия меню
+            menu.style.display = 'none';
+            document.removeEventListener("click", closeMenu);
         }
 
         function changePersonalAreaImage() {
             var fileUpload = document.getElementById("file-upload");
-            fileUpload.click(); // Программное нажатие на кнопку загрузки файла
+            fileUpload.click();
         }
 
         function handleImageUpload(event) {
-            var file = event.target.files[0]; // Получаем выбранный файл
+            var file = event.target.files[0];
             var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = URL.createObjectURL(file); // Устанавливаем src для изображения
+            personalAreaImage.src = URL.createObjectURL(file);
             var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block'; // Отображаем второе изображение, если основное изображение не выбрано
+            secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block';
         }
 
         function openTextMenu() {
             var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'block'; // Отображаем текстовое меню
+            textMenu.style.display = 'block';
         }
 
         function saveText() {
             var textInput = document.getElementById('text-input');
             var textElement = document.getElementById('text');
-            textElement.innerText = textInput.value; // Заменяем текст на введенный в поле ввода
+            textElement.innerText = textInput.value;
             var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'none'; // Скрываем текстовое меню
+            textMenu.style.display = 'none';
             var editNicknameImage = document.querySelector('.edit-nickname-image');
-            editNicknameImage.style.display = 'none'; // Скрываем изображение для изменения никнейма
+            editNicknameImage.style.display = 'none';
         }
 
         function showImagesAndText() {
             var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = 'inline-block'; // Отображаем второе изображение
-            secondImage.style.position = 'absolute'; // Позиционируем абсолютно
-            secondImage.style.bottom = '45px'; // Располагаем снизу с определенным отступом
-            secondImage.style.right = '15px'; // Располагаем справа с определенным отступом
+            secondImage.style.display = 'inline-block';
+            secondImage.style.position = 'absolute';
+            secondImage.style.bottom = '45px'; /* Поднимаем немного выше */
+            secondImage.style.right = '15px';
 
             var editNicknameImage = document.querySelector('.edit-nickname-image');
-            editNicknameImage.style.display = 'inline-block'; // Отображаем изображение для изменения никнейма
+            editNicknameImage.style.display = 'inline-block';
         }
     </script>
 </head>
