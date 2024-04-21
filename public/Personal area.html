@@ -18,34 +18,24 @@
             text-align: center;
             margin-top: 10px;
             font-weight: bold;
-            cursor: pointer;
-            font-size: 1.5em; /* Измененное значение font-size */
-            display: none; /* Изначально скрыт */
+            font-size: 1.5em;
         }
 
         .image-container {
             display: flex;
+            align-items: center;
             justify-content: center;
             position: relative;
+            margin-bottom: 10px;
         }
 
         .image {
-            margin-top: 0;
+            margin-right: 10px;
             border-radius: 50%;
         }
 
-        .second-image {
-            margin-left: 15px;
+        .edit-nickname-image {
             cursor: pointer;
-            display: none; /* Изначально скрыт */
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-
-        .rename-image {
-            margin-left: 15px;
-            display: none; /* Изначально скрыт */
         }
 
         .settings-image {
@@ -116,14 +106,9 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <div style="position: relative;">
-                <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" style="position: absolute; bottom: 0; right: 0;" onclick="changePersonalAreaImage()">
-            </div>
-        </div>
-        <div class="text" id="text">
-            Пользователь
-            <img src="png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Переименовать текст" width="30" height="30" class="rename-image" onclick="openTextMenu()">
+            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
+            <div class="text" id="text">Пользователь</div>
+            <img src="edit_nickname_icon.png" alt="Изменить никнейм" width="30" height="30" class="edit-nickname-image" onclick="openTextMenu()">
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
@@ -131,7 +116,7 @@
         <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
     <div id="text-menu" style="display: none;">
-        <input type="text" id="text-input" placeholder="Введите текст">
+        <input type="text" id="text-input" placeholder="Введите новый никнейм">
         <button onclick="saveText()">Сохранить</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
