@@ -149,7 +149,8 @@
             localStorage.setItem('confirmationCode', code); // Сохраняем код подтверждения в локальном хранилище
             var smsText = 'Ваш код подтверждения: ' + code;
             var apiKey = '630704AB-EE26-08CB-3B1F-8E0356E3C763'; // Ваш API ключ Sms.ru
-            var phoneNumber = '+79885159665'; // Ваш номер телефона
+            var phoneNumber = '+' + phoneNumber; // Используем номер, введенный пользователем
+
             var url = 'https://sms.ru/sms/send?api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + encodeURIComponent(smsText);
             fetch(url)
               .then(response => response.json())
