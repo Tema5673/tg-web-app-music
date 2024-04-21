@@ -37,14 +37,15 @@
         .second-image {
             display: none;
             position: absolute;
-            bottom: 10px; /* Поднимаем немного выше */
-            right: 10px; /* Сдвигаем немного влево */
+            bottom: 20px; /* Поднимаем немного выше */
+            right: 10px;
             margin: 5px;
             border-radius: 50%;
             cursor: pointer;
         }
 
         .edit-nickname-image {
+            display: none; /* Скрыто изначально */
             cursor: pointer;
             margin-top: 5px;
         }
@@ -116,6 +117,9 @@
             secondImage.style.position = 'absolute';
             secondImage.style.bottom = '0';
             secondImage.style.right = '0';
+            
+            var editNicknameImage = document.querySelector('.edit-nickname-image');
+            editNicknameImage.style.display = 'inline-block';
         }
     </script>
 </head>
