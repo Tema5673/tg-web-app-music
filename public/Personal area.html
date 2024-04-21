@@ -37,8 +37,8 @@
         .second-image {
             display: none;
             position: absolute;
-            bottom: 100px; /* Поднимаем немного выше */
-            right: -10px;
+            bottom: 45px; /* Поднимаем немного выше */
+            right: 15px; /* Сдвигаем немного вправо */
             margin: 5px;
             border-radius: 50%;
             cursor: pointer;
@@ -48,7 +48,7 @@
             display: none;
             cursor: pointer;
             margin-top: -55px; /* Поднимаем немного выше */
-            margin-right: -120px; /* Сдвигаем немного вправо */
+            margin-left: -120px; /* Сдвигаем немного влево */
         }
 
         .settings-image {
@@ -65,6 +65,15 @@
             width: 100px;
             height: 100px;
             background-color: white;
+        }
+
+        #text-menu {
+            display: none;
+            position: absolute;
+            top: 100px; /* Поднимаем немного выше */
+            left: 50px; /* Сдвигаем немного влево */
+            background-color: white;
+            padding: 10px;
         }
     </style>
     <script>
@@ -121,6 +130,9 @@
 
             var editNicknameImage = document.querySelector('.edit-nickname-image');
             editNicknameImage.style.display = 'inline-block';
+            editNicknameImage.style.position = 'absolute';
+            editNicknameImage.style.top = 'calc(50% - 55px)'; /* Поднимаем немного выше */
+            editNicknameImage.style.left = 'calc(50% - 120px)'; /* Сдвигаем немного влево */
         }
     </script>
 </head>
@@ -139,7 +151,7 @@
     <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: white; padding: 10px;">
         <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
-    <div id="text-menu" style="display: none;">
+    <div id="text-menu" style="display: none; position: absolute; top: 50px; left: 50px; background-color: white; padding: 10px;">
         <input type="text" id="text-input" placeholder="Введите новый никнейм">
         <button onclick="saveText()">Сохранить</button>
     </div>
