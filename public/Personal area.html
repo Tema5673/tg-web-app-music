@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Отправка SMS для подтверждения номера</title>
     <style>
         body {
             background-color: gray;
@@ -143,13 +144,13 @@
             var confirmationMenu = document.getElementById('confirmation-menu');
             confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
             
-            // Отправка SMS с кодом подтверждения
+            // Генерация и отправка SMS с кодом подтверждения
             var code = Math.floor(1000 + Math.random() * 9000); // Генерация случайного кода
+            localStorage.setItem('confirmationCode', code); // Сохраняем код подтверждения в локальном хранилище
             var smsText = 'Ваш код подтверждения: ' + code;
-            alert(smsText); // В реальном приложении здесь будет запрос к серверу для отправки SMS
             var apiKey = '630704AB-EE26-08CB-3B1F-8E0356E3C763'; // Ваш API ключ Sms.ru
             var phoneNumber = '+79885159665'; // Ваш номер телефона
-            var url = 'https://sms.ru/sms/send?api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + smsText;
+            var url = 'https://sms.ru/sms/send?api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + encodeURIComponent(smsText);
             fetch(url)
               .then(response => response.json())
               .then(data => console.log(data))
