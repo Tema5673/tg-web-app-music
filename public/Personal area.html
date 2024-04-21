@@ -107,6 +107,13 @@
             margin-top: -5px;
         }
 
+        #warning-message {
+            display: none;
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+
         /* Новый стиль для изображения флагов */
         #flags-image {
             width: 100px;
@@ -116,129 +123,84 @@
         }
     </style>
     <script>
-        function showRegistrationMenu() {
-            var registrationMenu = document.getElementById('registration-menu');
-            registrationMenu.style.display = 'block';
-        }
+        function sendSMS(phoneNumber, message) {
+            var apiKey = '630704AB-EE26-08CB-3B1F-8E0356E3C763'; // Ваш API-ключ Sms.ru
+            var apiUrl = 'https://sms.ru/sms/send';
 
-        function register() {
-            var phoneInput = document.getElementById('phone-input');
-            var phoneNumber = phoneInput.value;
-            if (!phoneNumber.startsWith('+7')) {
-                var phoneWarning = document.getElementById('phone-warning');
-                phoneWarning.innerText = "Номер должен начинаться с +7";
-                phoneWarning.style.display = 'block';
-                return;
-            }
-            if (phoneNumber.length !== 12) {
-                var phoneWarning = document.getElementById('phone-warning');
-                phoneWarning.innerText = "Номер должен содержать 12 символов";
-                phoneWarning.style.display = 'block';
-                return;
-            }
-            // Здесь может быть ваша логика регистрации пользователя
-            console.log('Пользователь зарегистрирован');
-            var registrationMenu = document.getElementById('registration-menu');
-            registrationMenu.style.display = 'none';
-            var confirmationMenu = document.getElementById('confirmation-menu');
-            confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", apiUrl);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("SMS successfully sent");
+                } else {
+                    console.error("Failed to send SMS");
+                }
+            };
+
+            var data = 'api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + encodeURIComponent(message);
+
+            xhr.send(data);
         }
 
         function confirmCode() {
-            // Ваша логика подтверждения кода
-            console.log('Код подтвержден');
-        }
+            var codeInput = document.getElementById('code-input');
+            var code = codeInput.value;
 
-        function openMenu(event) {
-            var menu = document.getElementById('menu');
-            menu.style.display = 'block';
-            event.stopPropagation();
-            document.addEventListener("click", closeMenu);
-            menu.addEventListener("click", function(event) {
-                event.stopPropagation();
-            });
-        }
+            // Здесь вам нужно проверить код с помощью вашей логики
+            // Предположим, что код "1234" является верным
+            var expectedCode = '1234'; // Замените это на вашу логику проверки кода
 
-        function closeMenu() {
-            var menu = document.getElementById('menu');
-            menu.style.display = 'none';
-            document.removeEventListener("click", closeMenu);
-        }
-
-        function changePersonalAreaImage() {
-            var fileUpload = document.getElementById("file-upload");
-            fileUpload.click();
-        }
-
-        function handleImageUpload(event) {
-            var file = event.target.files[0];
-            var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = URL.createObjectURL(file);
-            var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block';
-        }
-
-        function openTextMenu() {
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'block';
-        }
-
-        function saveText() {
-            var textInput = document.getElementById('text-input');
-            var textElement = document.getElementById('text');
-            textElement.innerText = textInput.value;
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'none';
-            var editNicknameImage = document.querySelector('.edit-nickname-image');
-            editNicknameImage.style.display = 'none';
-        }
-
-        function showImagesAndText() {
-            var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = 'inline-block';
-            secondImage.style.position = 'absolute';
-            secondImage.style.bottom = '45px'; /* Поднимаем немного выше */
-            secondImage.style.right = '15px';
-
-            var editNicknameImage = document.querySelector('.edit-nickname-image');
-            editNicknameImage.style.display = 'inline-block';
+            if (code === expectedCode) {
+                // Отправляем SMS с сообщением об успешной верификации
+                var phoneNumber = 'PHONE_NUMBER'; // Замените '+79885159665' на реальный номер телефона
+                var message = 'Код подтверждения успешно принят!';
+                sendSMS(phoneNumber, message);
+            } else {
+                // Выводим предупреждение о неверном коде
+                var warningMessage = document.getElementById('warning-message');
+                warningMessage.innerText = 'Неверный код подтверждения';
+                warningMessage.style.display = 'block';
+            }
         }
     </script>
 </head>
 <body>
-    <div class="container">
-        <div class="image-container">
-            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-            <div class="second-image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" onclick="changePersonalAreaImage()">
-            </div>
-            <div class="text" id="text">Пользователь</div>
-            <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Изменить никнейм" width="20" height="20" class="edit-nickname-image" onclick="openTextMenu()">
+<div class="container">
+    <div class="image-container">
+        <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
+        <div class="second-image">
+            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" onclick="changePersonalAreaImage()">
         </div>
+        <div class="text" id="text">Пользователь</div>
+        <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Изменить никнейм" width="20" height="20" class="edit-nickname-image" onclick="openTextMenu()">
     </div>
-    <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
-    <div id="menu" style="display: none;">
-        <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
-    </div>
-    <div id="text-menu" style="display: none;">
-        <input type="text" id="text-input" placeholder="Введите новый никнейм">
-        <button onclick="saveText()">Сохранить</button>
-    </div>
-    <div id="registration-menu" style="display: none;">
-        <input type="text" id="phone-input" placeholder="Номер телефона">
-        <div id="phone-warning" style="color: red;"></div>
-        <button onclick="register()">Продолжить</button>
-    </div>
-    <!-- Новое меню для подтверждения номера -->
-    <div id="confirmation-menu" style="display: none;">
-        <h2>Подтверждение номера</h2>
-        <input type="text" id="code-input" placeholder="Введите код подтверждения">
-        <button onclick="confirmCode()">Продолжить</button>
-    </div>
-    <div style="position: absolute; top: 10px; right: 10px;">
-        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
-        <button>Войти</button>
-    </div>
-    <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
+</div>
+<img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
+<div id="menu" style="display: none;">
+    <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
+</div>
+<div id="text-menu" style="display: none;">
+    <input type="text" id="text-input" placeholder="Введите новый никнейм">
+    <button onclick="saveText()">Сохранить</button>
+</div>
+<div id="registration-menu" style="display: none;">
+    <input type="text" id="phone-input" placeholder="Номер телефона">
+    <div id="phone-warning" style="color: red;"></div>
+    <button onclick="register()">Продолжить</button>
+</div>
+<!-- Новое меню для подтверждения номера -->
+<div id="confirmation-menu" style="display: none;">
+    <h2>Подтверждение номера</h2>
+    <input type="text" id="code-input" placeholder="Введите код подтверждения">
+    <button onclick="confirmCode()">Продолжить</button>
+    <div id="warning-message"></div>
+</div>
+<div style="position: absolute; top: 10px; right: 10px;">
+    <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
+    <button>Войти</button>
+</div>
+<input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
 </html>
