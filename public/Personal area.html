@@ -103,7 +103,8 @@
         }
 
         function showImagesAndText() {
-            document.querySelector('.second-image').style.display = 'inline-block';
+            var secondImage = document.querySelector('.second-image');
+            secondImage.style.display = 'inline-block';
             document.querySelector('.edit-nickname-image').style.display = 'inline-block';
         }
     </script>
@@ -112,7 +113,7 @@
     <div class="container">
         <div class="image-container">
             <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" style="display: none;">
+            <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image">
             <div class="text" id="text">Пользователь</div>
             <img src="edit_nickname_icon.png" alt="Изменить никнейм" width="30" height="30" class="edit-nickname-image" onclick="openTextMenu()">
         </div>
