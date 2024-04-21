@@ -231,21 +231,26 @@
         }
 
         function registerWithGoogle() {
-            // Предположим, что пользователь успешно выбрал аккаунт из Google
-            var googleAccount = {
-                name: "Имя пользователя из Google",
-                imageUrl: "url_картинки_из_аккаунта_гугл"
-            };
+            // Открываем окно выбора аккаунтов из Google
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn().then(function(user) {
+                // Пользователь успешно выбрал аккаунт
+                var profile = user.getBasicProfile();
+                var googleAccount = {
+                    name: profile.getName(),
+                    imageUrl: profile.getImageUrl()
+                };
 
-            // Обновляем картинку и текст пользователя
-            var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = googleAccount.imageUrl;
-            var textElement = document.getElementById('text');
-            textElement.innerText = googleAccount.name;
-
-            // Здесь можно добавить дополнительную логику, если необходимо
+                // Обновляем картинку и текст пользователя
+                var personalAreaImage = document.getElementById('personal-area-image');
+                personalAreaImage.src = googleAccount.imageUrl;
+                var textElement = document.getElementById('text');
+                textElement.innerText = googleAccount.name;
+            });
         }
     </script>
+    <!-- Включаем API Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
     <div class="container">
