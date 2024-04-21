@@ -34,7 +34,10 @@
 
         .second-image {
             display: none;
-            margin-top: 5px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 5px;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -101,17 +104,14 @@
             textElement.innerText = textInput.value;
             var textMenu = document.getElementById('text-menu');
             textMenu.style.display = 'none';
+            var editNicknameImage = document.querySelector('.edit-nickname-image');
+            editNicknameImage.style.display = 'none';
         }
 
         function showImagesAndText() {
             var secondImage = document.querySelector('.second-image');
             secondImage.style.display = 'inline-block';
             document.querySelector('.edit-nickname-image').style.display = 'inline-block';
-        }
-        
-        function changeNickname() {
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'block';
         }
     </script>
 </head>
