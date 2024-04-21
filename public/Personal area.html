@@ -55,13 +55,15 @@
         }
 
         #menu {
-            display: none; /* Изначально скрыт */
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: gray;
-            padding: 10px;
-        }
+    display: block;
+    position: fixed;
+    top: 150px;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
     </style>
     <script>
         function openMenu() {
@@ -73,10 +75,17 @@
             }
         }
 
-        function changePersonalAreaImage() {
-            var fileUpload = document.getElementById("file-upload");
-            fileUpload.click();
-        }
+        
+function changePersonalAreaImage() {
+    var fileUpload = document.getElementById("file-upload");
+    fileUpload.click();
+}
+
+function handleImageUpload(event) {
+    var file = event.target.files[0];
+    var personalAreaImage = document.getElementById('personal-area-image');
+    personalAreaImage.src = URL.createObjectURL(file);
+}
 
         function handleImageUpload(event) {
             var file = event.target.files[0];
