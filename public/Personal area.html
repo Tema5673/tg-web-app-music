@@ -60,7 +60,7 @@
         #menu {
             display: block;
             position: fixed;
-            width: 100px;
+            width: 150px; /* Увеличиваем ширину меню */
             height: 100px;
             background-color: white;
             top: 50%;
@@ -68,7 +68,7 @@
             transform: translate(-50%, -50%);
         }
 
-        #text-menu {
+        #nickname-menu { /* Новое меню для изменения никнейма */
             display: none;
             position: fixed;
             width: 200px;
@@ -80,8 +80,18 @@
         }
     </style>
     <script>
-        function openMenu(event) {
+        function openSettingsMenu(event) {
             var menu = document.getElementById('menu');
+            menu.style.display = 'block';
+            event.stopPropagation();
+            document.addEventListener("click", closeMenu);
+            menu.addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
+        }
+
+        function openNicknameMenu(event) {
+            var menu = document.getElementById('nickname-menu');
             menu.style.display = 'block';
             event.stopPropagation();
             document.addEventListener("click", closeMenu);
@@ -93,6 +103,8 @@
         function closeMenu() {
             var menu = document.getElementById('menu');
             menu.style.display = 'none';
+            var nicknameMenu = document.getElementById('nickname-menu');
+            nicknameMenu.style.display = 'none'; /* Скрываем меню для изменения никнейма */
             document.removeEventListener("click", closeMenu);
         }
 
@@ -142,22 +154,4 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-            <div class="second-image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" onclick="changePersonalAreaImage()">
-            </div>
-            <div class="text" id="text">Пользователь</div>
-            <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Изменить никнейм" width="20" height="20" class="edit-nickname-image" onclick="openTextMenu()">
-        </div>
-    </div>
-    <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
-    <div id="menu" style="display: none;">
-        <button onclick="showImagesAndText()">Аккаунт</button>
-    </div>
-    <div id="text-menu" style="display: none;">
-        <input type="text" id="text-input" placeholder="Введите новый никнейм">
-        <button onclick="saveText()">Сохранить</button>
-    </div>
-    <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
-</body>
-</html>
+            <img src="png-clipart-user-profile
