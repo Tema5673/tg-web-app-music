@@ -37,20 +37,19 @@
         .second-image {
             display: none;
             position: absolute;
-            bottom: 100px; /* Поднимаем немного выше */
-            right: -10px;
+            bottom: 45px; /* Поднимаем немного выше */
+            right: 15px; /* Сдвигаем немного вправо */
             margin: 5px;
             border-radius: 50%;
             cursor: pointer;
         }
 
         .edit-nickname-image {
-    display: none;
-    cursor: pointer;
-    margin-top: -55px; /* Поднимаем немного выше */
-    margin-right: -120px; /* Сдвигаем немного вправо */
-}
-
+            display: none;
+            cursor: pointer;
+            margin-top: -55px; /* Поднимаем немного выше */
+            margin-left: -120px; /* Сдвигаем немного влево */
+        }
 
         .settings-image {
             position: absolute;
@@ -114,16 +113,18 @@
         }
 
         function showImagesAndText() {
-    var secondImage = document.querySelector('.second-image');
-    secondImage.style.display = 'inline-block';
-    secondImage.style.position = 'absolute';
-    secondImage.style.bottom = '45px'; /* Поднимаем немного выше */
-    secondImage.style.right = '15px';
-    
-    var editNicknameImage = document.querySelector('.edit-nickname-image');
-    editNicknameImage.style.display = 'inline-block';
-}
+            var secondImage = document.querySelector('.second-image');
+            secondImage.style.display = 'inline-block';
+            secondImage.style.position = 'absolute';
+            secondImage.style.bottom = '45px'; /* Поднимаем немного выше */
+            secondImage.style.right = '15px';
 
+            var editNicknameImage = document.querySelector('.edit-nickname-image');
+            editNicknameImage.style.display = 'inline-block';
+            editNicknameImage.style.position = 'absolute';
+            editNicknameImage.style.top = 'calc(50% - 55px)'; /* Поднимаем немного выше */
+            editNicknameImage.style.left = 'calc(50% - 120px)'; /* Сдвигаем немного влево */
+        }
     </script>
 </head>
 <body>
