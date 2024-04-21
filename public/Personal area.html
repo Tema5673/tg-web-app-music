@@ -87,10 +87,13 @@
         }
 
         function handleImageUpload(event) {
-            var file = event.target.files[0];
-            var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = URL.createObjectURL(file);
-        }
+    var file = event.target.files[0];
+    var personalAreaImage = document.getElementById('personal-area-image');
+    personalAreaImage.src = URL.createObjectURL(file);
+    var secondImage = document.querySelector('.second-image');
+    secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block';
+}
+
 
         function openTextMenu() {
             var textMenu = document.getElementById('text-menu');
