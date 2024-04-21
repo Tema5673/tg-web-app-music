@@ -58,10 +58,11 @@
         }
 
         #menu {
-            display: block;
+            display: none; /* Изменено на display: none; */
             position: fixed;
-            top: 150px;
-            right: 0;
+            top: 50%; /* Изменено на 50% */
+            left: 50%; /* Изменено на 50% */
+            transform: translate(-50%, -50%); /* Добавлено */
             width: 100px;
             height: 100px;
             background-color: white;
@@ -136,12 +137,11 @@
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
-    <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: white; padding: 10px;">
-        <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
-    </div>
-    <div id="text-menu" style="display: none;">
-        <input type="text" id="text-input" placeholder="Введите новый никнейм">
-        <button onclick="saveText()">Сохранить</button>
+    <div id="menu" style="display: none;">
+        <div id="text-menu" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white;">
+            <input type="text" id="text-input" placeholder="Введите новый никнейм">
+            <button onclick="saveText()">Сохранить</button>
+        </div>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
