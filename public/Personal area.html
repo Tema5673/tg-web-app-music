@@ -111,10 +111,12 @@
         }
 
         function showImagesAndText() {
-            var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = 'inline-block';
-            document.querySelector('.edit-nickname-image').style.display = 'inline-block';
-        }
+    var personalAreaImage = document.getElementById('personal-area-image');
+    var secondImage = document.querySelector('.second-image img');
+    personalAreaImage.src = secondImage.src;
+    secondImage.style.display = 'none';
+}
+
     </script>
 </head>
 <body>
