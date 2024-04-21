@@ -55,15 +55,14 @@
         }
 
         #menu {
-    display: block;
-    position: fixed;
-    top: 150px;
-    right: 0;
-    width: 100px;
-    height: 100px;
-    background-color: white;
-}
-
+            display: block;
+            position: fixed;
+            top: 150px;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+        }
     </style>
     <script>
         function openMenu() {
@@ -75,17 +74,10 @@
             }
         }
 
-        
-function changePersonalAreaImage() {
-    var fileUpload = document.getElementById("file-upload");
-    fileUpload.click();
-}
-
-function handleImageUpload(event) {
-    var file = event.target.files[0];
-    var personalAreaImage = document.getElementById('personal-area-image');
-    personalAreaImage.src = URL.createObjectURL(file);
-}
+        function changePersonalAreaImage() {
+            var fileUpload = document.getElementById("file-upload");
+            fileUpload.click();
+        }
 
         function handleImageUpload(event) {
             var file = event.target.files[0];
@@ -105,6 +97,11 @@ function handleImageUpload(event) {
             var textMenu = document.getElementById('text-menu');
             textMenu.style.display = 'none';
         }
+
+        function showImagesAndText() {
+            document.querySelector('.second-image').style.display = 'inline-block';
+            document.querySelector('.rename-image').style.display = 'inline-block';
+        }
     </script>
 </head>
 <body>
@@ -112,7 +109,7 @@ function handleImageUpload(event) {
         <div class="image-container">
             <div style="position: relative;">
                 <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" style="position: absolute; bottom: 0; right: 0;">
+                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" style="position: absolute; bottom: 0; right: 0;" onclick="changePersonalAreaImage()">
             </div>
         </div>
         <div class="text" id="text">
@@ -121,7 +118,7 @@ function handleImageUpload(event) {
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu()">
-    <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: gray; padding: 10px;">
+    <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: white; padding: 10px;">
         <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
     <div id="text-menu" style="display: none;">
@@ -129,12 +126,5 @@ function handleImageUpload(event) {
         <button onclick="saveText()">Сохранить</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
-    
-    <script>
-        function showImagesAndText() {
-            document.querySelector('.second-image').style.display = 'inline-block';
-            document.querySelector('.rename-image').style.display = 'inline-block';
-        }
-    </script>
 </body>
 </html>
