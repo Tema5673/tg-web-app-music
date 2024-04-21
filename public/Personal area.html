@@ -60,20 +60,23 @@
         #menu {
             display: block;
             position: fixed;
-            top: 150px;
-            right: 0;
             width: 100px;
             height: 100px;
             background-color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         #text-menu {
             display: none;
-            position: absolute;
-            top: 100px; /* Поднимаем немного выше */
-            left: 50px; /* Сдвигаем немного влево */
+            position: fixed;
+            width: 200px;
+            height: 100px;
             background-color: white;
-            padding: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
     <script>
@@ -148,10 +151,10 @@
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
-    <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: white; padding: 10px;">
-        <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
+    <div id="menu" style="display: none;">
+        <button onclick="showImagesAndText()">Аккаунт</button>
     </div>
-    <div id="text-menu" style="display: none; position: absolute; top: 50px; left: 50px; background-color: white; padding: 10px;">
+    <div id="text-menu" style="display: none;">
         <input type="text" id="text-input" placeholder="Введите новый никнейм">
         <button onclick="saveText()">Сохранить</button>
     </div>
