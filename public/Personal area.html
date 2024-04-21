@@ -143,7 +143,7 @@
             registrationMenu.style.display = 'none';
             var confirmationMenu = document.getElementById('confirmation-menu');
             confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
-            
+
             // Генерация и отправка SMS с кодом подтверждения
             var code = Math.floor(1000 + Math.random() * 9000); // Генерация случайного кода
             localStorage.setItem('confirmationCode', code); // Сохраняем код подтверждения в локальном хранилище
@@ -254,6 +254,8 @@
         <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning" style="color: red;"></div>
         <button onclick="register()">Продолжить</button>
+        <!-- Кнопка для регистрации через Google -->
+        <div id="google-signin-button">Зарегистрироваться с помощью Google</div>
     </div>
     <!-- Новое меню для подтверждения номера -->
     <div id="confirmation-menu" style="display: none;">
@@ -261,10 +263,6 @@
         <input type="text" id="code-input" placeholder="Введите код подтверждения">
         <button onclick="confirmCode()">Продолжить</button>
         <div id="confirmation-warning" style="color: red;"></div>
-    </div>
-    <div style="position: absolute; top: 10px; right: 10px;">
-        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
-        <button>Войти</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
