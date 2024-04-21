@@ -78,7 +78,7 @@
             padding: 10px;
         }
 
-        #registration-menu {
+        #confirmation-menu {
             display: none;
             position: fixed;
             top: 50%;
@@ -122,6 +122,8 @@
             console.log('Пользователь зарегистрирован');
             var registrationMenu = document.getElementById('registration-menu');
             registrationMenu.style.display = 'none';
+            var confirmationMenu = document.getElementById('confirmation-menu');
+            confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
         }
 
         function openMenu(event) {
@@ -200,11 +202,15 @@
         <button onclick="saveText()">Сохранить</button>
     </div>
     <div id="registration-menu" style="display: none;">
-        <!-- Картинка с флагом находится здесь -->
-        <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/i (1).jpeg" alt="Флаги" id="flags-image">
         <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning">Номер должен начинаться с +7</div>
         <button onclick="register()">Продолжить</button>
+    </div>
+    <!-- Новое меню для подтверждения номера -->
+    <div id="confirmation-menu" style="display: none;">
+        <h2>Подтверждение номера</h2>
+        <input type="text" id="code-input" placeholder="Введите код подтверждения">
+        <button onclick="confirmCode()">Продолжить</button>
     </div>
     <div style="position: absolute; top: 10px; right: 10px;">
         <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
