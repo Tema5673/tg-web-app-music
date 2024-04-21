@@ -65,53 +65,52 @@
         }
     </style>
     <script>
-    document.addEventListener("click", function(event) {
-        var menu = document.getElementById('menu');
-        var isClickInsideMenu = menu.contains(event.target);
-        if (!isClickInsideMenu) {
-            menu.style.display = 'none';
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById('menu');
+            var isClickInsideMenu = menu.contains(event.target);
+            if (!isClickInsideMenu) {
+                menu.style.display = 'none';
+            }
+        });
+        
+        function openMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
         }
-    });
-    
-    function openMenu() {
-        var menu = document.getElementById('menu');
-        if (menu.style.display === 'none') {
-            menu.style.display = 'block';
-        } else {
-            menu.style.display = 'none';
+
+        function changePersonalAreaImage() {
+            var fileUpload = document.getElementById("file-upload");
+            fileUpload.click();
         }
-    }
 
-    function changePersonalAreaImage() {
-        var fileUpload = document.getElementById("file-upload");
-        fileUpload.click();
-    }
+        function handleImageUpload(event) {
+            var file = event.target.files[0];
+            var personalAreaImage = document.getElementById('personal-area-image');
+            personalAreaImage.src = URL.createObjectURL(file);
+        }
 
-    function handleImageUpload(event) {
-        var file = event.target.files[0];
-        var personalAreaImage = document.getElementById('personal-area-image');
-        personalAreaImage.src = URL.createObjectURL(file);
-    }
+        function openTextMenu() {
+            var textMenu = document.getElementById('text-menu');
+            textMenu.style.display = 'block';
+        }
 
-    function openTextMenu() {
-        var textMenu = document.getElementById('text-menu');
-        textMenu.style.display = 'block';
-    }
+        function saveText() {
+            var textInput = document.getElementById('text-input');
+            var textElement = document.getElementById('text');
+            textElement.innerText = textInput.value;
+            var textMenu = document.getElementById('text-menu');
+            textMenu.style.display = 'none';
+        }
 
-    function saveText() {
-        var textInput = document.getElementById('text-input');
-        var textElement = document.getElementById('text');
-        textElement.innerText = textInput.value;
-        var textMenu = document.getElementById('text-menu');
-        textMenu.style.display = 'none';
-    }
-
-    function showImagesAndText() {
-        document.querySelector('.second-image').style.display = 'inline-block';
-        document.querySelector('.rename-image').style.display = 'inline-block';
-    }
-</script>
-
+        function showImagesAndText() {
+            document.querySelector('.second-image').style.display = 'inline-block';
+            document.querySelector('.rename-image').style.display = 'inline-block';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
