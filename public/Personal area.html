@@ -10,32 +10,30 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            align-items: center;
             height: 100vh;
             margin-top: -275px;
         }
 
         .text {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
 
         .image-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            margin-bottom: 10px;
         }
 
         .image {
-            margin-right: 10px;
+            margin-bottom: 5px;
             border-radius: 50%;
         }
 
         .edit-nickname-image {
             cursor: pointer;
+            margin-top: 5px;
         }
 
         .settings-image {
@@ -99,7 +97,7 @@
 
         function showImagesAndText() {
             document.querySelector('.second-image').style.display = 'inline-block';
-            document.querySelector('.rename-image').style.display = 'inline-block';
+            document.querySelector('.edit-nickname-image').style.display = 'inline-block';
         }
     </script>
 </head>
