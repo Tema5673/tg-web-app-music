@@ -90,28 +90,9 @@
         }
     </style>
     <script>
-        function isNewUser() {
-            // Здесь может быть ваша логика определения нового пользователя
-            // Например, проверка куки или локального хранилища
-            return true; // Предположим, что это новый пользователь
-        }
-
         function showRegistrationMenu() {
-            var registrationMenu = document.createElement('div');
-            registrationMenu.id = 'registration-menu';
-            registrationMenu.innerHTML = `
-                <div>
-                    <input type="text" placeholder="Номер">
-                </div>
-                <div>
-                    <input type="password" placeholder="Пароль">
-                </div>
-                <div>
-                    <input type="password" placeholder="Повторите пароль">
-                </div>
-                <button onclick="register()">Зарегистрироваться</button>
-            `;
-            document.body.appendChild(registrationMenu);
+            var registrationMenu = document.getElementById('registration-menu');
+            registrationMenu.style.display = 'block';
         }
 
         function register() {
@@ -175,17 +156,6 @@
             var editNicknameImage = document.querySelector('.edit-nickname-image');
             editNicknameImage.style.display = 'inline-block';
         }
-
-        function initializePage() {
-            if (isNewUser()) {
-                showRegistrationMenu();
-            } else {
-                // Добавьте здесь логику для уже зарегистрированного пользователя, если необходимо
-                // Например, установка его личных настроек или отображение его данных
-            }
-        }
-
-        window.onload = initializePage;
     </script>
 </head>
 <body>
@@ -206,6 +176,22 @@
     <div id="text-menu" style="display: none;">
         <input type="text" id="text-input" placeholder="Введите новый никнейм">
         <button onclick="saveText()">Сохранить</button>
+    </div>
+    <div id="registration-menu" style="display: none;">
+        <div>
+            <input type="text" placeholder="Номер или почта">
+        </div>
+        <div>
+            <input type="password" placeholder="Пароль">
+        </div>
+        <div>
+            <input type="password" placeholder="Повторите пароль">
+        </div>
+        <button onclick="register()">Зарегистрироваться</button>
+    </div>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
+        <button>Войти</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
