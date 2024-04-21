@@ -229,6 +229,22 @@
             var editNicknameImage = document.querySelector('.edit-nickname-image');
             editNicknameImage.style.display = 'inline-block';
         }
+
+        function registerWithGoogle() {
+            // Предположим, что пользователь успешно выбрал аккаунт из Google
+            var googleAccount = {
+                name: "Имя пользователя из Google",
+                imageUrl: "url_картинки_из_аккаунта_гугл"
+            };
+
+            // Обновляем картинку и текст пользователя
+            var personalAreaImage = document.getElementById('personal-area-image');
+            personalAreaImage.src = googleAccount.imageUrl;
+            var textElement = document.getElementById('text');
+            textElement.innerText = googleAccount.name;
+
+            // Здесь можно добавить дополнительную логику, если необходимо
+        }
     </script>
 </head>
 <body>
@@ -254,8 +270,7 @@
         <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning" style="color: red;"></div>
         <button onclick="register()">Продолжить</button>
-        <!-- Кнопка для регистрации через Google -->
-        <div id="google-signin-button">Зарегистрироваться с помощью Google</div>
+        <button onclick="registerWithGoogle()">Зарегистрироваться с помощью Google</button> <!-- Новая кнопка -->
     </div>
     <!-- Новое меню для подтверждения номера -->
     <div id="confirmation-menu" style="display: none;">
@@ -263,6 +278,10 @@
         <input type="text" id="code-input" placeholder="Введите код подтверждения">
         <button onclick="confirmCode()">Продолжить</button>
         <div id="confirmation-warning" style="color: red;"></div>
+    </div>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
+        <button>Войти</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
