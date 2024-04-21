@@ -66,6 +66,17 @@
             height: 100px;
             background-color: white;
         }
+
+        #text-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+        }
     </style>
     <script>
         function openMenu(event) {
@@ -136,7 +147,7 @@
         </div>
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
-    <div id="menu" style="display: none; position: absolute; top: 10px; right: 10px; background-color: white; padding: 10px;">
+    <div id="menu" style="display: none;">
         <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
     <div id="text-menu" style="display: none;">
