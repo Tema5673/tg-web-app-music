@@ -5,21 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Title of the document</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body style="
+<style>
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: 0;
+    outline: 0;
+    text-transform: capitalize; /* Ошибка: лишний двоеточие */
     font-family: 'Nunito', sans-serif;
+}
+html {
     font-size: 62.5%;
     overflow-x: hidden;
-    background: #222;
-">
-<header>
-<input type="checkbox" id="menu" style="display: none;">
-<label for="menu" style="
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: #222; /* Ошибка: "blackground" вместо "background" */
+}
+#menu {
+    display: none;
+}
+label {
     font-size: 2rem;
-    background-color: springgreen;
+    background-color: springgreen; /* Ошибка: цвет должен быть указан без решетки (#) */
     color: #fff;
     border-radius: 5rem;
     width: 5rem;
@@ -32,14 +44,16 @@
     box-shadow: 0 0 30px 5px springgreen;
     z-index: 1000;
     cursor: pointer;
-">
-<i class="fas fa-bars" style="display: block;"></i>
-<i class="fas fa-times" style="display: none;"></i>
-</label>
-<nav class="navbar" style="
+}
+label .fa-times {
+    text-align: center;
+    line-height: 5rem;
+    display: none;
+}
+.navbar {
     position: fixed;
     top: 2.5rem;
-    right: 2.5rem;
+    right: 2.5rem; /* Ошибка: заменена запятая на двоеточие */
     border: .1rem solid springgreen;
     padding: 1rem 4rem 1rem 2rem;
     border-radius: 1rem;
@@ -48,40 +62,59 @@
     opacity: 0;
     transform-origin: top right;
     transform: scale(0);
-    transition: opacity 0.3s, transform 0.3s;
-">
-<ul>
-<li><a href="#Аккаунт" style="
+    transition: opacity 0.3s, transform 0.3s; /* Добавлено свойство transition */
+}
+.navbar ul li a {
     display: block;
     font-size: 1.7rem;
     padding: 1rem 5rem 1rem 0rem;
     color: #fff;
     transition: 0.3s;
-">Аккаунт</a></li>
-<li><a href="#Внешний вид" style="
+}
+.navbar ul li a:hover {
+    color: springgreen;
+    transform: translateX(8rem);
+}
+#menu:checked ~ .navbar {
+    opacity: 1;
+    transform: scale(1);
+}
+#menu:checked ~ label .fa-bars { /* Ошибка: исправлено положение точки с запятой */
+    display: none;
+}
+#menu:checked ~ label .fa-times {
     display: block;
-    font-size: 1.7rem;
-    padding: 1rem 5rem 1rem 0rem;
-    color: #fff;
-    transition: 0.3s;
-">Внешний вид</a></li>
-<li><a href="#Настройки" style="
-    display: block;
-    font-size: 1.7rem;
-    padding: 1rem 5rem 1rem 0rem;
-    color: #fff;
-    transition: 0.3s;
-">Настройки</a></li>
-</ul>
-</nav>
-</header>
+}
 
-<img src="аватарка.jpg" alt="Аватарка" style="
+.avatar {
     width: 150px;
     height: 150px;
-    border: 10px solid springgreen;
+    border: 5px solid springgreen;
     border-radius: 5rem;
-">
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+</style>
+</head>
+<body>
+<header> <!-- Перенесено закрытие тега <header> -->
+<input type="checkbox" id="menu">
+<label for="menu">
+<i class="fas fa-bars"></i>
+<i class="fas fa-times"></i>
+</label>
+<nav class="navbar">
+<ul>
+<li><a href="#Аккаунт">Аккаунт</a></li>
+<li><a href="#Внешний вид">Внешний вид</a></li>
+<li><a href="#Настройки">Настройки</a></li> <!-- Ошибка: неправильное написание слова "services" -->
+</ul> <!-- Перенесено закрытие тега <ul> -->
+</nav> <!-- Перенесено закрытие тега <nav> -->
+</header> <!-- Перенесено закрытие тега <header> -->
+
+<img src="аватарка.jpg" alt="Аватарка" class="avatar"> <!-- Добавлено изображение с классом "avatar" -->
 
 </body>
 </html>
