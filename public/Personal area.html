@@ -61,24 +61,23 @@
         #menu {
             display: block;
             position: fixed;
-            top: 200px;
-            right: 0;
+            top: 80px;
+            right: 25px;
             width: 120px; /* Расширяем меню */
             height: 100px;
-            background-color: white;
+            background-color: black;
         }
 
         #text-menu {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    text-align: center;
-    padding: 10px;
-}
-
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: black;
+            text-align: center;
+            padding: 10px;
+        }
 
         #registration-menu {
             display: none;
@@ -132,7 +131,7 @@
 
         .input {
             color: white; /* Белый цвет текста */
-    background-color: black; /* Черный цвет фона */
+            background-color: black; /* Черный цвет фона */
             width: calc(100% - 70px);
             font: inherit;
             font-size: 18px;
@@ -279,8 +278,6 @@
             editNicknameImage.style.display = 'inline-block';
         }
 
-
-
         function registerWithGoogle() {
             // Открываем окно выбора аккаунтов из Google
             var auth2 = gapi.auth2.getAuthInstance();
@@ -316,9 +313,9 @@
     </div>
     <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
     <div id="menu" style="display: none;">
-        <!button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
+        <button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
-    <!div id="text-menu" style="display: none;">
+    <div id="text-menu" style="display: none;">
         <div class="input-wrapper">
             <input class="input" type="text" id="text-input" placeholder="Введите новый никнейм">
             <svg viewBox="0 0 24 24">
