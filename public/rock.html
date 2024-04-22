@@ -59,9 +59,10 @@ label .fa-times {
     border-radius: 1rem;
     z-index: 999;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
-opacity: 0;
-transform-origin: top right;
-transform: scale(0);
+    opacity: 0;
+    transform-origin: top right;
+    transform: scale(0);
+    transition: opacity 0.3s, transform 0.3s; /* Добавлено свойство transition */
 }
 .navbar ul li a {
     display: block;
@@ -75,14 +76,14 @@ transform: scale(0);
     transform: translateX(8rem);
 }
 #menu:checked ~ .navbar {
-opacity: 1;
-transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
 }
-#menu:checked ~ label. fa-bars; {
-display: none;
+#menu:checked ~ label .fa-bars { /* Ошибка: исправлено положение точки с запятой */
+    display: none;
 }
-#menu:checked ~ label. fa-times {
-display: block;
+#menu:checked ~ label .fa-times {
+    display: block;
 }
 </style>
 </head>
