@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Отправка SMS для подтверждения номера</title>
     <style>
         body {
             background-color: gray;
@@ -10,91 +11,233 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            align-items: center;
             height: 100vh;
-            margin-top: -275px;
+            margin-top: -240px;
         }
 
         .text {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
             font-weight: bold;
-            cursor: pointer;
-            font-size: 1.5em; /* Измененное значение font-size */
+            font-size: 1.2em;
         }
 
         .image-container {
-            display: flex;
-            justify-content: center;
             position: relative;
+            text-align: center;
+            display: inline-block;
         }
 
         .image {
-            margin-top: 0;
+            margin-bottom: 5px;
             border-radius: 50%;
+            position: relative;
         }
 
         .second-image {
-            margin-left: 15px;
-            cursor: pointer;
             display: none;
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: 45px; /* Поднимаем немного выше */
+            right: 15px;
+            margin: 5px;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
-        .rename-image {
-            margin-left: 15px;
+        .edit-nickname-image {
             display: none;
+            cursor: pointer;
+            margin-top: -60px; /* Поднимаем немного выше */
+            margin-right: -130px; /* Сдвигаем немного вправо */
         }
 
         .settings-image {
             position: absolute;
-            top: 10px;
+            top: 40px;
             right: 10px;
         }
 
         #menu {
-            display: none;
-            width: 150px;
-            height: 150px;
-            background-color: white;
-            padding: 10px;
+            display: block;
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            top: 200px;
+            right: 0;
+            width: 120px; /* Расширяем меню */
+            height: 100px;
+            background-color: white;
         }
 
         #text-menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+        #registration-menu {
             display: none;
-            width: 200px;
-            height: 100px;
-            background-color: white;
-            padding: 10px;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #confirmation-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #phone-warning {
+            display: none;
+            color: red;
+            font-size: 0.8em;
+            margin-top: -5px;
+        }
+
+        /* Новый стиль для изображения флагов */
+        #flags-image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            vertical-align: middle;
+        }
+
+        /* Стили из блока .input-wrapper */
+        .input-wrapper {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            background: hsl(231, 14%, 10%);
+            border: 2px solid #de55de;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.35s ease-out;
+        }
+
+        .input {
+            color: white; /* Белый цвет текста */
+    background-color: black; /* Черный цвет фона */
+            width: calc(100% - 70px);
+            font: inherit;
+            font-size: 18px;
+            padding: 1rem;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #727884;
+        }
+
+        .input-wrapper input:focus {
+            border: 2px solid #de55de;
+            box-shadow: 0 0 120px hsla(300, 67%, 60%, 0.5);
+        }
+
+        .input-wrapper > svg {
+            position: absolute;
+            right: 1rem;
+            width: 28px;
+            flex-shrink: 0;
+            transition: 0.25s;
+        }
+
+        .input:focus + svg path {
+            stroke: none;
+            fill: #ec83bb;
+        }
+
+        .input:focus + svg {
+            transform: scale(1.2);
         }
     </style>
     <script>
-        function openMenu() {
-            var secondImage = document.querySelector('.second-image');
-            var renameImage = document.querySelector('.rename-image');
-            var personalAreaImage = document.getElementById('personal-area-image');
+        function showRegistrationMenu() {
+            var registrationMenu = document.getElementById('registration-menu');
+            registrationMenu.style.display = 'block';
+        }
 
-            if (secondImage.style.display === 'none') {
-                secondImage.style.display = 'inline-block';
-                renameImage.style.display = 'inline-block';
-            } else {
-                secondImage.style.display = 'none';
-                renameImage.style.display = 'none';
+        function register() {
+            var phoneInput = document.getElementById('phone-input');
+            var phoneNumber = phoneInput.value;
+            if (!phoneNumber.startsWith('+7')) {
+                var phoneWarning = document.getElementById('phone-warning');
+                phoneWarning.innerText = "Номер должен начинаться с +7";
+                phoneWarning.style.display = 'block';
+                return;
             }
+            if (phoneNumber.length !== 12) {
+                var phoneWarning = document.getElementById('phone-warning');
+                phoneWarning.innerText = "Номер должен содержать 12 символов";
+                phoneWarning.style.display = 'block';
+                return;
+            }
+            // Здесь может быть ваша логика регистрации пользователя
+            console.log('Пользователь зарегистрирован');
+            var registrationMenu = document.getElementById('registration-menu');
+            registrationMenu.style.display = 'none';
+            var confirmationMenu = document.getElementById('confirmation-menu');
+            confirmationMenu.style.display = 'block'; // Отображаем меню подтверждения номера
 
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'none';
+            // Генерация и отправка SMS с кодом подтверждения
+            var code = Math.floor(1000 + Math.random() * 9000); // Генерация случайного кода
+            localStorage.setItem('confirmationCode', code); // Сохраняем код подтверждения в локальном хранилище
+            var smsText = 'Ваш код подтверждения: ' + code;
+            var apiKey = '630704AB-EE26-08CB-3B1F-8E0356E3C763'; // Ваш API ключ Sms.ru
+            var phoneNumber = document.getElementById('phone-input').value;
+
+
+            var url = 'https://sms.ru/sms/send?api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + encodeURIComponent(smsText);
+            fetch(url)
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(error => console.error('Ошибка:', error));
+        }
+
+        function confirmCode() {
+            var codeInput = document.getElementById('code-input');
+            var enteredCode = codeInput.value;
+            var correctCode = localStorage.getItem('confirmationCode'); // Получаем сохраненный код подтверждения
+            if (enteredCode === correctCode) {
+                console.log('Код подтвержден');
+                // Можно добавить логику для успешного подтверждения кода
+            } else {
+                console.log('Неверный код');
+                // Можно добавить логику для неверного кода
+                var confirmationWarning = document.getElementById('confirmation-warning');
+                confirmationWarning.innerText = "Неверный код подтверждения";
+                confirmationWarning.style.display = 'block';
+            }
+        }
+
+        function openMenu(event) {
+            var menu = document.getElementById('menu');
+            menu.style.display = 'block';
+            event.stopPropagation();
+            document.addEventListener("click", closeMenu);
+            menu.addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
+        }
+
+        function closeMenu() {
+            var menu = document.getElementById('menu');
+            menu.style.display = 'none';
+            document.removeEventListener("click", closeMenu);
         }
 
         function changePersonalAreaImage() {
@@ -106,6 +249,8 @@
             var file = event.target.files[0];
             var personalAreaImage = document.getElementById('personal-area-image');
             personalAreaImage.src = URL.createObjectURL(file);
+            var secondImage = document.querySelector('.second-image');
+            secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block';
         }
 
         function openTextMenu() {
@@ -119,30 +264,85 @@
             textElement.innerText = textInput.value;
             var textMenu = document.getElementById('text-menu');
             textMenu.style.display = 'none';
+            var editNicknameImage = document.querySelector('.edit-nickname-image');
+            editNicknameImage.style.display = 'none';
+        }
+
+        function showImagesAndText() {
+            var secondImage = document.querySelector('.second-image');
+            secondImage.style.display = 'inline-block';
+            secondImage.style.position = 'absolute';
+            secondImage.style.bottom = '45px'; /* Поднимаем немного выше */
+            secondImage.style.right = '15px';
+
+            var editNicknameImage = document.querySelector('.edit-nickname-image');
+            editNicknameImage.style.display = 'inline-block';
+        }
+
+
+
+        function registerWithGoogle() {
+            // Открываем окно выбора аккаунтов из Google
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn().then(function(user) {
+                // Пользователь успешно выбрал аккаунт
+                var profile = user.getBasicProfile();
+                var googleAccount = {
+                    name: profile.getName(),
+                    imageUrl: profile.getImageUrl()
+                };
+
+                // Обновляем картинку и текст пользователя
+                var personalAreaImage = document.getElementById('personal-area-image');
+                personalAreaImage.src = googleAccount.imageUrl;
+                var textElement = document.getElementById('text');
+                textElement.innerText = googleAccount.name;
+            });
         }
     </script>
+    <!-- Включаем API Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
     <div class="container">
         <div class="image-container">
-            <div style="position: relative;">
-                <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
-                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" class="second-image" onclick="changePersonalAreaImage()" style="position: absolute; bottom: 0; right: 0;">
+            <img src="png-clipart-user-profile-computer-software-internet-bot-user-miscellaneous-service.png" alt="Personal Area Image" width="100" height="100" id="personal-area-image" class="image">
+            <div class="second-image">
+                <img src="543894-fotoapparat-dlya-detey-36.jpg" alt="Second Image" width="30" height="25" onclick="changePersonalAreaImage()">
             </div>
-        </div>
-        <div class="text" id="text">
-            Ваш текст под картинкой
-            <img src="png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Переименовать текст" width="30" height="30" class="rename-image" onclick="openTextMenu()">
+            <div class="text" id="text">Пользователь</div>
+            <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Изменить никнейм" width="20" height="20" class="edit-nickname-image" onclick="openTextMenu()">
         </div>
     </div>
-    <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu()">
+    <img src="settings_gear_options_1630709.jpg" alt="Настройки" width="30" height="30" class="settings-image" onclick="openMenu(event)">
     <div id="menu" style="display: none;">
-        <button onclick="changeImage()">Изменить картинку</button>
-        <button onclick="openTextMenu()">Изменить текст</button>
+        <!button style="background-color: lightgray;" onclick="showImagesAndText()">Аккаунт</button>
     </div>
-    <div id="text-menu" style="display: none;">
-        <input type="text" id="text-input" placeholder="Введите текст">
+    <!div id="text-menu" style="display: none;">
+        <div class="input-wrapper">
+            <input class="input" type="text" id="text-input" placeholder="Введите новый никнейм">
+            <svg viewBox="0 0 24 24">
+                <!-- Замените это на ваш SVG-код -->
+            </svg>
+        </div>
         <button onclick="saveText()">Сохранить</button>
+    </div>
+    <div id="registration-menu" style="display: none;">
+        <input type="text" id="phone-input" placeholder="Номер телефона">
+        <div id="phone-warning" style="color: red;"></div>
+        <button onclick="register()">Продолжить</button>
+        <button onclick="registerWithGoogle()">Зарегистрироваться с помощью Google</button> <!-- Новая кнопка -->
+    </div>
+    <!-- Новое меню для подтверждения номера -->
+    <div id="confirmation-menu" style="display: none;">
+        <h2>Подтверждение номера</h2>
+        <input type="text" id="code-input" placeholder="Введите код подтверждения">
+        <button onclick="confirmCode()">Продолжить</button>
+        <div id="confirmation-warning" style="color: red;"></div>
+    </div>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
+        <button>Войти</button>
     </div>
     <input type="file" id="file-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
 </body>
