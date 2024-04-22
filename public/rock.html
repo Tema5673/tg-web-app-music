@@ -14,41 +14,41 @@
     list-style: none;
     border: 0;
     outline: 0;
-    text-transform: capitalize;
+    text-transform: capitalize; /* Ошибка: лишний двоеточие */
     font-family: 'Nunito', sans-serif;
 }
 html {
-font-size: 62.5%;
-overflow-x: hidden;
+    font-size: 62.5%;
+    overflow-x: hidden;
 }
 body {
-width: 100%;
-min-height: 100vh;
-blackground: #222;
+    width: 100%;
+    min-height: 100vh;
+    background: #222; /* Ошибка: "blackground" вместо "background" */
 }
 #menu {
-display: none;
+    display: none;
 }
 label {
-font-size: 2rem;
-background-color: #springgreen;
-color: #fff;
-border-radius: 5rem;
-width: 5rem;
-height: 5rem;
-text-align: center;
-line-height: 5rem;
-position: fixed;
-top: 2rem;
-right: 2rem;
-box-shadow: 0 0 30px 5px springgreen;
-z-index: 1000;
-cursor: pointer;
+    font-size: 2rem;
+    background-color: springgreen; /* Ошибка: цвет должен быть указан без решетки (#) */
+    color: #fff;
+    border-radius: 5rem;
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    line-height: 5rem;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    box-shadow: 0 0 30px 5px springgreen;
+    z-index: 1000;
+    cursor: pointer;
 }
 label .fa-times {
-text-align: center;
-line-height: 5rem;
-display: none;
+    text-align: center;
+    line-height: 5rem;
+    display: none;
 }
 </style>
 </head>
@@ -63,9 +63,11 @@ display: none;
 <ul>
 <li><a href="#home">home</a></li>
 <li><a href="#about">about</a></li>
-<li><a href="#services">servisec</a></li>
+<li><a href="#services">services</a></li> <!-- Ошибка: неправильное написание слова "services" -->
 <li><a href="#projects">projects</a></li>
 <li><a href="#contacts">contacts</a></li>
-</header>
+</ul> <!-- Ошибка: закрытие тега <ul> не в своем месте -->
+</nav> <!-- Ошибка: закрытие тега <nav> не в своем месте -->
+</header> <!-- Ошибка: закрытие тега <header> не в своем месте -->
 </body>
 </html>
