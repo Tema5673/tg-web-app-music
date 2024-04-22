@@ -63,7 +63,7 @@
             position: fixed;
             top: 80px;
             right: 25px;
-            width: 160px; /* Расширяем меню */
+            width: 120px; /* Расширяем меню */
             height: 100px;
             background-color: black;
         }
@@ -71,7 +71,7 @@
         #text-menu {
             display: none;
             position: fixed;
-            top: 45%; /* Меньше высота на 10 пикселей */
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: black;
@@ -79,8 +79,90 @@
             padding: 10px;
         }
 
-        /* Остальные стили остаются без изменений */
+        #registration-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
 
+        #confirmation-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #phone-warning {
+            display: none;
+            color: red;
+            font-size: 0.8em;
+            margin-top: -5px;
+        }
+
+        /* Новый стиль для изображения флагов */
+        #flags-image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            vertical-align: middle;
+        }
+
+        /* Стили из блока .input-wrapper */
+        .input-wrapper {
+            width: 100%;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            background: hsl(231, 14%, 10%);
+            border: 2px solid #de55de;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.35s ease-out;
+        }
+
+        .input {
+            color: white; /* Белый цвет текста */
+            background-color: black; /* Черный цвет фона */
+            width: calc(100% - 70px);
+            font: inherit;
+            font-size: 18px;
+            padding: 1rem;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #727884;
+        }
+
+        .input-wrapper input:focus {
+            border: 2px solid #de55de;
+            box-shadow: 0 0 120px hsla(300, 67%, 60%, 0.5);
+        }
+
+        .input-wrapper > svg {
+            position: absolute;
+            right: 1rem;
+            width: 28px;
+            flex-shrink: 0;
+            transition: 0.25s;
+        }
+
+        .input:focus + svg path {
+            stroke: none;
+            fill: #ec83bb;
+        }
+
+        .input:focus + svg {
+            transform: scale(1.2);
+        }
     </style>
     <script>
         function showRegistrationMenu() {
@@ -198,17 +280,24 @@
 
         function registerWithGoogle() {
             // Открываем окно выбора аккаунтов из Google
-            var googleUser = {}; // Временный объект для хранения данных пользователя Google
-            googleUser.name = "Имя пользователя"; // Замените на данные из Google после успешной аутентификации
-            googleUser.imageUrl = "ссылка на изображение"; // Замените на ссылку на изображение из Google после успешной аутентификации
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn().then(function(user) {
+                // Пользователь успешно выбрал аккаунт
+                var profile = user.getBasicProfile();
+                var googleAccount = {
+                    name: profile.getName(),
+                    imageUrl: profile.getImageUrl()
+                };
 
-            // Обновляем картинку и текст пользователя
-            var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = googleUser.imageUrl;
-            var textElement = document.getElementById('text');
-            textElement.innerText = googleUser.name;
+                // Обновляем картинку и текст пользователя
+                var personalAreaImage = document.getElementById('personal-area-image');
+                personalAreaImage.src = googleAccount.imageUrl;
+                var textElement = document.getElementById('text');
+                textElement.innerText = googleAccount.name;
+            });
         }
     </script>
+    <!-- Включаем API Google Sign-In -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
