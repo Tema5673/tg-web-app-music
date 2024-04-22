@@ -170,56 +170,6 @@
             registrationMenu.style.display = 'block';
         }
 
-function openMenu(event) {
-            var menu = document.getElementById('menu');
-            menu.style.display = 'block';
-            event.stopPropagation(); // Предотвращаем всплытие события, чтобы оно не срабатывало на документе
-            document.addEventListener("click", closeMenu);
-            menu.addEventListener("click", function(event) {
-                event.stopPropagation();
-            });
-        }
-
-        function closeMenu() {
-            var menu = document.getElementById('menu');
-            menu.style.display = 'none';
-            document.removeEventListener("click", closeMenu);
-        }
-
-        function changePersonalAreaImage() {
-            var fileUpload = document.getElementById("file-upload");
-            fileUpload.click();
-        }
-
-        function handleImageUpload(event) {
-            var file = event.target.files[0];
-            var personalAreaImage = document.getElementById('personal-area-image');
-            personalAreaImage.src = URL.createObjectURL(file);
-            var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = personalAreaImage.src ? 'none' : 'inline-block';
-        }
-
-        function openTextMenu() {
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'block';
-        }
-
-        function saveText() {
-            var textInput = document.getElementById('text-input');
-            var textElement = document.getElementById('text');
-            textElement.innerText = textInput.value;
-            var textMenu = document.getElementById('text-menu');
-            textMenu.style.display = 'none';
-            var editNicknameImage = document.querySelector('.edit-nickname-image');
-            editNicknameImage.style.display = 'none';
-        }
-
-        function showImagesAndText() {
-            var secondImage = document.querySelector('.second-image');
-            secondImage.style.display = 'inline-block';
-            document.querySelector('.edit-nickname-image').style.display = 'inline-block';
-        }
-
         function register() {
             var phoneInput = document.getElementById('phone-input');
             var phoneNumber = phoneInput.value;
@@ -242,7 +192,7 @@ function openMenu(event) {
             var smsText = 'Ваш код для подтверждения номера телефона, никому не сообщайте его.';
             var apiKey = '630704AB-EE26-08CB-3B1F-8E0356E3C763';
             var url = 'https://sms.ru/sms/send?api_id=' + apiKey + '&to=' + phoneNumber + '&msg=' + encodeURIComponent(smsText);
-            
+
             fetch(url)
               .then(response => response.json())
               .then(data => console.log(data))
@@ -291,17 +241,14 @@ function openMenu(event) {
     <div id="registration-menu" style="display: none;">
         <input type="text" id="phone-input" placeholder="Номер телефона">
         <div id="phone-warning" style="color: red;"></div>
-        <button onclick="register()">Продолжить</button>
+        <button onclick="register()">Зарегистрироваться с помощью</button>
+        <img src="https://raw.githubusercontent.com/Tema5673/tg-web-app-music/master/public/png-transparent-writing-symbol-computer-icons-pen-symbol-miscellaneous-angle-pencil.png" alt="Изменить никнейм" width="30" height="30">
     </div>
     <div id="confirmation-menu" style="display: none;">
         <h2>Подтверждение номера</h2>
         <input type="text" id="code-input" placeholder="Введите код подтверждения">
         <button onclick="confirmCode()">Продолжить</button>
         <div id="confirmation-warning" style="color: red;"></div>
-    </div>
-    <div style="position: absolute; top: 10px; right: 10px;">
-        <button onclick="showRegistrationMenu()">Зарегистрироваться</button>
-        <button>Войти</button>
     </div>
 </body>
 </html>
