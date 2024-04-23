@@ -19,7 +19,7 @@ body {
     align-items: center;
     background-color: transparent;
     border: 3px solid springgreen; /* Основная граница - зеленая */
-    border-radius: 3rem;
+    border-radius: 1rem;
     padding: 10px;
     flex: 1; /* Равномерное распределение пространства между кнопками */
     margin: 0 5px; /* Добавляем небольшие отступы между кнопками */
