@@ -13,9 +13,9 @@ function Button({ iconSrc, text }) {
 function App() {
     return (
         <div className="container">
-            <Button iconSrc="profile_icon.png" text="Профиль" />
-            <Button iconSrc="search_icon.png" text="Поиск" />
-            <Button iconSrc="chat_icon.png" text="Чат" />
+            <Button iconSrc="1674365337_3-31.png" text="Профиль" />
+            <Button iconSrc="kisspng-computer-icons-clip-art-openclipart-magnifying-gla-5d31cfdb595331.9238955815635455633659.png" text="Поиск" />
+            <Button iconSrc="unnamed.png" text="Чат" />
         </div>
     );
 }
