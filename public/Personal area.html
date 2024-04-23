@@ -6,6 +6,55 @@
 <title>Title of the document</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
+/* Стили из App.css и другие стили */
+
+body {
+    background-color: #222; /* Черный фон */
+    color: white; /* Ярко белый цвет текста */
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+}
+
+.button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: 3px solid springgreen; /* Основная граница - зеленая */
+    border-radius: 1rem;
+    padding: 10px;
+    flex: 1; /* Равномерное распределение пространства между кнопками */
+    margin: 0 5px; /* Добавляем небольшие отступы между кнопками */
+    max-width: 150px; /* Максимальная ширина кнопки */
+    overflow: hidden; /* Скрытие избыточной части анимации */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0); /* Начальное состояние "неонового" эффекта - отсутствие свечения */
+    transition: transform 0.5s, box-shadow 0.5s; /* Плавное изменение размера и эффекта свечения при наведении курсора */
+}
+
+.button:hover {
+    transform: scale(0.9); /* Изменение размера при наведении курсора */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Изменение эффекта свечения при наведении курсора */
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.text {
+    margin-top: 5px; /* Отступ сверху 2rem */
+    font-weight: bold; /* Жирный текст */
+    color: white; /* Ярко белый цвет текста */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -97,10 +146,21 @@ label .fa-times {
     transform: translateX(-50%);
     z-index: 1; /* Переместить на передний план */
 }
+
+.user {
+    position: fixed;
+    top: calc(2rem + 50px + 150px + 2rem); /* Расположение текста под аватаром с отступом */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; /* Центрирование текста */
+    font-size: 3rem; /* Увеличение размера текста */
+}
 </style>
 </head>
 <body>
-<header> <!-- Перенесено закрытие тега <header> -->
+<header>
+    <!-- Код для навигации -->
+</header>
 <input type="checkbox" id="menu">
 <label for="menu">
 <i class="fas fa-bars"></i>
@@ -115,7 +175,25 @@ label .fa-times {
 </nav> <!-- Перенесено закрытие тега <nav> -->
 </header> <!-- Перенесено закрытие тега <header> -->
 
-<img src="gas-kvas-com-p-logotip-cheloveka-na-prozrachnom-fone-36.png" alt="Аватарка" class="avatar">
+
+<div class="container">
+    <button class="button" onclick="window.location.href='/Personal area.html';">
+        <img src="1674365337_3-31.png" alt="" class="icon">
+        <span class="text">Профиль</span>
+    </button>
+    <button class="button" onclick="window.location.href='/App.html';"> <!-- Добавлен обработчик события для кнопки "Поиск" -->
+        <img src="kisspng-computer-icons-clip-art-openclipart-magnifying-gla-5d31cfdb595331.9238955815635455633659.png" alt="" class="icon">
+        <span class="text">Поиск</span>
+    </button>
+    <button class="button">
+        <img src="icons8-чат-64.png" alt="" class="icon">
+        <span class="text">Чат</span>
+    </button>
+</div>
+
+<div class="avatar"></div> <!-- Перенесен блок с аватаркой -->
+
+<div class="user">Пользователь</div> <!-- Добавлен текст "Пользователь" -->
 
 </body>
 </html>
