@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1292638330827262" crossorigin="anonymous"></script>
 <style>
-/* Стили из App.css и другие стили */
+/* Стили из вашего CSS файла и другие стили */
 
 body {
     background-color: #222; /* Черный фон */
@@ -92,7 +92,7 @@ label {
     top: 2rem;
     right: 2rem;
     box-shadow: 0 0 30px 5px springgreen;
-    z-index: 1000;
+    z-index: 999;
     cursor: pointer;
 }
 label .fa-times {
@@ -107,7 +107,7 @@ label .fa-times {
     border: .1rem solid springgreen;
     padding: 1rem 4rem 1rem 2rem;
     border-radius: 1rem;
-    z-index: 999;
+    z-index: 0;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
     opacity: 0;
     transform-origin: top right;
@@ -145,7 +145,7 @@ label .fa-times {
     top: calc(2rem + 50px); /* 2rem + 50px выше от верхней границы */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1; /* Переместить на передний план */
+    z-index: 0; /* Переместить на передний план */
 }
 
 .user {
@@ -155,6 +155,36 @@ label .fa-times {
     transform: translateX(-50%);
     text-align: center; /* Центрирование текста */
     font-size: 3rem; /* Увеличение размера текста */
+}
+
+/* Стили для нового меню */
+.menu-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
+    border: .1rem solid springgreen;
+    background: #222;
+    z-index: 0; /* Переместить на передний план */
+}
+
+/* Стили для контента нового меню */
+.menu-content {
+    padding: 20px;
+    color: #fff;
+}
+
+/* Стили для закрытия нового меню */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 
 </style>
@@ -184,14 +214,14 @@ label .fa-times {
 <nav class="navbar">
 <ul>
 <li><a href="#Аккаунт">Аккаунт</a></li>
-<li><a href="#Внешний вид">Внешний вид</a></li>
-<li><a href="#Настройки">Настройки</a></li> <!-- Ошибка: неправильное написание слова "services" -->
-</ul> <!-- Перенесено закрытие тега <ul> -->
-</nav> <!-- Перенесено закрытие тега <nav> -->
-</header> <!-- Перенесено закрытие тега <header> -->
+<li><a href="#Внешний вид" onclick="openMenu()">Внешний вид</a></li>
+<li><a href="#Настройки">Настройки</a></li>
+</ul>
+</nav>
 
 
 <div class="container">
+    <!-- Кнопки -->
     <button class="button" onclick="window.location.href='/Personal area.html';">
         <img src="1674365337_3-31.png" alt="" class="icon">
         <span class="text">Профиль</span>
@@ -206,9 +236,32 @@ label .fa-times {
     </button>
 </div>
 
-<div class="avatar"></div> <!-- Перенесен блок с аватаркой -->
+<div class="avatar"></div>
+<div class="user">Пользователь</div>
 
-<div class="user">Пользователь</div> <!-- Добавлен текст "Пользователь" -->
+<!-- Контейнер для нового меню -->
+<div id="external-menu" class="menu-container">
+    <!-- Кнопка закрытия -->
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <!-- Содержимое нового меню -->
+    <div class="menu-content">
+
+    </div>
+</div>
+
+<script>
+// Функция для открытия нового меню
+function openMenu() {
+    var menu = document.getElementById('external-menu');
+    menu.style.display = 'block';
+}
+
+// Функция для закрытия нового меню
+function closeMenu() {
+    var menu = document.getElementById('external-menu');
+    menu.style.display = 'none';
+}
+</script>
 
 </body>
 </html>
