@@ -21,6 +21,7 @@ body {
     bottom: 20px;
     left: 0;
     right: 0;
+    gap: 10px; /* Промежуток между элементами */
 }
 
 .button {
@@ -77,7 +78,7 @@ body {
     background: #222; /* Ошибка: "blackground" вместо "background" */
 }
 #menu {
-    display: none;
+    visibility: hidden; /* Скрытие чекбокса */
 }
 label {
     font-size: 2rem;
@@ -158,20 +159,39 @@ label .fa-times {
     font-size: 3rem; /* Увеличение размера текста */
 }
 
-/* Стили для нового меню */
 .menu-container {
-    display: none;
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 650px;
+    width: 400px;
+    height: 600px;
     border-radius: 10px;
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
     border: .1rem solid springgreen;
     background: #222;
     z-index: 0; /* Переместить на передний план */
+    padding: 20px; /* Добавлен отступ внутри контейнера */
+    gap: 10px 20px; /* Увеличение промежутка между элементами */
+    display: grid; /* Расположение элементов в виде сетки */
+    grid-template-columns: repeat(2, 1fr); /* Две колонки */
+}
+
+.menu-container .menu-item {
+    border: 3px solid gray; /* Бордер для внешних элементов */
+    border-radius: 10px; /* Радиус для внешних элементов */
+    padding: 10px; /* Отступ внутри элементов */
+    display: flex; /* Вложенные элементы в виде flex-контейнера */
+    align-items: center; /* Выравнивание по центру */
+    justify-content: center; /* Выравнивание по центру */
+}
+
+.menu-container .menu-item .inner {
+    border: 2px solid springgreen; /* Бордер для внутренних элементов */
+    border-radius: 20px; /* Радиус для внутренних элементов */
+    width: 50px; /* Ширина внутренних элементов */
+    height: 50px; /* Высота внутренних элементов */
 }
 
 /* Стили для контента нового меню */
@@ -187,7 +207,15 @@ label .fa-times {
     right: 10px;
     cursor: pointer;
 }
-
+.container {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    gap: 10px; /* Промежуток между элементами */
+}
 </style>
 </head>
 <body>
@@ -244,23 +272,41 @@ label .fa-times {
 <div id="external-menu" class="menu-container">
     <!-- Кнопка закрытия -->
     <span class="close-btn" onclick="closeMenu()">&times;</span>
-    <!-- Содержимое нового меню -->
-    <div class="menu-content">
-
+    <div class="menu-item">
+        <div class="inner"></div>
     </div>
+    <div class="menu-item">
+        <div class="inner"></div>
+    </div>
+    <div class="menu-item">
+        <div class="inner"></div>
+    </div>
+    <div class="menu-item">
+        <div class="inner"></div>
+    </div>
+    <div class="menu-item">
+        <div class="inner"></div>
+    </div>
+    <div class="menu-item">
+        <div class="inner"></div>
+    </div>
+    <!-- Остальные элементы -->
+</div>
+<div class="menu-content">
+
 </div>
 
 <script>
 // Функция для открытия нового меню
 function openMenu() {
     var menu = document.getElementById('external-menu');
-    menu.style.display = 'block';
+    menu.style.visibility = 'visible';
 }
 
 // Функция для закрытия нового меню
 function closeMenu() {
     var menu = document.getElementById('external-menu');
-    menu.style.display = 'none';
+    menu.style.visibility = 'hidden';
 }
 </script>
 
