@@ -156,84 +156,7 @@ label .fa-times {
     text-align: center; /* Центрирование текста */
     font-size: 3rem; /* Увеличение размера текста */
 }
-/* Стили для нового меню "Внешний вид" */
-#external-menu {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 999;
-    border: 5px solid springgreen; /* Добавляем рамку */
-    width: 400px; /* Указываем ширину меню */
-    height: 300px; /* Указываем высоту меню */
-}
 
-.external-menu-toggle {
-    font-size: 2rem;
-    background-color: springgreen;
-    color: #fff;
-    border-radius: 5rem;
-    width: 5rem;
-    height: 5rem;
-    text-align: center;
-    line-height: 5rem;
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    box-shadow: 0 0 30px 5px springgreen;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-.external-menu-toggle .fa-times {
-    text-align: center;
-    line-height: 5rem;
-    display: none;
-}
-
-#external-menu-toggle:checked ~ .external-menu-toggle .fa-bars {
-    display: none;
-}
-
-#external-menu-toggle:checked ~ .external-menu-toggle .fa-times {
-    display: block;
-}
-
-/* Стили для кнопки внутри меню "Внешний вид" */
-.external-menu-button {
-    font-size: 2rem;
-    background-color: springgreen;
-    color: #fff;
-    border-radius: 5rem;
-    width: 5rem;
-    height: 5rem;
-    text-align: center;
-    line-height: 5rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    box-shadow: 0 0 30px 5px springgreen;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-.external-menu-button .fa-times {
-    text-align: center;
-    line-height: 5rem;
-    display: none;
-}
-
-#external-menu:checked ~ .external-menu-toggle .fa-bars {
-    display: none;
-}
-
-#external-menu:checked ~ .external-menu-toggle .fa-times {
-    display: block;
-}
 </style>
 </head>
 <body>
@@ -286,21 +209,6 @@ label .fa-times {
 <div class="avatar"></div> <!-- Перенесен блок с аватаркой -->
 
 <div class="user">Пользователь</div> <!-- Добавлен текст "Пользователь" -->
-
-<input type="checkbox" id="external-menu-toggle">
-<label for="external-menu-toggle" class="external-menu-toggle">
-    <i class="fas fa-bars"></i>
-    <i class="fas fa-times"></i>
-</label>
-
-<div id="external-menu">
-    <input type="checkbox" id="external-menu-checkbox">
-    <label for="external-menu-checkbox" class="external-menu-button">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-times"></i>
-    </label>
-    <!-- Контент меню "Внешний вид" -->
-</div>
 
 </body>
 </html>
