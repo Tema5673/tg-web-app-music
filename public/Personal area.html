@@ -92,7 +92,7 @@ label {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    box-shadow: 0 0 30px 5px springgreen;
+    box-shadow: 0 0 10px 5px springgreen;
     z-index: 999;
     cursor: pointer;
 }
@@ -136,6 +136,10 @@ label .fa-times {
 }
 #menu:checked ~ label .fa-times {
     display: block;
+}
+#menu:checked + label {
+    background-color: #ff0000; /* Красный цвет для кнопки при открытом меню */
+    box-shadow: 0 0 10px 5px orange; /* Оранжевая тень при открытом меню */
 }
 
 .avatar {
@@ -211,9 +215,9 @@ label .fa-times {
     text-align: center;
     line-height: 5rem;
     position: fixed;
-    top: 10px;
-    right: 10px;
-    box-shadow: 0 0 30px 5px #ff4d00;
+    top: -10px;
+    right: -10px;
+    box-shadow: 0 0 10px 5px #ff4d00;
     z-index: 999;
     cursor: pointer;
 }
