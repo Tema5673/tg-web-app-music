@@ -101,13 +101,14 @@ label .fa-times {
     display: none;
 }
 .navbar {
+    background-color: #222;
     position: fixed;
     top: 2.5rem;
     right: 2.5rem; /* Ошибка: заменена запятая на двоеточие */
     border: .1rem solid springgreen;
     padding: 1rem 4rem 1rem 2rem;
     border-radius: 1rem;
-    z-index: 0;
+    z-index: 1;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
     opacity: 0;
     transform-origin: top right;
@@ -145,7 +146,7 @@ label .fa-times {
     top: calc(2rem + 50px); /* 2rem + 50px выше от верхней границы */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 0; /* Переместить на передний план */
+    z-index: -1; /* Помещаем аватарку на задний план */
 }
 
 .user {
@@ -165,7 +166,7 @@ label .fa-times {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 600px;
+    height: 450px;
     border-radius: 10px;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
     border: .1rem solid springgreen;
@@ -190,10 +191,8 @@ label .fa-times {
 </style>
 </head>
 <body>
+
 <!-- Рекламный скрипт -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1292638330827262"
-     crossorigin="anonymous"></script>
-<!-- Profile -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-1292638330827262"
@@ -203,22 +202,24 @@ label .fa-times {
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
 <header>
     <!-- Код для навигации -->
 </header>
+
 <input type="checkbox" id="menu">
 <label for="menu">
     <i class="fas fa-bars"></i>
     <i class="fas fa-times"></i>
 </label>
-<nav class="navbar">
-<ul>
-<li><a href="#Аккаунт">Аккаунт</a></li>
-<li><a href="#Внешний вид" onclick="openMenu()">Внешний вид</a></li>
-<li><a href="#Настройки">Настройки</a></li>
-</ul>
-</nav>
 
+<nav class="navbar">
+    <ul>
+        <li><a href="#Аккаунт">Аккаунт</a></li>
+        <li><a href="#Внешний вид" onclick="openMenu()">Внешний вид</a></li>
+        <li><a href="#Настройки">Настройки</a></li>
+    </ul>
+</nav>
 
 <div class="container">
     <!-- Кнопки -->
@@ -226,7 +227,7 @@ label .fa-times {
         <img src="1674365337_3-31.png" alt="" class="icon">
         <span class="text">Профиль</span>
     </button>
-    <button class="button" onclick="window.location.href='/App.html'"> <!-- Добавлен обработчик события для кнопки "Поиск" -->
+    <button class="button" onclick="window.location.href='/App.html'">
         <img src="kisspng-computer-icons-clip-art-openclipart-magnifying-gla-5d31cfdb595331.9238955815635455633659.png" alt="" class="icon">
         <span class="text">Поиск</span>
     </button>
