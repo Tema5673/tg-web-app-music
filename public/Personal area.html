@@ -268,8 +268,8 @@ label .fa-times {
     background-color: #00fffc;
     border-radius: 5rem;
     position: absolute;
-     top: 0%;
-    z-index: 0;
+    top: 0;
+    z-index: -1;
     left: 0; /* Начальное положение индикатора в крайнем левом положении */
     transform: translateX(-100%); /* Сдвигаем индикатор влево на 100% */
     transition: transform 0.5s ease; /* Добавляем анимацию для плавного перемещения */
@@ -287,7 +287,6 @@ label .fa-times {
     transition: transform 0.5s ease;
     transform: translateX(100%); /* Сдвигаем индикатор в крайнее правое положение */
 }
-
 
 /* Анимация pulse */
 @keyframes pulse {
@@ -320,15 +319,11 @@ label .fa-times {
     </a>
 </div>
 <script>
-
-
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+    const loginMenu = document.querySelector(".login-menu .login");
     const signInText = document.querySelector(".login-menu .login .sign-in");
     const signUpText = document.querySelector(".login-menu .login .sign-up");
     const indicator = document.querySelector(".login-menu .login .indicator");
-    const loginMenu = document.querySelector(".login-menu .login");
-
-    let currentIndex = 0; // Индекс текущего текста
 
     // Функция для перемещения индикатора к указанному тексту
     function moveIndicator(target) {
@@ -343,81 +338,44 @@ label .fa-times {
 
         // Перемещаем индикатор в новое положение
         indicator.style.transform = `translateX(${Math.round(newX)}px)`; // Округляем до целого числа
-
-        // Обновляем текущий индекс
-        currentIndex = Array.from(loginMenu.children).indexOf(target);
-
-        // Обновляем тексты
-        updateTexts();
     }
 
-    // Функция для обновления текстов
-    function updateTexts() {
-        Array.from(loginMenu.children).forEach((child, index) => {
-            if (index === currentIndex) {
-                child.style.color = "#000"; // Черный цвет для текущего текста
-                child.style.zIndex = "999"; // Установка z-index для текущего текста
-            } else {
-                child.style.color = "#fff"; // Белый цвет для остальных текстов
-                child.style.zIndex = ""; // Сброс z-index для остальных текстов
-            }
-        });
+    // Функция для обработки клика по тексту "Sign In"
+    function handleSignInClick() {
+        moveIndicator(signInText); // Перемещаем индикатор к тексту "Sign In"
+        signInText.style.color = "#000"; // Черный цвет для "Sign In"
+        signInText.style.zIndex = "999"; // Установка z-index для "Sign In"
+        signUpText.style.color = "#fff"; // Белый цвет для "Sign Up"
+        signUpText.style.zIndex = ""; // Сброс z-index для "Sign Up"
     }
 
-    // Функция для обработки клика по тексту
-    function handleTextClick(target) {
-        moveIndicator(target); // Перемещаем индикатор к тексту
-        currentIndex = Array.from(loginMenu.children).indexOf(target); // Обновляем текущий индекс
-        updateTexts(); // Обновляем тексты
+    // Функция для обработки клика по тексту "Sign Up"
+    function handleSignUpClick() {
+        moveIndicator(signUpText); // Перемещаем индикатор к тексту "Sign Up"
+        signUpText.style.color = "#000"; // Черный цвет для "Sign Up"
+        signUpText.style.zIndex = "999"; // Установка z-index для "Sign Up"
+        signInText.style.color = "#fff"; // Белый цвет для "Sign In"
+        signInText.style.zIndex = ""; // Сброс z-index для "Sign In"
     }
 
-    // Начальное положение индикатора на тексте "Sign up"
-    moveIndicator(signUpText);
+    // Начальное положение индикатора на тексте "Sign In"
+    moveIndicator(signInText);
 
-    // Обработчики событий для текстов "Sign in" и "Sign up"
-    signUpText.addEventListener("click", function() {
-        handleTextClick(signUpText);
-    });
+    // Установка начального цвета и z-index для "Sign In" и "Sign Up"
+    signInText.style.color = "#000"; // Черный цвет для "Sign In"
+    signInText.style.zIndex = "999"; // Установка z-index для "Sign In"
+    signUpText.style.color = "#fff"; // Белый цвет для "Sign Up"
 
-    signInText.addEventListener("click", function() {
-        handleTextClick(signInText);
-    });
-
-    // Обработчик события наведения индикатора на текст
-    indicator.addEventListener("mouseover", function() {
-        currentIndex = Array.from(loginMenu.children).indexOf(indicator.parentNode);
-        updateTexts();
-    });
-
-    // Обработчик события ухода индикатора с текста
-    indicator.addEventListener("mouseout", function() {
-        updateTexts();
-    });
+    // Обработчики событий для текстов "Sign In" и "Sign Up"
+    signInText.addEventListener("click", handleSignInClick);
+    signUpText.addEventListener("click", handleSignUpClick);
 });
-
-
-
-
-
-
-// Функция для открытия нового меню
-function openMenu() {
-    var menu = document.getElementById('external-menu');
-    menu.style.visibility = 'visible';
-}
-
-// Функция для закрытия нового меню
-function closeMenu() {
-    var menu = document.getElementById('external-menu');
-    menu.style.visibility = 'hidden';
-}
 
 // Функция для открытия меню авторизации
 function openLoginMenu() {
-    var loginMenu = document.getElementById('loginMenu');
+    var loginMenu = document.querySelector('.login-menu');
     loginMenu.classList.toggle('active');
 }
-
 </script>
 
 <input type="checkbox" id="menu">
@@ -454,7 +412,7 @@ function openLoginMenu() {
 <div class="user">Пользователь</div>
 
 <!-- Контейнер для нового меню -->
-<div id="external-menu" class="menu-container">
+<div class="menu-container">
     <!-- Кнопка закрытия -->
     <span class="close-btn" onclick="closeMenu()">&times;</span>
     <div class="menu-item">
@@ -473,25 +431,22 @@ function openLoginMenu() {
 
 <!-- HTML -->
 <!-- Обновленный HTML для меню авторизации -->
-<div class="login-menu" id="loginMenu">
+<div class="login-menu">
     <div class="login">
         <div class="login-text">
-            <span class="sign-in" onclick="moveIndicator(this)">Sign in</span> <!-- Добавлено событие onclick -->
+            <span class="sign-in" onclick="handleSignInClick()">Sign in</span> <!-- Добавлено событие onclick -->
         </div>
-        <span class="sign-up" onclick="moveIndicator(this)">Sign up</span> <!-- Добавлено событие onclick -->
+        <span class="sign-up" onclick="handleSignUpClick()">Sign up</span> <!-- Добавлено событие onclick -->
         <div class="indicator"></div> <!-- Добавлен элемент индикатора -->
     </div>
 </div>
 
-
-
-    <div class="menu-content">
-        <div id="login" class="login-page">
-            <!-- Форма входа -->
-        </div>
-        <div id="signup" class="signup-page">
-            <!-- Форма регистрации -->
-        </div>
+<div class="menu-content">
+    <div id="login" class="login-page">
+        <!-- Форма входа -->
+    </div>
+    <div id="signup" class="signup-page">
+        <!-- Форма регистрации -->
     </div>
 </div>
 
