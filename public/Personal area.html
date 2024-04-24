@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Title of the document</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="Personal area.css"> <!-- Добавлено подключение файла Personal area.css -->
 <style>
 /* Стили из вашего CSS файла и другие стили */
 
@@ -101,7 +102,7 @@ label .fa-times {
     display: none;
 }
 .navbar {
-    background-color: #222;
+    background-color: #333;
     position: fixed;
     top: 2.5rem;
     right: 2.5rem; /* Ошибка: заменена запятая на двоеточие */
@@ -168,12 +169,12 @@ label .fa-times {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    height: 500px;
+    width: 250px; /* Ширина меню */
+    height: 300px; /* Высота меню */
     border-radius: 10px;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .8);
     border: .1rem solid springgreen;
-    background: #222;
+    background: #333;
     z-index: 0; /* Переместить на передний план */
     padding: 20px; /* Добавлен отступ внутри контейнера */
     gap: 10px 20px; /* Увеличение промежутка между элементами */
@@ -220,29 +221,44 @@ label .fa-times {
     z-index: 999;
     cursor: pointer;
 }
-.container {
+/* CSS */
+/* Добавленные стили для меню авторизации */
+.login-menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 360px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5rem; /* Установка радиуса границы */
+    padding: 20px;
+}
+
+.login-menu.active {
+    display: block;
+}
+
+.login-menu .login {
     display: flex;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    gap: 10px; /* Промежуток между элементами */
-}
-.login {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 9999;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Лазурная тень */
+    border-radius: 5rem;
 }
 
-.login a {
-    color: white;
+.login-menu .login .login-text {
+    flex-grow: 1; /* Равномерное распределение пространства между элементами */
 }
 
-.login i {
-    font-size: 24px;
+.login-menu .login span {
+    font-size: 1.5rem;
+    padding: 10px;
 }
+
 
 
 
@@ -254,8 +270,8 @@ label .fa-times {
     <!-- Код для навигации -->
 </header>
 <div class="login">
-    <a href="#login">
-        <i class="fas fa-sign-in-alt"></i>
+    <a href="#login" onclick="openLoginMenu()">
+        <i class="fas fa-user"></i> <!-- Новый элемент -->
     </a>
 </div>
 
@@ -318,6 +334,20 @@ label .fa-times {
     <!-- Остальные элементы -->
 </div>
 <div class="menu-content">
+<!-- Контейнер для нового меню -->
+
+</div>
+
+<!-- HTML -->
+<!-- Обновленный HTML для меню авторизации -->
+<div class="login-menu" id="loginMenu">
+    <div class="login">
+        <div class="login-text">
+            <span>Sign in</span>
+        </div>
+        <span>Sign up</span>
+    </div>
+</div>
 
 </div>
 
@@ -332,6 +362,12 @@ function openMenu() {
 function closeMenu() {
     var menu = document.getElementById('external-menu');
     menu.style.visibility = 'hidden';
+}
+
+// Функция для открытия меню авторизации
+function openLoginMenu() {
+    var loginMenu = document.getElementById('loginMenu');
+    loginMenu.classList.toggle('active');
 }
 </script>
 
