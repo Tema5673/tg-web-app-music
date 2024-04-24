@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Title of the document</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1292638330827262" crossorigin="anonymous"></script>
 <style>
 /* Стили из вашего CSS файла и другие стили */
 
@@ -230,26 +229,36 @@ label .fa-times {
     right: 0;
     gap: 10px; /* Промежуток между элементами */
 }
+.login {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.login a {
+    color: white;
+}
+
+.login i {
+    font-size: 24px;
+}
+
 
 
 </style>
 </head>
 <body>
 
-<!-- Рекламный скрипт -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1292638330827262"
-     data-ad-slot="9302324034"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 <header>
     <!-- Код для навигации -->
 </header>
+<div class="login">
+    <a href="#login">
+        <i class="fas fa-sign-in-alt"></i>
+    </a>
+</div>
+
 
 <input type="checkbox" id="menu">
 <label for="menu">
