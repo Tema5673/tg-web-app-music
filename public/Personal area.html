@@ -306,6 +306,18 @@ label .fa-times {
         box-shadow: 0 0 0 0 rgb(18, 55, 97);
     }
 }
+.login-icon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    cursor: pointer;
+    width: 100px; /* Задайте нужные размеры для иконки */
+    height: 100px;
+    background-image: url('5f6cf8bc0020a2953346d2bd0e73eeca.png');
+    background-size: cover;
+}
+
 </style>
 </head>
 <body>
@@ -313,11 +325,6 @@ label .fa-times {
 <header>
     <!-- Код для навигации -->
 </header>
-<div class="login">
-    <a href="#login" onclick="openLoginMenu()">
-        <i class="fas fa-user"></i> <!-- Новый элемент -->
-    </a>
-</div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const loginMenu = document.querySelector(".login-menu .login");
@@ -449,6 +456,9 @@ function openLoginMenu() {
         <!-- Форма регистрации -->
     </div>
 </div>
+<body>
+<div class="login-icon" onclick="openLoginMenu()"></div>
+</body>
 
 </body>
 </html>
