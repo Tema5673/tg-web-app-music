@@ -221,7 +221,6 @@ label .fa-times {
     z-index: 999;
     cursor: pointer;
 }
-/* CSS */
 /* Добавленные стили для меню авторизации */
 .login-menu {
     display: none;
@@ -241,6 +240,7 @@ label .fa-times {
     display: block;
 }
 
+/* Стили для элементов внутри меню авторизации */
 .login-menu .login {
     display: flex;
     justify-content: space-between;
@@ -248,6 +248,7 @@ label .fa-times {
     margin-bottom: 20px;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Лазурная тень */
     border-radius: 5rem;
+    position: relative; /* Добавлено для позиционирования индикатора */
 }
 
 .login-menu .login .login-text {
@@ -257,11 +258,54 @@ label .fa-times {
 .login-menu .login span {
     font-size: 1.5rem;
     padding: 10px;
+    margin-right: 25px; /* Добавлено для близкого размещения текстов */
+    margin-left: 25px; /* Добавлено для близкого размещения текстов */
+}
+/* Стили для индикатора */
+.login-menu .login .indicator {
+    width: 50%; /* Ширина индикатора равна ширине .login-menu .login */
+    height: 100%; /* Высота индикатора равна высоте .login-menu .login */
+    background-color: #00fffc;
+    border-radius: 5rem;
+    position: absolute;
+     top: 0%;
+    left: 0; /* Начальное положение индикатора в крайнем левом положении */
+    transform: translateX(-100%); /* Сдвигаем индикатор влево на 100% */
+    transition: transform 0.5s ease; /* Добавляем анимацию для плавного перемещения */
+    pointer-events: none; /* Запретить события мыши для индикатора, чтобы они могли проходить через него */
+}
+
+/* Логика для перемещения индикатора к тексту "Sign In" */
+.login-menu .login .indicator.move-to-sign-in {
+    transition: transform 0.5s ease;
+    transform: translateX(0%); /* Сдвигаем индикатор в крайнее левое положение */
+}
+
+/* Логика для перемещения индикатора к тексту "Sign Up" */
+.login-menu .login .indicator.move-to-sign-up {
+    transition: transform 0.5s ease;
+    transform: translateX(100%); /* Сдвигаем индикатор в крайнее правое положение */
 }
 
 
-
-
+/* Анимация pulse */
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        background-color: #0e3bc8;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+    50% {
+        transform: scale(0.9);
+        background-color: #00fffc;
+        box-shadow: 0 0 0 5px rgba(178, 212, 252, 0.325);
+    }
+    100% {
+        transform: scale(0.8);
+        background-color: #0e3bc8;
+        box-shadow: 0 0 0 0 rgb(18, 55, 97);
+    }
+}
 </style>
 </head>
 <body>
@@ -274,7 +318,65 @@ label .fa-times {
         <i class="fas fa-user"></i> <!-- Новый элемент -->
     </a>
 </div>
+<script>
 
+
+    // JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+    const signInText = document.querySelector(".login-menu .login span:first-child");
+    const signUpText = document.querySelector(".login-menu .login span:last-child");
+    const indicator = document.querySelector(".login-menu .login .indicator");
+    const loginMenu = document.querySelector(".login-menu .login");
+
+    // Функция для перемещения индикатора к указанному тексту
+    function moveIndicator(target) {
+        const targetRect = target.getBoundingClientRect(); // Получаем координаты целевого текста
+        const loginMenuRect = loginMenu.getBoundingClientRect(); // Получаем координаты родительского элемента
+        const indicatorWidth = indicator.offsetWidth; // Получаем ширину индикатора
+
+        // Находим центр текста
+        const textCenter = targetRect.left - loginMenuRect.left + targetRect.width / 2;
+        // Перемещаем индикатор к центру текста
+        const newX = textCenter - indicatorWidth / 2;
+
+        // Перемещаем индикатор в новое положение
+        indicator.style.transform = `translateX(${Math.round(newX)}px)`; // Округляем до целого числа
+    }
+
+    // Начальное положение индикатора на тексте "Sign up"
+    moveIndicator(signUpText);
+
+    // Обработчики событий для текстов "Sign in" и "Sign up"
+    signInText.addEventListener("click", function() {
+        moveIndicator(signInText);
+    });
+
+    signUpText.addEventListener("click", function() {
+        moveIndicator(signUpText);
+    });
+});
+
+
+
+// Функция для открытия нового меню
+function openMenu() {
+    var menu = document.getElementById('external-menu');
+    menu.style.visibility = 'visible';
+}
+
+// Функция для закрытия нового меню
+function closeMenu() {
+    var menu = document.getElementById('external-menu');
+    menu.style.visibility = 'hidden';
+}
+
+// Функция для открытия меню авторизации
+function openLoginMenu() {
+    var loginMenu = document.getElementById('loginMenu');
+    loginMenu.classList.toggle('active');
+}
+
+</script>
 
 <input type="checkbox" id="menu">
 <label for="menu">
@@ -325,17 +427,6 @@ label .fa-times {
     <div class="menu-item">
         <div class="inner"></div>
     </div>
-    <div class="menu-item">
-        <div class="inner"></div>
-    </div>
-    <div class="menu-item">
-        <div class="inner"></div>
-    </div>
-    <!-- Остальные элементы -->
-</div>
-<div class="menu-content">
-<!-- Контейнер для нового меню -->
-
 </div>
 
 <!-- HTML -->
@@ -343,33 +434,24 @@ label .fa-times {
 <div class="login-menu" id="loginMenu">
     <div class="login">
         <div class="login-text">
-            <span>Sign in</span>
+            <span class="sign-in" onclick="moveIndicator(this)">Sign in</span> <!-- Добавлено событие onclick -->
         </div>
-        <span>Sign up</span>
+        <span class="sign-up" onclick="moveIndicator(this)">Sign up</span> <!-- Добавлено событие onclick -->
+        <div class="indicator"></div> <!-- Добавлен элемент индикатора -->
     </div>
 </div>
 
+
+
+    <div class="menu-content">
+        <div id="login" class="login-page">
+            <!-- Форма входа -->
+        </div>
+        <div id="signup" class="signup-page">
+            <!-- Форма регистрации -->
+        </div>
+    </div>
 </div>
-
-<script>
-// Функция для открытия нового меню
-function openMenu() {
-    var menu = document.getElementById('external-menu');
-    menu.style.visibility = 'visible';
-}
-
-// Функция для закрытия нового меню
-function closeMenu() {
-    var menu = document.getElementById('external-menu');
-    menu.style.visibility = 'hidden';
-}
-
-// Функция для открытия меню авторизации
-function openLoginMenu() {
-    var loginMenu = document.getElementById('loginMenu');
-    loginMenu.classList.toggle('active');
-}
-</script>
 
 </body>
 </html>
