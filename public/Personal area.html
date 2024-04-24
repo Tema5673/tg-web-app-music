@@ -332,7 +332,19 @@ label .fa-times {
     border-radius: 10px; /* Радиус границы */
     border: .1rem solid springgreen;
 }
-
+.login-menu {
+            text-align: center;
+        }
+        .center-element {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .input-container {
+            margin-bottom: 10px;
+        }
 
 </style>
 </head>
@@ -460,8 +472,8 @@ function openLoginMenu() {
         <span class="sign-up" onclick="handleSignUpClick()">Sign up</span>
         <div class="indicator"></div>
     </div>
-    <div class="center-element">
-        <input type="text" placeholder="Введите текст">
+    <div class="center-element" contenteditable="true">
+        Нажмите здесь, чтобы начать вводить текст
     </div>
 </div>
 
