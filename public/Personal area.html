@@ -269,6 +269,7 @@ label .fa-times {
     border-radius: 5rem;
     position: absolute;
      top: 0%;
+    z-index: 0;
     left: 0; /* Начальное положение индикатора в крайнем левом положении */
     transform: translateX(-100%); /* Сдвигаем индикатор влево на 100% */
     transition: transform 0.5s ease; /* Добавляем анимацию для плавного перемещения */
@@ -321,12 +322,13 @@ label .fa-times {
 <script>
 
 
-    // JavaScript
-document.addEventListener("DOMContentLoaded", function() {
-    const signInText = document.querySelector(".login-menu .login span:first-child");
-    const signUpText = document.querySelector(".login-menu .login span:last-child");
+  document.addEventListener("DOMContentLoaded", function() {
+    const signInText = document.querySelector(".login-menu .login .sign-in");
+    const signUpText = document.querySelector(".login-menu .login .sign-up");
     const indicator = document.querySelector(".login-menu .login .indicator");
     const loginMenu = document.querySelector(".login-menu .login");
+
+    let currentIndex = 0; // Индекс текущего текста
 
     // Функция для перемещения индикатора к указанному тексту
     function moveIndicator(target) {
@@ -341,6 +343,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Перемещаем индикатор в новое положение
         indicator.style.transform = `translateX(${Math.round(newX)}px)`; // Округляем до целого числа
+
+        // Обновляем текущий индекс
+        currentIndex = Array.from(loginMenu.children).indexOf(target);
+
+        // Обновляем тексты
+        updateTexts();
+    }
+
+    // Функция для обновления текстов
+    function updateTexts() {
+        Array.from(loginMenu.children).forEach((child, index) => {
+            if (index === currentIndex) {
+                child.style.color = "#000"; // Черный цвет для текущего текста
+                child.style.zIndex = "999"; // Установка z-index для текущего текста
+            } else {
+                child.style.color = "#fff"; // Белый цвет для остальных текстов
+                child.style.zIndex = ""; // Сброс z-index для остальных текстов
+            }
+        });
+    }
+
+    // Функция для обработки клика по тексту
+    function handleTextClick(target) {
+        moveIndicator(target); // Перемещаем индикатор к тексту
+        currentIndex = Array.from(loginMenu.children).indexOf(target); // Обновляем текущий индекс
+        updateTexts(); // Обновляем тексты
     }
 
     // Начальное положение индикатора на тексте "Sign up"
@@ -348,13 +376,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Обработчики событий для текстов "Sign in" и "Sign up"
     signInText.addEventListener("click", function() {
-        moveIndicator(signInText);
+        handleTextClick(signInText);
     });
 
     signUpText.addEventListener("click", function() {
-        moveIndicator(signUpText);
+        handleTextClick(signUpText);
+    });
+
+    // Обработчик события наведения индикатора на текст
+    indicator.addEventListener("mouseover", function() {
+        currentIndex = Array.from(loginMenu.children).indexOf(indicator.parentNode);
+        updateTexts();
+    });
+
+    // Обработчик события ухода индикатора с текста
+    indicator.addEventListener("mouseout", function() {
+        updateTexts();
     });
 });
+
+
 
 
 
