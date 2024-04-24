@@ -333,17 +333,24 @@ label .fa-times {
     border: .1rem solid springgreen;
 }
 .login-menu {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .center-element {
-            display: inline-block;
-            vertical-align: middle;
-            text-align: left;
+            display: flex;
+            align-items: center;
             border: 1px solid #ccc;
             padding: 5px;
+            margin-top: 10px;
+            cursor: text;
         }
         .input-container {
-            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+        input[type="text"] {
+            border: none;
+            outline: none;
         }
 
 </style>
@@ -473,10 +480,12 @@ function openLoginMenu() {
         <div class="indicator"></div>
     </div>
     <div class="center-element" contenteditable="true">
-        Нажмите здесь, чтобы начать вводить текст
+        <div class="input-container">
+            <label for="text-input">Введите текст:</label>
+            <input type="text" id="text-input" placeholder="Напишите здесь">
+        </div>
     </div>
 </div>
-
 
 <div class="menu-content">
     <div id="login" class="login-page">
