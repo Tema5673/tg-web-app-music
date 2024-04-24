@@ -253,6 +253,8 @@ label .fa-times {
 
 .login-menu .login .login-text {
     flex-grow: 1; /* Равномерное распределение пространства между элементами */
+    font-weight: bold; /* Жирный текст */
+
 }
 
 .login-menu .login span {
@@ -260,6 +262,7 @@ label .fa-times {
     padding: 10px;
     margin-right: 25px; /* Добавлено для близкого размещения текстов */
     margin-left: 25px; /* Добавлено для близкого размещения текстов */
+    font-weight: bold; /* Жирный текст */
 }
 /* Стили для индикатора */
 .login-menu .login .indicator {
@@ -317,6 +320,19 @@ label .fa-times {
     background-image: url('5f6cf8bc0020a2953346d2bd0e73eeca.png');
     background-size: cover;
 }
+/* Стили для элемента по центру */
+.login-menu .center-element {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 30%; /* Расположение по вертикали в середине блока-родителя */
+    left: 50%; /* Расположение по горизонтали в середине блока-родителя */
+    transform: translate(-50%, -50%); /* Смещение на 50% относительно ширины и высоты */
+    width: 250px; /* Ширина элемента */
+    height: 40px; /* Высота элемента */
+    background-color: #333333; /* Цвет фона */
+    border-radius: 10px; /* Радиус границы */
+    border: .1rem solid springgreen;
+}
+
 
 </style>
 </head>
@@ -446,7 +462,10 @@ function openLoginMenu() {
         <span class="sign-up" onclick="handleSignUpClick()">Sign up</span> <!-- Добавлено событие onclick -->
         <div class="indicator"></div> <!-- Добавлен элемент индикатора -->
     </div>
+    <!-- Новый элемент -->
+    <div class="center-element"></div>
 </div>
+
 
 <div class="menu-content">
     <div id="login" class="login-page">
