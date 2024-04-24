@@ -375,12 +375,12 @@ label .fa-times {
     moveIndicator(signUpText);
 
     // Обработчики событий для текстов "Sign in" и "Sign up"
-    signInText.addEventListener("click", function() {
-        handleTextClick(signInText);
-    });
-
     signUpText.addEventListener("click", function() {
         handleTextClick(signUpText);
+    });
+
+    signInText.addEventListener("click", function() {
+        handleTextClick(signInText);
     });
 
     // Обработчик события наведения индикатора на текст
@@ -394,6 +394,7 @@ label .fa-times {
         updateTexts();
     });
 });
+
 
 
 
