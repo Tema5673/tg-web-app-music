@@ -370,20 +370,33 @@ label .fa-times {
         }
 
         .border-element:hover .email-label {
-            transform: translateY(-120%) scale(0.8); /* Поднятие и уменьшение при наведении */
-        }
+        transform: translateY(-120%) scale(0.8); /* Поднятие и уменьшение при наведении */
+    }
 
         .border-element:hover .input-text {
             opacity: 1;
         }
 
        .warning-text {
-           font-weight: bold;
+            font-weight: bold;
             font-size: 10px;
             color: red;
             position: absolute;
             top: 85px;
             left: 160px;
+            display: none; /* Скрыть предупреждение изначально */
+        }
+       .The registration password {
+            position: absolute;
+            left: 25px;
+            top: 10px;
+            border: 2px solid springgreen;
+            width: 250px;
+            height: 40px;
+            border-radius: 2rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 </style>
 </head>
@@ -515,31 +528,29 @@ function openLoginMenu() {
     <div class="warning-text" id="domainWarning">Invalid email domain</div>
     <div class="border-element">
         <span class="email-label">Email</span>
-        <input type="text" class="input-text" id="emailInput" placeholder="Type here...">
+        <input type="text" class="input-text" id="emailInput" placeholder="Type here..." oninput="checkEmailDomain(this.value)">
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const emailInput = document.getElementById("emailInput");
-        const emailLabel = document.getElementById("emailLabel");
+    // Функция для проверки домена электронной почты
+    function checkEmailDomain(email) {
+        var domainWarning = document.getElementById('domainWarning');
+        var atIndex = email.indexOf('@');
 
-        emailInput.addEventListener("input", function () {
-            if (emailInput.value.trim() !== "") {
-                emailLabel.classList.add("active");
+        if (atIndex !== -1) { // Если есть символ '@' в строке
+            var domain = email.substring(atIndex + 1); // Получаем домен после символа '@'
+
+            if (domain.toLowerCase() === 'gmail.com') {
+                domainWarning.style.display = 'none'; // Скрываем предупреждение
             } else {
-                emailLabel.classList.remove("active");
+                domainWarning.style.display = 'block'; // Отображаем предупреждение
             }
-        });
-    });
+        } else {
+            domainWarning.style.display = 'none'; // Скрываем предупреждение, если символ '@' не найден
+        }
+    }
 </script>
 
-<div class="menu-content">
-    <div id="login" class="login-page">
-        <!-- Форма входа -->
-    </div>
-    <div id="signup" class="signup-page">
-        <!-- Форма регистрации -->
-    </div>
 </div>
 <body>
 <div class="login-icon" onclick="openLoginMenu()"></div>
