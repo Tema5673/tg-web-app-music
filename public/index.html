@@ -20,7 +20,36 @@
        width: 100%; height: 100%;
        opacity: 0;
        transform: translateY(20px);
-       will-change: opasity, ;
+       will-change: opasity, transform;
+       pointer-events: none;
+     }
+     .demo.s--processing
+     .demo_text {
+       transition: all 0.4s;
+     }
+     .demo_text--step-0 {
+       opacity: 1;
+       transform: translateY(0);
+     }
+     .demo_text-dots:before,
+     .demo_text-dots:after {
+       content: "."; opacity: 0;
+     }
+     @keyframes dotAnimation {
+       10%, 90% {
+         opacity: 0;
+       }
+       40%, 60% {
+         opacity: 1;
+       }
+     }
+     @keyframes DotAnimation {
+       10%, 90% {
+         opacity: 0;
+       }
+       40%, 60% {
+         opacity: 1;
+       }
      }
     </style>
   </head>

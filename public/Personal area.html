@@ -437,27 +437,47 @@ label .fa-times {
     transform: translateY(-50%); /* Центрирование по вертикали */
 }
 
-/* Увеличение размера иконки глаза */
-.password-toggle i {
-    font-size: 20px; /* Установка размера иконки */
+.eye-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
 }
-/* Стили для зрачка в глазу */
-.password-toggle i::before {
-    content: ''; /* Создание пустого элемента */
+
+.eye {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.iris {
+    width: 16px;
+    height: 16px;
+    background-color: #8f8;
+    border-radius: 50%;
     position: absolute;
-    width: 8px; /* Ширина зрачка */
-    height: 8px; /* Высота зрачка */
-    background-color: black; /* Цвет зрачка */
-    border-radius: 50%; /* Создание круглого зрачка */
-    top: 50%; /* Положение зрачка по вертикали */
-    left: 50%; /* Положение зрачка по горизонтали */
-    transform: translate(-50%, -50%); /* Центрирование зрачка */
-    transition: all 0.3s ease; /* Плавный переход для зрачка */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-/* При наведении курсора мыши на иконку глаза, зрачок следует за движением курсора */
-.password-toggle:hover i::before {
-    transform: translate(-50%, -50%) scale(1.5); /* Увеличение размера зрачка при наведении */
+
+.pupil {
+    width: 8px;
+    height: 8px;
+    background-color: #00f;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+
+
 </style>
 </head>
 <body>
@@ -591,13 +611,26 @@ function openLoginMenu() {
         <input type="text" class="input-text" id="emailInput" placeholder="Type here..." oninput="checkEmailDomain(this.value)">
     </div>
     <div class="border-element password-element">
-    <span class="password-label">Password</span>
-    <input type="password" class="input-text" id="passwordInput" placeholder="Enter your password..." oninput="checkPasswordStrength(this.value)">
+        <span class="password-label">Password</span>
+        <input type="password" class="input-text" id="passwordInput" placeholder="Enter your password..." oninput="checkPasswordStrength(this.value)">
         <div class="password-toggle">
-        <i class="fas fa-eye"></i>
+    <div class="eye-icon" onclick="togglePasswordVisibility()">
+        <div class="eye">
+            <div class="iris"></div>
+        </div>
+    </div>
 </div>
 
+        </div>
+    </div>
 </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
 <script>
     // JavaScript-код
 document.addEventListener("DOMContentLoaded", function() {
