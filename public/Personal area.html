@@ -332,7 +332,50 @@ label .fa-times {
     border-radius: 10px; /* Радиус границы */
     border: .1rem solid springgreen;
 }
+.border-element {
+        position: absolute;
+        left: 25px;
+        top: 80px;
+        border: 2px solid springgreen;
+        width: 250px;
+        height: 40px;
+        border-radius: 2rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
 
+    .email-label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .input-text {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 16px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .border-element:hover .email-label {
+        transform: translateY(-100%) scale(0.8); /* Поднятие и уменьшение при наведении */
+    }
+
+    .border-element:hover .input-text {
+        opacity: 1;
+    }
 
 </style>
 </head>
@@ -452,18 +495,19 @@ function openLoginMenu() {
     </div>
 </div>
 
-<!-- HTML -->
-<!-- Обновленный HTML для меню авторизации -->
 <div class="login-menu">
     <div class="login">
         <div class="login-text">
-            <span class="sign-in" onclick="handleSignInClick()">Sign in</span> <!-- Добавлено событие onclick -->
+            <span class="sign-in" onclick="handleSignInClick()">Sign in</span>
         </div>
-        <span class="sign-up" onclick="handleSignUpClick()">Sign up</span> <!-- Добавлено событие onclick -->
-        <div class="indicator"></div> <!-- Добавлен элемент индикатора -->
+        <span class="sign-up" onclick="handleSignUpClick()">Sign up</span>
+        <div class="indicator"></div>
     </div>
-    <!-- Новый элемент -->
-    <div class="center-element"></div>
+    <!-- Отдельный элемент -->
+    <div class="border-element">
+        <span class="email-label">Email</span>
+        <input type="text" class="input-text" placeholder="Type here...">
+    </div>
 </div>
 
 
