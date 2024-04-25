@@ -253,8 +253,6 @@ label .fa-times {
 
 .login-menu .login .login-text {
     flex-grow: 1; /* Равномерное распределение пространства между элементами */
-    font-weight: bold; /* Жирный текст */
-
 }
 
 .login-menu .login span {
@@ -262,7 +260,6 @@ label .fa-times {
     padding: 10px;
     margin-right: 25px; /* Добавлено для близкого размещения текстов */
     margin-left: 25px; /* Добавлено для близкого размещения текстов */
-    font-weight: bold; /* Жирный текст */
 }
 /* Стили для индикатора */
 .login-menu .login .indicator {
@@ -320,18 +317,52 @@ label .fa-times {
     background-image: url('5f6cf8bc0020a2953346d2bd0e73eeca.png');
     background-size: cover;
 }
-/* Стили для элемента по центру */
-.login-menu .center-element {
-    position: absolute; /* Абсолютное позиционирование */
-    top: 30%; /* Расположение по вертикали в середине блока-родителя */
-    left: 50%; /* Расположение по горизонтали в середине блока-родителя */
-    transform: translate(-50%, -50%); /* Смещение на 50% относительно ширины и высоты */
-    width: 250px; /* Ширина элемента */
-    height: 40px; /* Высота элемента */
-    background-color: #333333; /* Цвет фона */
-    border-radius: 10px; /* Радиус границы */
-    border: .1rem solid springgreen;
-}
+
+.border-element {
+        position: absolute;
+        left: 25px;
+        top: 80px;
+        border: 2px solid springgreen;
+        width: 250px;
+        height: 40px;
+        border-radius: 2rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .email-label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .input-text {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 70%;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 16px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .border-element:hover .email-label {
+        transform: translateY(-120%) scale(0.8); /* Поднятие и уменьшение при наведении */
+    }
+
+    .border-element:hover .input-text {
+        opacity: 1;
+    }
 
 
 </style>
@@ -452,32 +483,28 @@ function openLoginMenu() {
     </div>
 </div>
 
-<!-- HTML -->
-<!-- Обновленный HTML для меню авторизации -->
 <div class="login-menu">
     <div class="login">
         <div class="login-text">
-            <span class="sign-in" onclick="handleSignInClick()">Sign in</span> <!-- Добавлено событие onclick -->
+            <span class="sign-in" onclick="handleSignInClick()">Sign in</span>
         </div>
-        <span class="sign-up" onclick="handleSignUpClick()">Sign up</span> <!-- Добавлено событие onclick -->
-        <div class="indicator"></div> <!-- Добавлен элемент индикатора -->
+        <span class="sign-up" onclick="handleSignUpClick()">Sign up</span>
+        <div class="indicator"></div>
     </div>
-    <!-- Новый элемент -->
-    <div class="center-element"></div>
+    <!-- Отдельный элемент -->
+    <div class="border-element">
+        <span class="email-label">Email</span>
+        <input type="text" class="input-text" placeholder="Type here...">
+    </div>
 </div>
 
 
-<div class="menu-content">
-    <div id="login" class="login-page">
-        <!-- Форма входа -->
-    </div>
-    <div id="signup" class="signup-page">
-        <!-- Форма регистрации -->
-    </div>
-</div>
-<body>
+
+
+
+
+
 <div class="login-icon" onclick="openLoginMenu()"></div>
-</body>
 
 </body>
 </html>
