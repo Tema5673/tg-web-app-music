@@ -311,13 +311,13 @@ label .fa-times {
 }
 .login-icon {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: -10px;
     z-index: 9999;
     cursor: pointer;
     width: 100px; /* Задайте нужные размеры для иконки */
-    height: 100px;
-    background-image: url('5f6cf8bc0020a2953346d2bd0e73eeca.png');
+    height: 50px;
+    background-image: url('png-clipart-computer-icons-icon-design-others-miscellaneous-rectangle.png');
     background-size: cover;
 }
 /* Стили для элемента по центру */
@@ -375,6 +375,8 @@ label .fa-times {
 
         .border-element:hover .input-text {
             opacity: 1;
+            font-weight: bold; /* Жирный текст */
+            color: white; /* Ярко белый цвет текста */
         }
 
        .warning-text {
@@ -386,18 +388,76 @@ label .fa-times {
             left: 160px;
             display: none; /* Скрыть предупреждение изначально */
         }
-       .The registration password {
-            position: absolute;
-            left: 25px;
-            top: 10px;
-            border: 2px solid springgreen;
-            width: 250px;
-            height: 40px;
-            border-radius: 2rem;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
+       .input-text::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    .input-text:-moz-placeholder {
+        color: transparent;
+    }
+
+    .input-text::-moz-placeholder {
+        color: transparent;
+    }
+
+    .input-text:-ms-input-placeholder {
+        color: transparent;
+    }
+    /* Ваш CSS-код здесь */
+    .password-label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .password-element {
+
+        left: 25px;
+        top: 140px; /* Немного ниже по вертикали */
+        border: 2px solid springgreen; /* Измените цвет границы для ввода пароля */
+        width: 250px;
+        height: 40px;
+        border-radius: 2rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: absolute; /* Для позиционирования иконки относительно родительского контейнера */
+    }
+    /* Аналогичный эффект при наведении на метку пароля */
+    .password-element:hover .password-label {
+        transform: translateY(-120%) scale(0.8); /* Поднятие и уменьшение при наведении */
+    }
+    .password-toggle {
+    position: absolute;
+    right: 10px; /* Расстояние от правого края */
+    top: 50%; /* Положение по вертикали */
+    transform: translateY(-50%); /* Центрирование по вертикали */
+}
+
+/* Увеличение размера иконки глаза */
+.password-toggle i {
+    font-size: 20px; /* Установка размера иконки */
+}
+/* Стили для зрачка в глазу */
+.password-toggle i::before {
+    content: ''; /* Создание пустого элемента */
+    position: absolute;
+    width: 8px; /* Ширина зрачка */
+    height: 8px; /* Высота зрачка */
+    background-color: black; /* Цвет зрачка */
+    border-radius: 50%; /* Создание круглого зрачка */
+    top: 50%; /* Положение зрачка по вертикали */
+    left: 50%; /* Положение зрачка по горизонтали */
+    transform: translate(-50%, -50%); /* Центрирование зрачка */
+    transition: all 0.3s ease; /* Плавный переход для зрачка */
+}
+/* При наведении курсора мыши на иконку глаза, зрачок следует за движением курсора */
+.password-toggle:hover i::before {
+    transform: translate(-50%, -50%) scale(1.5); /* Увеличение размера зрачка при наведении */
+}
 </style>
 </head>
 <body>
@@ -530,8 +590,44 @@ function openLoginMenu() {
         <span class="email-label">Email</span>
         <input type="text" class="input-text" id="emailInput" placeholder="Type here..." oninput="checkEmailDomain(this.value)">
     </div>
+    <div class="border-element password-element">
+    <span class="password-label">Password</span>
+    <input type="password" class="input-text" id="passwordInput" placeholder="Enter your password..." oninput="checkPasswordStrength(this.value)">
+        <div class="password-toggle">
+        <i class="fas fa-eye"></i>
+</div>
+
 </div>
 <script>
+    // JavaScript-код
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("passwordInput");
+    const passwordToggle = document.querySelector(".password-toggle");
+    const passwordIcon = document.querySelector(".password-toggle i");
+
+    // Обработчик клика на иконку глаза
+    passwordToggle.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        }
+    });
+
+    // Обработчик движения мыши для перемещения иконки
+    passwordToggle.addEventListener("mousemove", function(event) {
+        const rect = passwordToggle.getBoundingClientRect(); // Получаем координаты элемента
+        const x = event.clientX - rect.left; // Вычисляем относительную позицию по горизонтали
+        const y = event.clientY - rect.top; // Вычисляем относительную позицию по вертикали
+        passwordIcon.style.left = `${x}px`; // Устанавливаем новое значение left для иконки
+        passwordIcon.style.top = `${y}px`; // Устанавливаем новое значение top для иконки
+    });
+});
+
     // Функция для проверки домена электронной почты
     function checkEmailDomain(email) {
         var domainWarning = document.getElementById('domainWarning');
